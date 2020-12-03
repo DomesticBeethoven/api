@@ -1,0 +1,11 @@
+<mei xmlns="http://www.music-encoding.org/ns/mei" xml:id="some-id">
+  <meiHead>
+    <fileDesc>
+      <titleStmt>
+        <title>Test title</title>
+      </titleStmt>
+      <pubStmt/>
+    </fileDesc>
+  </meiHead>
+  <music></music>
+</mei>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <meta xmlns="http://exist-db.org/xquery/repo">
     <description>$$desc$$</description>
-    <author>Johannes Kepper</author>
+    <author>Johannes Kepper, Mark Saccomano</author>
     <website/>
     <status>beta</status>
     <license>$$license$$</license>
     <copyright>true</copyright>
     <type>application</type>
-    <target>videapp-data</target>
+    <target>bith-api</target>
     <prepare>pre-install.xql</prepare>
     <finish/>
     <deployed>$$deployed$$</deployed>

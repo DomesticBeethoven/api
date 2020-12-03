@@ -16,7 +16,7 @@ var runSequence = require('run-sequence').use(gulp)
 //handles xqueries
 gulp.task('xql', function(){
 
-    return gulp.src('source/xql/**/*')
+    return gulp.src('exist/xql/**/*')
         .pipe(newer('build/resources/xql/'))
         .pipe(gulp.dest('build/resources/xql/'));
 });
@@ -25,8 +25,8 @@ gulp.task('xql', function(){
 gulp.task('deploy-xql', gulp.series('xql', function() {
 
     return gulp.src(['**/*'], {cwd: 'build/resources/xql/'})
-        .pipe(existClient.newer({target: "/db/apps/data/resources/xql/"}))
-        .pipe(existClient.dest({target: '/db/apps/data/resources/xql/'}));
+        .pipe(existClient.newer({target: "/db/apps/bith-api/resources/xql/"}))
+        .pipe(existClient.dest({target: '/db/apps/bith-api/resources/xql/'}));
 }))
 
 //watches xql for changes
@@ -44,8 +44,8 @@ gulp.task('xslt', function(){
 //deploys xslt to exist-db
 gulp.task('deploy-xslt', gulp.series('xslt', function() {
     return gulp.src('**/*', {cwd: './build/resources/xslt/'})
-        .pipe(existClient.newer({target: "/db/apps/data/resources/xslt/"}))
-        .pipe(existClient.dest({target: '/db/apps/data/resources/xslt/'}));
+        .pipe(existClient.newer({target: "/db/apps/bith-api/resources/xslt/"}))
+        .pipe(existClient.dest({target: '/db/apps/bith-api/resources/xslt/'}));
 }))
 
 //watches xslt for changes
@@ -63,8 +63,8 @@ gulp.task('data', function(){
 //deploys data to exist-db
 gulp.task('deploy-data', gulp.series('data', function() {
     return gulp.src('**/*', {cwd: 'build/content/'})
-        .pipe(existClient.newer({target: "/db/apps/data/content/"}))
-        .pipe(existClient.dest({target: '/db/apps/data/content/'}));
+        .pipe(existClient.newer({target: "/db/apps/bith-api/content/"}))
+        .pipe(existClient.dest({target: '/db/apps/bith-api/content/'}));
 }))
 
 //watches xslt for changes
@@ -138,8 +138,8 @@ function getGitInfo() {
  */
 gulp.task('deploy', function() {
     return gulp.src('**/*', {cwd: 'build'})
-        .pipe(existClient.newer({target: "/db/apps/videapp-data/"}))
-        .pipe(existClient.dest({target: '/db/apps/videapp-data/'}));
+        .pipe(existClient.newer({target: "/db/apps/bith-api/"}))
+        .pipe(existClient.dest({target: '/db/apps/bith-api/'}));
 })
 
 //gulp.task('watch', ['watch-xql','watch-xslt','watch-data']);
