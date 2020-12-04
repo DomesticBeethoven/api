@@ -31,7 +31,7 @@ gulp.task('deploy-xql', gulp.series('xql', function() {
 
 //watches xql for changes
 gulp.task('watch-xql',function() {
-    return gulp.watch(['source/xql/**/*','source/xqm/**/*'], gulp.series('deploy-xql'));
+    return gulp.watch(['exist/xql/**/*','exist/xqm/**/*'], gulp.series('deploy-xql'));
 })
 
 //handles controller changes
