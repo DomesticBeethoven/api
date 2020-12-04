@@ -31,7 +31,28 @@ gulp.task('deploy-xql', gulp.series('xql', function() {
 
 //watches xql for changes
 gulp.task('watch-xql',function() {
-    gulp.watch(['source/xql/**/*','source/xqm/**/*'], ['deploy-xql']);
+    return gulp.watch(['source/xql/**/*','source/xqm/**/*'], gulp.series('deploy-xql'));
+})
+
+//handles controller changes
+gulp.task('controller', function(){
+
+    return gulp.src('exist/eXist-db/controller.xql')
+        .pipe(newer('build/'))
+        .pipe(gulp.dest('build/'));
+});
+
+//deploys xql to exist-db
+gulp.task('deploy-controller', gulp.series('controller', function() {
+
+    return gulp.src(['controller.xql'], {cwd: 'build/'})
+        .pipe(existClient.newer({target: "/db/apps/bith-api/"}))
+        .pipe(existClient.dest({target: '/db/apps/bith-api/'}));
+}))
+
+//watches controller changes
+gulp.task('watch-controller',function() {
+    return gulp.watch('exist/eXist-db/controller.xql', gulp.series('deploy-controller'));
 })
 
 //handles xslt
@@ -50,7 +71,7 @@ gulp.task('deploy-xslt', gulp.series('xslt', function() {
 
 //watches xslt for changes
 gulp.task('watch-xslt',function() {
-    gulp.watch('exist/xslt/**/*', ['deploy-xslt']);
+    return gulp.watch('exist/xslt/**/*', gulp.series('deploy-xslt'));
 })
 
 //handles data
@@ -69,7 +90,7 @@ gulp.task('deploy-data', gulp.series('data', function() {
 
 //watches xslt for changes
 gulp.task('watch-data',function() {
-    gulp.watch('data/**/*', ['deploy-data']);
+    return gulp.watch('data/**/*', gulp.series('deploy-data'));
 })
 
 //bump version on patch level
@@ -142,7 +163,7 @@ gulp.task('deploy', function() {
         .pipe(existClient.dest({target: '/db/apps/bith-api/'}));
 })
 
-//gulp.task('watch', ['watch-xql','watch-xslt','watch-data']);
+gulp.task('watch', gulp.parallel('watch-xql','watch-xslt','watch-data','watch-controller'));
 
 
 gulp.task('dist-finish', function() {
