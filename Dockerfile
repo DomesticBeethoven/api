@@ -6,11 +6,11 @@
 FROM openjdk:8-jdk as builder
 LABEL maintainer="Johannes Kepper"
 
-ENV MODULE2_BUILD_HOME="/opt/module2-build"
+ENV API_BUILD_HOME="/opt/bith-api-build"
 
-ADD https://deb.nodesource.com/setup_10.x /tmp/nodejs_setup 
+ADD https://deb.nodesource.com/setup_10.x /tmp/nodejs_setup
 
-WORKDIR ${MODULE2_BUILD_HOME}
+WORKDIR ${API_BUILD_HOME}
 
 RUN apt-get update \
     && apt-get install -y --force-yes git \
@@ -22,11 +22,11 @@ RUN apt-get update \
 
 COPY . .
 
-RUN addgroup module2builder \
-    && adduser module2builder --ingroup module2builder --disabled-password --system \
-    && chown -R module2builder:module2builder ${MODULE2_BUILD_HOME}
+RUN addgroup apibuilder \
+    && adduser apibuilder --ingroup apibuilder --disabled-password --system \
+    && chown -R apibuilder:apibuilder ${API_BUILD_HOME}
 
-USER module2builder:module2builder
+USER apibuilder:apibuilder
 
 RUN npm install \
     && cp existConfig.tmpl.json existConfig.json \
@@ -38,15 +38,15 @@ RUN npm install \
 #########################
 FROM stadlerpeter/existdb
 
-# add SMuFL-browser specific settings 
-# for a production ready environment with 
-# SMuFL-browser as the root app.
-# For more details about the options see  
+# add specific settings
+# for a production ready environment with
+# bith-api as the root app.
+# For more details about the options see
 # https://github.com/peterstadler/existdb-docker
 ENV EXIST_ENV="production"
 ENV EXIST_CONTEXT_PATH="/"
-ENV EXIST_DEFAULT_APP_PATH="xmldb:exist:///db/apps/bw-module2"
+ENV EXIST_DEFAULT_APP_PATH="xmldb:exist:///db/apps/bith-api"
 
-# simply copy our SMuFL-browser xar package
+# simply copy our xar package
 # to the eXist-db autodeploy folder
-COPY --from=builder /opt/module2-build/dist/*.xar ${EXIST_HOME}/autodeploy/
+COPY --from=builder /opt/bith-api-build/dist/*.xar ${EXIST_HOME}/autodeploy/
