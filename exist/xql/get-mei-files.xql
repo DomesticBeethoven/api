@@ -25,11 +25,85 @@ let $data.basePath := $config:data-root
 let $files :=
   for $file in collection($data.basePath)//mei:mei
   let $id := $file/string(@xml:id)
-  let $title := $file//mei:title/text()
-  return
-    map {
-      'id': $id,
-      'title': $title
-    }
+  let $title := $file//mei:title[@type="editionTitle"]/text()
+  let $annot := $file//mei:annot[@n="3"]/mei:p/text()
 
-return array { $files }
+
+
+
+
+  let $surfaces :=
+    for $surface in $file//mei:surface
+    let $surface.id := $surface/string(@xml:id)
+    let $surface.n := $surface/string(@n)
+    let $surface.label := $surface/string(@label)
+    let $surface.page := $surface/string(@page)
+    let $graphic := $surface/mei:graphic[@type='iiif']
+    let $iiif := $graphic/string(@target) || 'info.json'
+    let $width := $graphic/string(@width)
+    let $height := $graphic/string(@height)
+    let $annots2 := $file//mei:annotationList/text()
+    let $annots := 'annotations'
+    let $annot := '"@type": "oa:Annotation"'
+    let $bplate := 'some Boilerplate'
+
+    return 
+      map {
+         'annot': $annot,
+         'id': $surface.id,
+         'n': $surface.n,
+         'XQueryLabel': 'get-mei-files-xql',
+         'surfaceLabel': $surface.label,
+         'url': $iiif,
+         'width': $width,
+         'height': $height,
+         'page': $surface.page,
+         'annotations' : $annots,
+         'Annotation File': $annots2
+         
+ }
+
+      
+      
+      
+  let $surfaces.array := array { $surfaces }
+  let $var1 := map { 
+      '@context': 'http://iiif.io/api/presentation/2/context.json',
+      '@type': 'sc:Manifest',
+      '@id': 'http://localhost:3000/page2.json',
+      'grandchild': map {
+         'Hello': 5
+       }
+}
+      
+  
+  return
+
+    map {
+    
+	'@id': 'http://55354df6-bb94-4706-ac17-1e51669d76d2',
+	'@type': 'sc:Manifest',
+	
+	'label': 'Page 3',
+	'child': $var1
+	
+(:
+    'line1': $line1,
+      'line2': $line2,
+      'line3': $line3,
+      'line4': $line4,
+      'service1a': 'serviceValue',
+      'id': $id,
+      'attribution': 'Beethovens Werkstatt',    
+      'title': $title,
+      'surfaces': $surfaces.array,
+      'service': 'serviceValue',
+      'annot' : $annot
+:)
+
+}
+
+
+
+
+ return array { $files } 

@@ -15,6 +15,16 @@ if(ends-with($exist:path,'/mei-files.json')) then (
 
 (: old from here on :)
 (: returns all comparisons available in the DB :)
+
+) else if(ends-with($exist:path,'/annotation.json')) then (
+    response:set-header("Access-Control-Allow-Origin", "*"),
+
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <forward url="{$exist:controller}/resources/xql/get-annotation.xql"/>
+    </dispatch>
+
+(: old from here on :)
+(: returns all comparisons available in the DB :)
 ) else if(ends-with($exist:path,'/comparisons.json')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
