@@ -74,6 +74,25 @@ gulp.task('watch-xslt',function() {
     return gulp.watch('exist/xslt/**/*', gulp.series('deploy-xslt'));
 })
 
+//handles html
+gulp.task('html', function(){
+    return gulp.src('./exist/html/**/*')
+        .pipe(newer('./build/'))
+        .pipe(gulp.dest('./build/'));
+});
+
+//deploys html to exist-db
+gulp.task('deploy-html', gulp.series('html', function() {
+    return gulp.src('**/*.html', {cwd: './build/'})
+        .pipe(existClient.newer({target: "/db/apps/bith-api/"}))
+        .pipe(existClient.dest({target: '/db/apps/bith-api/'}));
+}))
+
+//watches html for changes
+gulp.task('watch-html',function() {
+    return gulp.watch('exist/html/**/*', gulp.series('deploy-html'));
+})
+
 //handles data
 gulp.task('data', function(){
     return gulp.src('./data/**/*')
@@ -163,7 +182,7 @@ gulp.task('deploy', function() {
         .pipe(existClient.dest({target: '/db/apps/bith-api/'}));
 })
 
-gulp.task('watch', gulp.parallel('watch-xql','watch-xslt','watch-data','watch-controller'));
+gulp.task('watch', gulp.parallel('watch-xql','watch-xslt','watch-data','watch-controller','watch-html'));
 
 
 gulp.task('dist-finish', function() {
@@ -173,7 +192,7 @@ gulp.task('dist-finish', function() {
 })
 
 //creates a dist version
-gulp.task('dist', gulp.series('xar-structure', gulp.parallel('xql','xslt','data'), 'dist-finish'))
+gulp.task('dist', gulp.series('xar-structure', gulp.parallel('xql','xslt','data','html'), 'dist-finish'))
 
 //creates a dist version with a version bump at patch level
 /*gulp.task('dist-patch', gulp.series('bump-patch', 'dist'));*/
