@@ -69,7 +69,7 @@ let $sequences :=
         '@type': 'dctypes:Image',
         'service': map {
           '@context': 'http://iiif.io/api/image/2/context.json',
-          '@id': $image/string(@target) || 'info.json',
+          '@id': $image/string(@target)(: || 'info.json':),
           'profile': 'http://iiif.io/api/image/2/level2.json',
           'protocol': 'http://iiif.io/api/image'
         },
