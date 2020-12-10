@@ -11,6 +11,9 @@
         <annot n="1">
          <p>annots/p2annots.json</p>
         </annot>
+        <annot n="2">
+          <p>annots/p3annots.json</p>
+        </annot>
       </notesStmt>
     </fileDesc>
 

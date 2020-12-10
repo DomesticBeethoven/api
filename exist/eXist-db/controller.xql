@@ -27,6 +27,25 @@ if(matches($exist:path,'/iiif/document/[\da-zA-Z-_\.]+/manifest.json')) then (
     </dispatch>
 
 ) else
+(: endpoint for getting annotations from an MEI file :)
+if(matches($exist:path,'/annotations.json')) then (
+    response:set-header("Access-Control-Allow-Origin", "*"),
+
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <forward url="{$exist:controller}/resources/xql/get-annotation.xql"/>
+    </dispatch>
+
+) else
+(: endpoint for testing whatever :)
+if(matches($exist:path,'/random.json')) then (
+    response:set-header("Access-Control-Allow-Origin", "*"),
+
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <forward url="{$exist:controller}/resources/xql/get-annotation.xql"/>
+    </dispatch>
+
+
+) else
 (: endpoint for index.html :)
 if ($exist:path eq "/index.html") then (
     (: forward root path to index.xql :)

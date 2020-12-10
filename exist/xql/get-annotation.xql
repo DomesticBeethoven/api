@@ -28,22 +28,30 @@ let $files :=
   let $zone := $file//mei:annot[@n="1"]/string(@plist)
 
   let $annotID := $file//mei:annot[@n="1"]/string(@xml:id)
-  let $format := 'text/plain'
+
+  let $title := $file//mei:title/text()
+   let $tempo := $file//mei:tempo/text()
 
   let $resource := map {
 
-      '@type': 'oa:Annotation',
-      'format': $format,
-      '@id': $annotID
+      '@type': 'cnt:ContentAsText',
+      'format': 'text/plain',
+      'chars': $annot[1]
+
      }
 
-  return
+return
 
     map {
-   '@context': 'http://iiif.io/api/presentation/2/context.json',
+    
+   '@id': $annotID,
+   '@type': 'oa:annotation',
+   'motivation': 'oa:commenting',
+
+   'title': $title[1],
+   'tempo': $tempo,
    'zone': $zone,
-	'chars': $annot,
-	'label': 'Page 3',
+
 	'resource': $resource,
    'on': 'http://127.0.0.1:8182/iiif/2/page2.jpg#xywh=408,160,119,161'
 
@@ -52,4 +60,4 @@ let $files :=
 
 
 
- return array { $files } 
+ return array { $files }
