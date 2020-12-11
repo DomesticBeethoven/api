@@ -1,11 +1,16 @@
-<?xml-model href="../../schemata/rng/bw_data.model_2014_rev1.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><?xml-model href="../../schemata/rng/bw_data.model_2014_rev1.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?><mei xmlns="http://www.music-encoding.org/ns/mei" xmlns:xlink="http://www.w3.org/1999/xlink" meiversion="4.0.0" xml:id="MEI_Test_File">
-    
+<?xml-model href="../../schemata/rng/bw_data.model_2014_rev1.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><?xml-model href="../../schemata/rng/bw_data.model_2014_rev1.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?><mei xmlns="http://www.music-encoding.org/ns/mei" xmlns:xlink="http://www.w3.org/1999/xlink" meiversion="4.0.0" xml:id="C93-26_Viola_1.xml">
+
     <meiHead>
         <fileDesc>
             <titleStmt>
-                <title>VIOLA takt ENCODING from TRIO</title>
+                <title type="editionTitle">C93-26_VIOLA_takt_encoding</title>
             </titleStmt>
             <pubStmt/>
+            <notesStmt>
+                <annot xml:id="m9b954b24-4da3-41eb-a1ac-125127093cdb">
+                    <p>This file is from the MIT archive project.</p>
+                </annot>>
+            </notesStmt>
         </fileDesc>
         <encodingDesc>
             <appInfo>
@@ -15,16 +20,13 @@
                 </application>
             </appInfo>
         </encodingDesc>
-<!--        <notesStmt>
-            <annot>This file is from the MIT archive project.</annot>
-        </notesStmt>-->
     </meiHead>
 
     <music>
         <facsimile>
             <surface xml:id="surface_01EQTDYNC72SW55S4TD7ZCJ38Z" n="1" ulx="0" uly="0" lrx="3037" lry="4029">
                 <graphic xml:id="graphic_01EQTDYNC9NZJVKA7W8JS4JZHG" target="00024.jpg" width="3038" height="4030"/>
-                <zone/>
+<!--                <zone/>-->
                 <zone xml:id="zone_01EQTDYNCAFM59AWP8ENQ7KT5T" type="measure" ulx="1230" uly="430" lrx="1575" lry="713"/>
                 <zone xml:id="zone_01EQTDYNCA8Z2NMQVA06PTKP14" type="measure" ulx="1527" uly="442" lrx="1744" lry="705"/>
                 <zone xml:id="zone_01EQTDYNCB715WET74G4ZTPEH0" type="measure" ulx="1772" uly="466" lrx="2010" lry="699"/>

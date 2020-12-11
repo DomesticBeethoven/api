@@ -20,45 +20,32 @@ let $files :=
   for $file in collection($data.basePath)//mei:mei
   let $id := $file/string(@xml:id)
 
-(: let $title := $file//mei:title[@type="editionTitle"]/text() :)
-   let $title := $file//mei:title/text()
-  
-   let $annot := $file//mei:annot[@n="1"]/mei:p/text()
+ (: let $title := $file//mei:title[@type="editionTitle"]/text()
+  let $title := $file//mei:title/text() :)
 
-   let $zone := $file//mei:zone/string(@xml:id)
+  let $annot := $file//mei:annot[@n="1"]/mei:p/text()
 
-   let $annotID := $file//mei:annot[@n="1"]/string(@xml:id)
+  let $zone := $file//mei:annot[@n="1"]/string(@plist)
 
+  let $annotID := $file//mei:annot[@n="1"]/string(@xml:id)
+  let $format := 'text/plain'
 
-  
-   let $tempo := $file//mei:tempo/text()
-   
-   let $ulx := $file//mei:zone/string(@ulx)
+  let $resource := map {
 
-   let $resource := map {
-
-      '@type': 'cnt:ContentAsText',
-      'format': 'text/plain',
-      'chars': $annot
-
+      '@type': 'oa:Annotation',
+      'format': $format,
+      '@id': $annotID
      }
 
-return
+  return
 
     map {
-    
-   'ulx': $ulx, 
-    
-   '@id': $annotID,
-   '@type': 'oa:annotation',
-   'motivation': 'oa:commenting',
-
-   'title': $title[1],
-   'tempo': $tempo || '.html',
-   'zone': $zone[1],
-
+   '@context': 'http://iiif.io/api/presentation/2/context.json',
+   'zone': $zone,
+	'chars': $annot,
+	'label': 'Page 3',
 	'resource': $resource,
-   'on': 'http://127.0.0.1:8182/iiif/2/page2.jpg#xywh=408,160,119,161#'
+   'on': 'http://127.0.0.1:8182/iiif/2/page2.jpg#xywh=408,160,119,161'
 
 }
 

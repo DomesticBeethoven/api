@@ -4,19 +4,18 @@
   <meiHead>
     <fileDesc>
       <titleStmt>
-        <title>Test File MEI</title>
+        <title type="editionTitle">Test File MEI MEIfile</title>
       </titleStmt>
       <pubStmt/>
       <notesStmt>
-        <annot n="1">
-         <p>annots/p2annots.json</p>
+        <annot xml:id="m4ace4f6b-dc3d-4b21-b6bb-6b5ee28e4afb" n="1">
+         <p>annots/p1annots.json</p>
         </annot>
-        <annot n="2">
-          <p>annots/p3annots.json</p>
+        <annot xml:id="m2d33b199-f623-4616-bc0d-5cbac9853458" n="2">
+          <p>annots/p2annots.json</p>
         </annot>
       </notesStmt>
     </fileDesc>
-
   </meiHead>
 
 

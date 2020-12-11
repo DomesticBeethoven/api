@@ -36,16 +36,30 @@ if(matches($exist:path,'/annotations.json')) then (
     </dispatch>
 
 ) else
+
+(: endpoint for testing annotation2 :)
+if(matches($exist:path,'/annotations2.json')) then (
+    response:set-header("Access-Control-Allow-Origin", "*"),
+
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <forward url="{$exist:controller}/resources/xql/get-annotation2.xql"/>
+    </dispatch>
+
+
+
+
+) else
 (: endpoint for testing whatever :)
 if(matches($exist:path,'/random.json')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <forward url="{$exist:controller}/resources/xql/get-annotation.xql"/>
+        <forward url="{$exist:controller}/resources/xql/get-random.xql"/>
     </dispatch>
 
 
 ) else
+
 (: endpoint for index.html :)
 if ($exist:path eq "/index.html") then (
     (: forward root path to index.xql :)
