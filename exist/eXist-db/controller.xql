@@ -45,6 +45,15 @@ if(matches($exist:path,'/annotations2.json')) then (
         <forward url="{$exist:controller}/resources/xql/get-annotation2.xql"/>
     </dispatch>
 
+) else
+
+(: endpoint for testing annotlist :)
+if(matches($exist:path,'/annotlist.json')) then (
+    response:set-header("Access-Control-Allow-Origin", "*"),
+
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <forward url="{$exist:controller}/resources/xql/get-annotation3.xql"/>
+    </dispatch>
 
 
 
