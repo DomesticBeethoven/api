@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mei
-    xmlns="http://www.music-encoding.org/ns/mei">
+    xmlns="http://www.music-encoding.org/ns/mei" xml:id="page2zones.xml">
     <meiHead>
         <fileDesc>
             <titleStmt>
                 <title/>
             </titleStmt>
             <pubStmt/>
-       
         </fileDesc>
         <encodingDesc>
             <appInfo>

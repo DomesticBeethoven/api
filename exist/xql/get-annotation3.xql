@@ -22,6 +22,8 @@ let $files :=
   let $id := $file/string(@xml:id)
   let $filename := $file/(@xml:id)
   
+
+  
   let $title := $file//mei:titleStmt/mei:title/text()
   
   let $annotations :=
@@ -63,4 +65,4 @@ let $files :=
   	'resources': $annotations
       }
 
- return array { $files }
+ return $files[1]

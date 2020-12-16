@@ -2050,7 +2050,7 @@
                 <zone xml:id="z1bf98c00-133f-4aa4-9a08-4fd4c70df489" ulx="3147" uly="3822"
                     lrx="3884" lry="4080" data="#b3c25bd0b-b264-4d55-a6d8-8e3f796cdb36"/>
             </surface>
-            <surface xml:id="edirom_surface_3adaf22f-7542-40fb-a5f6-e79bd336ce09" n="" label="136r">
+            <surface xml:id="edirom_surface_3adaf22f-7542-40fb-a5f6-e79bd336ce09" n="3" label="136r">
                 <graphic target="http://nashira.upb.de:8070/bw/woo32/autograph/fol136r/"
                     xml:id="edirom_graphic_164ad2a6-00ae-4b6f-93a3-4ca54206d27a" type="iiif"
                     width="6692" height="4873"/>
