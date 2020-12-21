@@ -26,7 +26,7 @@ let $database := collection($config:data-root)
 let $document.id := request:get-parameter('document.id','')
 
 (: get the RANGE of the requested document, as passed by the controller :)
-let $range := request:get-parameter('range','')
+let $range := request:get-parameter('measure.range','')
 
 
 let $range.start := substring-before($range,'-')
@@ -40,6 +40,27 @@ let $files :=
   let $title := $file//mei:fileDesc/mei:titleStmt/mei:title/text()
 :)
 
+
+
+(:  
+    let $surface.id := $surface/string(@xml:id)
+    
+  let $all.measures := ($file//mei:measure)
+  let $start.index := $all.measures[@label = $range.start][1]/position()
+  let $end.index := $all.measures[@label = $range.end][1]/position()
+  let $relevant.measures := $all.measures[position() ge $start.index and position() le $end.index]
+  
+  let $start.index.correct := exists($all.measures[@label = $range.start])
+  
+  let $output := if($start.index.correct and $end.index.correct) then(
+  
+   map {
+   'rel measures': $start.index
+   }
+  
+   
+  ) else ( array {})
+:)
 let $file := $database//mei:mei[@xml:id = $document.id]
 
 
@@ -85,10 +106,42 @@ let $file := $database//mei:mei[@xml:id = $document.id]
      'file.id': $id,
      'title': $title,
      'description': 'List of measure zones',
-(:     'measure range' : $range.start || ' - ' || $range.end,:)
+     'measure range': $range,
   	'resources': $zones,
   	'document.id': $uri
 (:  	'surface.id': $surface.id:)
 (:  	'range': $range:)
+(:     'measure range' : $range.start || ' - ' || $range.end,:)
     
     }
+
+
+    
+(:
+    return map {
+    'zone.id': $zone.id,
+    'type': $type,
+    'measure': $measure.num,
+    'x': $x1,
+    'y': $y1,
+    'height' : $height,
+    'width' : $width,
+    'xyhw' : $x1 || ',' || $y1 || ',' || $height || ',' || $width,
+    'range.start': $range.start,
+    'all.measures': $all.measures
+    }
+
+   return
+
+      map {
+     
+     'file.id': $id,
+     'title': $title,
+     'description': 'List of measure zones',
+     'measure range' : $range.start || ' - ' || $range.end,
+  	'resources': $zones,
+  	'document.id': $uri,
+  	'surface.id': $surface.id,
+  	'range.start': $range.start
+      }
+:)

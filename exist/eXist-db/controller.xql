@@ -44,13 +44,15 @@ if(matches($exist:path,'/iiif/document/[\da-zA-Z-_\.]+/manifest.json')) then (
 (: NB:  Request for measure range separated by commas in EMA :)
 
 
-if(matches($exist:path,'/[\da-zA-Z-_\.]+/scratch.json')) then (
+if(matches($exist:path,'/[\da-zA-Z-_\.]+/measures.json')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <forward url="{$exist:controller}/resources/xql/scratch.xql">
+        <forward url="{$exist:controller}/resources/xql/get-measures.xql">
           (: pass in the UUID of the document passed in the URI :)
           <add-parameter name="document.id" value="{tokenize($exist:path,'/')[last() - 1]}"/>
+          <add-parameter name="measure.range" value="{tokenize($exist:path,'/')[last() - 2]}"/>
+
         </forward>
     </dispatch>
 
@@ -88,6 +90,8 @@ if(matches($exist:path,'/measures.json')) then (
          (\:   pass in the UUID of the document passed in the URI :\)
   
             <add-parameter name="document.id" value="{tokenize($exist:path,'/')[last() - 1]}"/>
+            <add-parameter name="measure.range" value="{tokenize($exist:path,'/')[last() - 2]}"/>
+
         </forward>
     </dispatch>
 
@@ -97,6 +101,7 @@ if(matches($exist:path,'/measures.json')) then (
 (: example:  / mm 33-36 / meifile.mei / measures.json:)
 
 (: endpoint for GET-RANGE  /range.json = get.measure-range.xql :)
+
 if(matches($exist:path,'/range.json')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
