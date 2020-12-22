@@ -1,5 +1,7 @@
 xquery version "3.1";
 
+(: Get facsimile zones for a specified RANGE of measures and return IIIF coordinates :)
+
 import module namespace config="http://api.domestic-beethoven.eu/xql/config" at "config.xqm";
 
 declare namespace xhtml="http://www.w3.org/1999/xhtml";
@@ -15,14 +17,14 @@ declare option exist:serialize "method=json media-type=application/json";
 let $header-addition := response:set-header("Access-Control-Allow-Origin","*")
 
 (: SUBDIRECTORY for testing single file :)
-let $data.basePath := $config:data-root||'zones/'
+let $data.basePath := $config:data-root||'p2/'
 
 
 (: get the ID of the requested document, as passed by the controller :)
 let $document.id := request:get-parameter('document.id','')
 
 (: get the RANGE of the requested document, as passed by the controller :)
-let $range := request:get-parameter('range','')
+let $range := request:get-parameter('measure.range','')
 
 
 let $range.start := substring-before($range,'-')
@@ -30,21 +32,25 @@ let $range.end   := substring-after($range,'-')
 
 
 
-
 (: get database from configuration :)
 let $database := collection($config:data-root)
 
-let $document.uri := 'https://api.domestic-beethoven.eu/data/zones/' || $document.id || '/'
 
 (: get file from database :)
 let $file := $database//mei:mei[@xml:id = $document.id]
 
-  let $id := $file/string(@xml:id)
-  let $filename := $file/(@xml:id)
-  let $uri := document-uri(root($file))
+(:  let $id := $file/string(@xml:id):)
+
+(:  let $filename := $file/(@xml:id):)
+
+
   let $title := $file//mei:fileDesc/mei:titleStmt/mei:title/text()
   let $surface := $file//mei:facsimile/mei:surface
   let $surface.id := $surface/string(@xml:id)
+  let $all.zones := ($file//mei:zone)
+  let $annot := $file//mei:notesStmt/mei:annot/text()
+
+  
 (:  
   
   let $all.measures := ($file//mei:measure)
@@ -64,7 +70,7 @@ let $file := $database//mei:mei[@xml:id = $document.id]
   ) else ( array {})
 :)
 
-  let $measures :=
+(:  let $measures :=
     for $measure in $relevant.measures
     let $measure.id := $measure/string(@xml:id)
     
@@ -79,7 +85,6 @@ let $file := $database//mei:mei[@xml:id = $document.id]
     let $y2 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@lry)
     let $height := $y2 - $y1
     let $width := $x2 - $x1
-    
 
     return map {
     'zone.id': $zone.id,
@@ -92,8 +97,20 @@ let $file := $database//mei:mei[@xml:id = $document.id]
     'xyhw' : $x1 || ',' || $y1 || ',' || $height || ',' || $width,
     'range.start': $range.start,
     'all.measures': $all.measures
-    }
+    }:)
+    
+return map {
+   'title': $title,
+   'zones': $all.zones,
+   'range': $range,
+   'range start': $range.start,
+   'range end': $range.end,
+   'annot': $annot
 
+(:   'filename': $filename:)
+   }
+   
+(:
    return
 
       map {
@@ -109,7 +126,7 @@ let $file := $database//mei:mei[@xml:id = $document.id]
       }
 
 
- (:
+ 
  
  
   let $annotations :=
@@ -140,4 +157,4 @@ let $file := $database//mei:mei[@xml:id = $document.id]
       'resource': $resource,
       'on': $on,
     }
- :)
+:)

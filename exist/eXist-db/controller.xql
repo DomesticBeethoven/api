@@ -43,6 +43,7 @@ if(matches($exist:path,'/iiif/document/[\da-zA-Z-_\.]+/manifest.json')) then (
 
 (: NB:  Request for measure range separated by commas in EMA :)
 
+(: MAKE SURE this regex works for all possibilites (e.g. umlauts?) :)
 
 if(matches($exist:path,'/[\da-zA-Z-_\.]+/measures.json')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
@@ -111,7 +112,9 @@ if(matches($exist:path,'/range.json')) then (
          (\:   pass in the UUID of the document passed in the URI :\)
   
             <add-parameter name="document.id" value="{tokenize($exist:path,'/')[last() - 1]}"/>
-        </forward>
+            <add-parameter name="measure.range" value="{tokenize($exist:path,'/')[last() - 2]}"/>
+
+         </forward>
     </dispatch>
 
 ) else
