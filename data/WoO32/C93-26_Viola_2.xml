@@ -17,7 +17,9 @@
             </appInfo>
         </encodingDesc>
         <notesStmt>
-            <annot>This is a random text annotation for testing</annot>
+            <annot>
+                <p>This is a random text annotation for testing</p>
+            </annot>
         </notesStmt>
     </meiHead>
     <music>

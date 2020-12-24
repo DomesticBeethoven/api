@@ -2,6 +2,8 @@ xquery version "3.1";
 
 (: Get the facsimile zones for each measure and convert to IIIF coordinates :)
 
+(: so actually getting the zones, and then finding the corresponding measure number :)
+
 import module namespace config="http://api.domestic-beethoven.eu/xql/config" at "config.xqm";
 
 declare namespace xhtml="http://www.w3.org/1999/xhtml";

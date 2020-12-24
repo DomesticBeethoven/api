@@ -47,26 +47,45 @@ let $file := $database//mei:mei[@xml:id = $document.id]
   let $title := $file//mei:fileDesc/mei:titleStmt/mei:title/text()
   let $surface := $file//mei:facsimile/mei:surface
   let $surface.id := $surface/string(@xml:id)
-  let $all.zones := ($file//mei:zone)
-  let $annot := $file//mei:notesStmt/mei:annot/text()
+  let $annot := $file//mei:notesStmt/mei:annot/mei:p/text()
 
   
-(:  
-  
   let $all.measures := ($file//mei:measure)
-  let $start.index := $all.measures[@label = $range.start][1]/position()
-  let $end.index := $all.measures[@label = $range.end][1]/position()
+  let $start.index := $file//mei:measure[@label = $range.start]/xs:int(@label)
+  let $end.index := $file//mei:measure[@label = $range.end]/xs:int(@label)
+  let $measure.count := xs:int($range.end) - xs:int($range.start)
   let $relevant.measures := $all.measures[position() ge $start.index and position() le $end.index]
   
-  let $start.index.correct := exists($all.measures[@label = $range.start])
   
+  (: for each relevant.measure, return id and coordinates of associated zone :)
+  
+    let $measures :=
+       for $measure in $relevant.measures
+       let $measure.id := $measure/string(@xml:id)
+       let $zone.id := $measure/substring-after(@facs, '#')
+       let $measure.number := $measure/string(@label)
+       
+       
+       
+       return map {
+       'measure.id': $measure.id,
+       'zone.id': $zone.id,
+       'measure number': $measure.number
+       }
+
+
+
+
+(:      -=: Johannes's solution :=-
+  let $start.index := $all.measures[@label = $range.start][]/position()
+  let $end.index := $all.measures[@label = $range.end][1]/position()
+  let $relevant.measures := $all.measures[position() ge $start.index and position() le $end.index]
+  let $start.index.correct := exists($all.measures[@label = $range.start])
   let $output := if($start.index.correct and $end.index.correct) then(
   
    map {
    'rel measures': $start.index
    }
-  
-   
   ) else ( array {})
 :)
 
@@ -101,11 +120,12 @@ let $file := $database//mei:mei[@xml:id = $document.id]
     
 return map {
    'title': $title,
-   'zones': $all.zones,
    'range': $range,
    'range start': $range.start,
    'range end': $range.end,
-   'annot': $annot
+   'annot': $annot,
+   'measure.count': $measure.count,
+   'measures': $measures
 
 (:   'filename': $filename:)
    }
