@@ -14,16 +14,13 @@ declare option exist:serialize "method=json media-type=application/json";
 
 let $header-addition := response:set-header("Access-Control-Allow-Origin","*")
 
-(: SUBDIRECTORY for testing  :)
-let $data.basePath := $config:data-root||'p2/' 
-
+(: SUBDIRECTORY for testing single file :)
+let $data.basePath := $config:data-root||'p2/'
   
 let $files :=
   for $file in collection($data.basePath)//mei:mei
   let $id := $file/string(@xml:id)
   let $filename := $file/(@xml:id)
-  
-
   
   let $title := $file//mei:titleStmt/mei:title/text()
   
@@ -66,4 +63,4 @@ let $files :=
   	'resources': $annotations
       }
 
- return $files[1]
+ return array { $files }
