@@ -55,18 +55,6 @@ if(matches($exist:path,'/[\da-zA-Z-_\.]+/measures.json')) then (
         </forward>
     </dispatch>
 
-) else
-
-(: 
-THIS WAS AN EARLY TEST
-endpoint for getting annotations from an MEI file - annotations.json = get-annotation1a.xql :)
-if(matches($exist:path,'/annotations.json')) then (
-    response:set-header("Access-Control-Allow-Origin", "*"),
-
-    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <forward url="{$exist:controller}/resources/xql/get-annotation1a.xql"/>
-    </dispatch>
-
 
 ) else
 
@@ -134,7 +122,7 @@ if(matches($exist:path,'/filelist.json')) then (
 
 ) else
 
-(: endpoint for Measures from files in a folder ...<range>/<foldername>/all-egs.json = get-local-documents.xql :)
+(: endpoint for Measures from files in a folder ...<range>/<foldername>/all-egs.json = get-measures-all-docs.xql :)
 
 if(matches($exist:path,'/all-egs.json')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),

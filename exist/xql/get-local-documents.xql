@@ -4,8 +4,9 @@ xquery version "3.1";
     get-local-documents.xql
     ...<foldername>/filelist.json
 
----> grabs mei files in directory defined in 
-     « let $data.basePath := $config:data-root||'p2' »
+ENDPOINT: .../<range>/<directory>/filelist.json
+
+returns @xml:id of <mei> element for each XML file in folder
 
 :)
 
@@ -45,9 +46,7 @@ let $files :=
       let $id := $file/string(@xml:id)
   
   return map {
-    'id': $id,             (: the ID of the file :)
-    'file': $file
-
+    'id': $id             (: the ID of the file :)
   }
 
 return array { $files }
