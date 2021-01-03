@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mei
-    xmlns="http://www.music-encoding.org/ns/mei" xml:id="page2zones.xml">
+    xmlns="http://www.music-encoding.org/ns/mei"
+    xml:id="page2zones.xml">
     <meiHead>
         <fileDesc>
             <titleStmt>
@@ -15,7 +16,7 @@
                     <p>Measures detected with Deep Optical Measure Detector</p>
                 </application>
             </appInfo>
-            
+
         </encodingDesc>
     </meiHead>
     <music>
@@ -71,18 +72,18 @@
                     <scoreDef/>
                     <section>
                         <pb/>
-                        <measure xml:id="measure_4QWER9Y28C8ZBFVZAA" n="1" label="1" facs="#zone_4QAF9AWMDAJDX55GFN">                        
+                        <measure xml:id="measure_4QWER9Y28C8ZBFVZAA" n="1" label="1" facs="#zone_4QAF9AWMDAJDX55GFN">
 
                                 <staff>
                                     <layer>
                                         <note/><note/><note/>
-                                    </layer>    
+                                    </layer>
                                 </staff>
 
-                            
+
                         </measure>
                         <measure xml:id="measure_4R8TDJ3GSTZSZSZJH4" n="2" label="2" facs="#zone_4QC5G51ANFE6QS62FB"/>
-                        <measure xml:id="measure_4R4XCS51R5EGW3XDYK" n="3" label="3" facs="#zone_4R21AKWRBCQRPQVPRB"/>                   
+                        <measure xml:id="measure_4R4XCS51R5EGW3XDYK" n="3" label="3" facs="#zone_4R21AKWRBCQRPQVPRB"/>
                         <measure xml:id="measure_4R45G1HGD0ZZYQACXW" n="4" label="4" facs="#zone_4R69JBE476JAWXM7P4"/>
                         <measure xml:id="measure_4RTDVY7QKH52DGGB99" n="5" label="5" facs="#zone_4RQZEJQ1T1SXRSSF9T"/>
                         <measure xml:id="measure_4ST1J72QW05ST0XEHK" n="6" label="6" facs="#zone_4S30SR7RZ19RHS5QW7"/>
@@ -128,24 +129,24 @@
                         <sb/>
                         <pb/>
                     </section>
-                    
+
                <!-- <annotationList> -->
 
                         <annot xml:id="m36aab98e-3dc2-4b9c-ab57-37447d32a386" n="1" plist="#measure_4QWER9Y28C8ZBFVZAA">
                             <p>This is the first measure on Page 2</p>
                         </annot>
-                        
+
                         <annot xml:id="m52ff1ac7-c556-4e97-8c40-9c1aa4e02705" n="2" plist="#measure_4R8TDJ3GSTZSZSZJH4">
                             <p>These annotations are extracted from MEI file</p>
                         </annot>
-                        
+
                         <annot xml:id="m307a2942-48f9-4108-85e4-4d2c6eaad1c0" n="3" plist="#measure_4R4XCS51R5EGW3XDYK">
                             <p>The annotated measures are matched with zones on image</p>
                         </annot>
-                        
-  
+
+
                <!-- </annotationList> -->
-                    
+
                 </score>
             </mdiv>
         </body>

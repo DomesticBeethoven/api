@@ -1,14 +1,17 @@
 <?xml-model href="../../schemata/rng/bw_data.model_2014_rev1.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="../../schemata/rng/bw_data.model_2014_rev1.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <mei xmlns="http://www.music-encoding.org/ns/mei" xmlns:xlink="http://www.w3.org/1999/xlink"
-  meiversion="4.0.0" xml:id="C93-26_Viola_1">
-    <meiHead>
+    meiversion="4.0.0"
+    xml:id="C93-26_Vla1">
+    <meiHead xml:id="metadata for Vla1">
         <fileDesc>
             <titleStmt>
-                <title>VIOLA takt ENCODING from TRIO</title>
+                <title>VIOLA 1 takt ENCODING from TRIO</title>
             </titleStmt>
             <pubStmt/>
         </fileDesc>
+        <notesStmt>
+            <annot>A random text annotation for testing purposes</annot>
+        </notesStmt>
         <encodingDesc>
             <appInfo>
                 <application isodate="2020-11-23T11:31:18.531Z" version="1.0.2">
@@ -17,9 +20,9 @@
                 </application>
             </appInfo>
         </encodingDesc>
-<!--        <notesStmt>
+       <notesStmt>
             <annot>This file is from the MIT archive project.</annot>
-        </notesStmt>-->
+        </notesStmt>
     </meiHead>
 
     <music>
@@ -147,7 +150,7 @@
                     <scoreDef/>
                     <section>
                         <pb/>
-                        <measure xml:id="measure_01EQTDYNCA1WE31QXXY7EPBPH9" n="1" label="1" facs="#zone_01EQTDYNCAFM59AWP8ENQ7KT5T"/>
+                        <measure xml:id="ÜÜÜmeasure_01EQTDYNCA1WE31QXXY7EPBPH9" n="1" label="1" facs="#zone_01EQTDYNCAFM59AWP8ENQ7KT5T"/>
                         <measure xml:id="measure_01EQTDYNCBKZEJ0XJJB84FCHNH" n="2" label="2" facs="#zone_01EQTDYNCA8Z2NMQVA06PTKP14"/>
                         <measure xml:id="measure_01EQTDYNCB7Q0FAZRMMQG9V6K4" n="3" label="3" facs="#zone_01EQTDYNCB715WET74G4ZTPEH0"/>
                         <measure xml:id="measure_01EQTDYNCCA1PYM9EN2ZRC3BVN" n="4" label="4" facs="#zone_01EQTDYNCCE1NDPHVXF9XWEFMR"/>

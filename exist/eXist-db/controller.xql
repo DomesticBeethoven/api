@@ -12,8 +12,7 @@ EMA =
 GET /{identifier}/{measureRanges}/{stavesToMeasures}/{beatsToMeasures}/{completeness} 
 For now:
 /source/filename/measure-range/measures.json
-
-ema range.start, range.end separated by comma :)
+:)
 
 
 (: LIST all documents in the database - documents.json = get-documents.xql :)
@@ -25,6 +24,7 @@ if(ends-with($exist:path,'/iiif/documents.json')) then (
     </dispatch>
 
 ) else
+
 
 (: retrieves a IIIF MANIFEST for a given document - manifest.json = get-manifest.json.xql :)
 if(matches($exist:path,'/iiif/document/[\da-zA-Z-_\.]+/manifest.json')) then (
@@ -39,9 +39,7 @@ if(matches($exist:path,'/iiif/document/[\da-zA-Z-_\.]+/manifest.json')) then (
 
 ) else
 
-(: build from scratch. MEASURES == scratch.json :)
-
-(: NB:  Request for measure range separated by commas in EMA :)
+(: build from scratch. MEASURES = scratch.json :)
 
 (: MAKE SURE this regex works for all possibilites (e.g. umlauts?) :)
 
@@ -59,7 +57,9 @@ if(matches($exist:path,'/[\da-zA-Z-_\.]+/measures.json')) then (
 
 ) else
 
-(: endpoint for getting annotations from an MEI file - annotations.json = get-annotation1a.xql :)
+(: 
+THIS WAS AN EARLY TEST
+endpoint for getting annotations from an MEI file - annotations.json = get-annotation1a.xql :)
 if(matches($exist:path,'/annotations.json')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
@@ -81,6 +81,7 @@ if(matches($exist:path,'/annotlist.json')) then (
 ) else
 
 (: endpoint for MEASURES - get-measures.xql :)
+(: NB If this has range, then it is duplicating get-measure-range.xql :)
 if(matches($exist:path,'/measures.json')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
@@ -98,10 +99,7 @@ if(matches($exist:path,'/measures.json')) then (
 
 ) else
 
-
-(: example:  / mm 33-36 / meifile.mei / measures.json:)
-
-(: endpoint for GET-RANGE  /range.json = get.measure-range.xql :)
+(: endpoint for GET-RANGE (page#s separated by hyphen)  /range.json = get.measure-range.xql :)
 
 if(matches($exist:path,'/range.json')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
@@ -119,6 +117,41 @@ if(matches($exist:path,'/range.json')) then (
 
 ) else
 
+(: endpoint for FILE LIST ...<foldername>/filelist.json = get-local-documents.xql :)
+
+if(matches($exist:path,'/filelist.json')) then (
+    response:set-header("Access-Control-Allow-Origin", "*"),
+
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <forward url="{$exist:controller}/resources/xql/get-local-documents.xql">
+  
+         (\:   pass in the Directory name :\)
+  
+            <add-parameter name="folder" value="{tokenize($exist:path,'/')[last() - 1]}"/>
+
+         </forward>
+    </dispatch>
+
+) else
+
+(: endpoint for Measures from files in a folder ...<range>/<foldername>/all-egs.json = get-local-documents.xql :)
+
+if(matches($exist:path,'/all-egs.json')) then (
+    response:set-header("Access-Control-Allow-Origin", "*"),
+
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <forward url="{$exist:controller}/resources/xql/get-measures-all-docs.xql">
+  
+         (\:   pass in the Directory name and the Measure Range :\)
+         
+            <add-parameter name="folder" value="{tokenize($exist:path,'/')[last() - 1]}"/>
+            <add-parameter name="measure.range" value="{tokenize($exist:path,'/')[last() - 2]}"/>
+
+
+         </forward>
+    </dispatch>
+
+) else
 
 
 (: endpoint for index.html :)
