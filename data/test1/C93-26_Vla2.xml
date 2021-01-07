@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mei
-    xmlns="http://www.music-encoding.org/ns/mei" xml:id="C93-26_Viola_2">
+    xmlns="http://www.music-encoding.org/ns/mei"
+    xml:id="C93-26_Vla2">
     <meiHead>
         <fileDesc>
             <titleStmt>
-                <title>C93-26 Quintet: Viola 2</title>
+                <title/>
             </titleStmt>
             <pubStmt/>
         </fileDesc>
@@ -16,11 +17,11 @@
                 </application>
             </appInfo>
         </encodingDesc>
-        <notesStmt>
-            <annot>
-                <p>This is a random text annotation for testing</p>
-            </annot>
-        </notesStmt>
+        <workDesc>
+            <work>
+                <title>Op. 93 - Quintet : Viola 2</title>
+            </work>
+        </workDesc>
     </meiHead>
     <music>
         <facsimile>

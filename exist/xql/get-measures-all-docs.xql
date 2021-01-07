@@ -9,9 +9,15 @@ xquery version "3.1";
 
 endpoint: .../<range>/<directory>/all-egs.json
 
+
+NB:  measure numbers matched to @n (as opposed to @label)
+
+BUT will need to be matched to INDEX because possibility of alphanumeric measure numbers
+e.g.:  measure 43a
+
 :)
 
-(: import shared ressources, mainly path to data folder :)
+(: import shared resources, mainly path to data folder :)
 import module namespace config="http://api.domestic-beethoven.eu/xql/config" at "config.xqm";
 
 declare namespace xhtml="http://www.w3.org/1999/xhtml";
@@ -41,20 +47,16 @@ let $data.basePath := $config:data-root||$folder || '/'
 (: get the RANGE of the requested document, as passed by the controller :)
 let $range := request:get-parameter('measure.range','')
 
-
 let $range.start := substring-before($range,'-')
 let $range.end   := substring-after($range,'-')
-
-
- 
  
 let $files :=
   for $file in collection($data.basePath)//mei:mei
     let $id := $file/string(@xml:id)
     
     let $all.measures := ($file//mei:measure)
-    let $start.index := $file//mei:measure[@label = $range.start]/xs:int(@label)
-    let $end.index := $file//mei:measure[@label = $range.end]/xs:int(@label)
+    let $start.index := $file//mei:measure[@n = $range.start]/xs:int(@n)
+    let $end.index := $file//mei:measure[@n = $range.end]/xs:int(@n)
     let $measure.count := xs:int($range.end) - xs:int($range.start) + 1
     let $relevant.measures := $all.measures[position() ge $start.index and position() le $end.index]
       let $measures :=
@@ -62,8 +64,8 @@ let $files :=
          let $measure.id := $measure/string(@xml:id)
          let $zone.id := $measure/substring-after(@facs, '#')
          let $measure.number := $measure/string(@n)
-         let $start.index.correct := exists($all.measures[@label = $range.start])
-         let $end.index.correct := exists($all.measures[@label = $range.end])
+         let $start.index.correct := exists($all.measures[@n = $range.start])
+         let $end.index.correct := exists($all.measures[@n = $range.end])
          
          (: get facs coordinates and convert to IIIF coordinates :)  
 

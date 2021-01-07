@@ -10,6 +10,9 @@ declare namespace util="http://exist-db.org/xquery/util";
 declare namespace transform="http://exist-db.org/xquery/transform";
 declare namespace response="http://exist-db.org/xquery/response";
 
+declare namespace exist="http://exist-db.org/xquery/response";
+
+
 declare option exist:serialize "method=json media-type=application/json";
 
 let $header-addition := response:set-header("Access-Control-Allow-Origin","*")
@@ -28,8 +31,6 @@ let $files :=
    let $zone := $file//mei:zone/string(@xml:id)
 
    let $annotID := $file//mei:annot[@n="1"]/string(@xml:id)
-
-
   
    let $tempo := $file//mei:tempo/text()
    

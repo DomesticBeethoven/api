@@ -18,31 +18,11 @@ declare option exist:serialize "method=json media-type=application/json";
 
 let $header-addition := response:set-header("Access-Control-Allow-Origin","*")
 
-(: SUBDIRECTORY for testing files :)
-let $data.basePath := $config:data-root||'WoO32/'
-
 (: get database from configuration :)
 let $database := collection($config:data-root)
 
 (: get the ID of the requested document, as passed by the controller :)
 let $document.id := request:get-parameter('document.id','')
-
-(: get the RANGE of the requested document, as passed by the controller :)
-let $range := request:get-parameter('measure.range','')
-
-
-let $range.start := substring-before($range,'-')
-let $range.end   := substring-after($range,'-')
-
-
-(: This gets ALL FILES in directory 
-let $files :=
-  for $file in collection($data.basePath)//mei:mei
-  let $id := $file/string(@xml:id)
-  let $title := $file//mei:fileDesc/mei:titleStmt/mei:title/text()
-:)
-
-
 
 (:  
     let $surface.id := $surface/string(@xml:id)
@@ -96,10 +76,6 @@ let $file := $database//mei:mei[@xml:id = $document.id]
        'zone.id': $zone.id,
        'type': $type,
        'measure': $measure.num,
-       'x': $x1,
-       'y': $y1,
-       'height' : $height,
-       'width' : $width,
        'xyhw' : $x1 || ',' || $y1 || ',' || $height || ',' || $width
    }
   
@@ -108,7 +84,6 @@ let $file := $database//mei:mei[@xml:id = $document.id]
      'file.id': $id,
      'title': $title,
      'description': 'List of measure zones',
-     'measure range': $range,
   	'resources': $zones,
   	'document.id': $uri
 (:  	'surface.id': $surface.id:)

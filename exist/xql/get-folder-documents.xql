@@ -30,7 +30,6 @@ declare option output:media-type "application/json";
 let $header-addition := response:set-header("Access-Control-Allow-Origin","*")
 
 (: get database from configuration :)
-
 let $database := collection($config:data-root)
 
 (: get the requested DIRECTORY, as passed by the controller :)
@@ -40,13 +39,12 @@ let $folder := request:get-parameter('folder','')
 let $data.basePath := $config:data-root||$folder || '/'
 
 (: get all files that have both an ID and some operable graphic elements :)
-(:  for $file in $database//mei:mei[@xml:id][.//mei:facsimile[.//mei:graphic]]:)
 let $files :=
     for $file in collection($data.basePath)//mei:mei
       let $id := $file/string(@xml:id)
   
   return map {
-    'id': $id             (: the ID of the file :)
+    'id': 'http://127.0.0.1:8081/exist/apps/bith-api'||$folder||'/'||$id||'.xml'          (: the ID of the file :)
   }
 
 return array { $files }

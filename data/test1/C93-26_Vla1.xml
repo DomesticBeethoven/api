@@ -1,14 +1,17 @@
 <?xml-model href="../../schemata/rng/bw_data.model_2014_rev1.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="../../schemata/rng/bw_data.model_2014_rev1.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <mei xmlns="http://www.music-encoding.org/ns/mei" xmlns:xlink="http://www.w3.org/1999/xlink"
-  meiversion="4.0.0" xml:id="C93-26_Viola_1">
-    <meiHead>
+    meiversion="4.0.0"
+    xml:id="C93-26_Vla1">
+    <meiHead xml:id="metadata for Vla1">
         <fileDesc>
             <titleStmt>
-                <title>VIOLA takt ENCODING from TRIO</title>
+                <title>VIOLA 1 takt ENCODING from TRIO</title>
             </titleStmt>
             <pubStmt/>
         </fileDesc>
+        <notesStmt>
+            <annot xml:id="uuid0" plist="#measure_01EQTDYNE8DP3P6QDC4D27SPEV">A random text annotation for testing purposes.</annot>
+        </notesStmt>
         <encodingDesc>
             <appInfo>
                 <application isodate="2020-11-23T11:31:18.531Z" version="1.0.2">
@@ -17,9 +20,14 @@
                 </application>
             </appInfo>
         </encodingDesc>
-<!--        <notesStmt>
-            <annot>This file is from the MIT archive project.</annot>
-        </notesStmt>-->
+        <workDesc>
+            <work>
+                <title>Op. 93 - Quintet : Viola 1</title>
+            </work>
+        </workDesc>
+       <notesStmt>
+           <annot xml:id="uuid1" plist="#measure_01EQTDYNCD5G587BC6NKN7DBBM">This file is from the MIT archive project.</annot>
+        </notesStmt>
     </meiHead>
 
     <music>
