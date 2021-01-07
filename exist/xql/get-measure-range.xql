@@ -1,13 +1,15 @@
 xquery version "3.1";
 
 (:
+This copy of get-measure-range is an attempt to process EMA 
+
     get-measures-all-docs.xql
     
     retrieve a RANGE of measures from ALL files in a folder
     
     plus facsimile COORDINATES
 
-endpoint: .../<range>/<directory>/all-egs.json
+endpoint: .../<range>/<filename>/range.json
 
 
 NB:  measure numbers matched to @n (as opposed to @label)
@@ -40,18 +42,21 @@ let $header-addition := response:set-header("Access-Control-Allow-Origin","*")
 
 let $database := collection($config:data-root)
 
-(: get the requested DIRECTORY, as passed by the controller :)
-let $folder := request:get-parameter('folder','')
-let $data.basePath := $config:data-root||$folder || '/'
+
+(: get the ID of the requested document, as passed by the controller :)
+let $document.id := request:get-parameter('document.id','')
+
+let $file := $database//mei:mei[@xml:id = $document.id]
 
 (: get the RANGE of the requested document, as passed by the controller :)
 let $range := request:get-parameter('measure.range','')
 
 let $range.start := substring-before($range,'-')
 let $range.end   := substring-after($range,'-')
- 
-let $files :=
-  for $file in collection($data.basePath)//mei:mei
+
+
+let $file := $database//mei:mei[@xml:id = $document.id]
+
     let $id := $file/string(@xml:id)
     
     let $all.measures := ($file//mei:measure)
@@ -99,4 +104,4 @@ let $files :=
 
   }
              
-return array { $files }
+

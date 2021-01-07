@@ -54,7 +54,7 @@ if(matches($exist:path,'/iiif/document/[\da-zA-Z-_\.]+/manifest.json')) then (
 ) else
 
 (: endpoint for MEASURES .../measures.json   - get-measures.xql :)
-(: NB If this has range, then it is duplicating get-measure-range.xql :)
+
 (: MAKE SURE this regex works for all possibilites (e.g. umlauts?) :)
 
 if(matches($exist:path,'/[\da-zA-Z-_\.]+/measures.json')) then (
@@ -62,6 +62,23 @@ if(matches($exist:path,'/[\da-zA-Z-_\.]+/measures.json')) then (
 
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <forward url="{$exist:controller}/resources/xql/get-measures.xql">
+  
+         (\:   pass in the UUID of the document passed in the URI :\)
+  
+            <add-parameter name="document.id" value="{tokenize($exist:path,'/')[last() - 1]}"/>
+
+        </forward>
+    </dispatch>
+
+) else
+
+(:  TEST for measures range and position()   :)
+
+if(matches($exist:path,'/[\da-zA-Z-_\.]+/measures2.json')) then (
+    response:set-header("Access-Control-Allow-Origin", "*"),
+
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <forward url="{$exist:controller}/resources/xql/get-measures2.xql">
   
          (\:   pass in the UUID of the document passed in the URI :\)
   
@@ -91,23 +108,6 @@ if(matches($exist:path,'/annotlist.json')) then (
 
 ) else
 
-(: endpoint for TEST  - test.json = test.xql :)
-
-if(matches($exist:path,'/test.json')) then (
-    response:set-header("Access-Control-Allow-Origin", "*"),
-
-    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <forward url="{$exist:controller}/resources/xql/test.xql">
-  
-         (\:   pass in the UUID of the document passed in the URI :\)
-  
-            <add-parameter name="document.id" value="{tokenize($exist:path,'/')[last() - 1]}"/>
-            <add-parameter name="measure.range" value="{tokenize($exist:path,'/')[last() - 2]}"/>
-
-         </forward>
-    </dispatch>
-
-) else
 
 (: endpoint for GET-RANGE (page#s separated by hyphen)
    .../<range>/<filename>/range.json = get.measure-range.xql :)
@@ -118,7 +118,6 @@ if(matches($exist:path,'/range.json')) then (
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <forward url="{$exist:controller}/resources/xql/get-measure-range.xql">
   
-         (\:   pass in the UUID of the document passed in the URI :\)
   
             <add-parameter name="document.id" value="{tokenize($exist:path,'/')[last() - 1]}"/>
             <add-parameter name="measure.range" value="{tokenize($exist:path,'/')[last() - 2]}"/>
@@ -127,25 +126,6 @@ if(matches($exist:path,'/range.json')) then (
     </dispatch>
 
 ) else
-
-(: temporary endpoint to check xquery solution using 'position()' :)
-
-if(matches($exist:path,'/range2.json')) then (
-    response:set-header("Access-Control-Allow-Origin", "*"),
-
-    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <forward url="{$exist:controller}/resources/xql/get-measure-range2.xql">
-  
-         (\:   pass in the UUID of the document passed in the URI :\)
-  
-            <add-parameter name="document.id" value="{tokenize($exist:path,'/')[last() - 1]}"/>
-            <add-parameter name="measure.range" value="{tokenize($exist:path,'/')[last() - 2]}"/>
-
-         </forward>
-    </dispatch>
-
-) else
-
 
 (: endpoint for FILE LIST ...<foldername>/filelist.json = get-folder-documents.xql :)
 
@@ -165,8 +145,9 @@ if(matches($exist:path,'/filelist.json')) then (
 ) else
 
 (: endpoint for annotationS .../annotations.json = annotations.xql
-   EDIT xql to retrieve an annotation list for each file in the directory :)
-
+   EDIT xql to insert filename/facs into "on":
+ :)  
+   
 if(matches($exist:path,'/annotations.json')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
