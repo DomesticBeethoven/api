@@ -68,15 +68,16 @@ let $file := $database//mei:mei[@xml:id = $document.id]
     let $x2 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@lrx)
     let $y1 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@uly)
     let $y2 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@lry)
-    let $height := $y2 - $y1
     let $width := $x2 - $x1
+    let $height := $y2 - $y1
+
 
    
    return map {
        'zone.id': $zone.id,
        'type': $type,
        'measure': $measure.num,
-       'xyhw' : $x1 || ',' || $y1 || ',' || $height || ',' || $width
+       'xyhw' : $x1 || ',' || $y1 || ',' || $width || ',' ||  $height
    }
   
     return map {

@@ -9,6 +9,7 @@ xquery version "3.1";
 
 endpoint: .../<range>/<directory>/all-egs.json
 
+IIIF: X Y W H
 
 NB:  measure numbers matched to @n (as opposed to @label)
 
@@ -51,52 +52,69 @@ let $range.start := substring-before($range,'-')
 let $range.end   := substring-after($range,'-')
  
 let $files :=
-  for $file in collection($data.basePath)//mei:mei
+    for $file in collection($data.basePath)//mei:mei
     let $id := $file/string(@xml:id)
     
     let $all.measures := ($file//mei:measure)
     let $start.index := $file//mei:measure[@n = $range.start]/xs:int(@n)
     let $end.index := $file//mei:measure[@n = $range.end]/xs:int(@n)
-    let $measure.count := xs:int($range.end) - xs:int($range.start) + 1
     let $relevant.measures := $all.measures[position() ge $start.index and position() le $end.index]
-      let $measures :=
-         for $measure in $relevant.measures
-         let $measure.id := $measure/string(@xml:id)
-         let $zone.id := $measure/substring-after(@facs, '#')
-         let $measure.number := $measure/string(@n)
-         let $start.index.correct := exists($all.measures[@n = $range.start])
-         let $end.index.correct := exists($all.measures[@n = $range.end])
-         
-         (: get facs coordinates and convert to IIIF coordinates :)  
+    let $relevant.zones := 
+      for $measure in $relevant.measures
+      let $zone.id := $measure/substring-after(@facs, '#')
+      return $file//mei:zone[@xml:id=$zone.id]
+    
+    let $relevant.pages :=
+      for $surface in $file//mei:surface[.//mei:zone[@xml:id = $relevant.zones/@xml:id]] 
+      let $zones.on.this.page := $relevant.zones[@xml:id = $surface//mei:zone/@xml:id]
+      
+      let $min.ulx := min($zones.on.this.page/xs:int(@ulx))
+      let $min.uly := min($zones.on.this.page/xs:int(@uly))
+      let $max.lrx := max($zones.on.this.page/xs:int(@lrx))
+      let $max.lry := max($zones.on.this.page/xs:int(@lry))
+      let $max.height := $max.lry - $min.uly
+      let $max.width := $max.lrx - $min.ulx
+      
+      return map {
+         'id': $surface/string(@xml:id),
+         'xyhw' : $min.ulx || ',' || $min.uly || ',' || $max.height || ',' || $max.width
+      }
+    
+    let $measures :=
+      for $measure in $relevant.measures
+      let $measure.id := $measure/string(@xml:id)
+      let $zone.id := $measure/substring-after(@facs, '#')
+      let $measure.number := $measure/string(@n)
+      let $start.index.correct := exists($all.measures[@n = $range.start])
+      let $end.index.correct := exists($all.measures[@n = $range.end])
+      
+      (: get facs coordinates and convert to IIIF coordinates :)  
 
-          let $x1 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@ulx)
-          let $x2 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@lrx)
-          let $y1 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@uly)
-          let $y2 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@lry)
-          let $height := $y2 - $y1
-          let $width := $x2 - $x1
-          let $measure.data := if($start.index.correct and $end.index.correct) then(
-       
-        map {
+      let $x1 := $relevant.zones[@xml:id=$zone.id]/xs:int(@ulx)
+      let $x2 := $relevant.zones[@xml:id=$zone.id]/xs:int(@lrx)
+      let $y1 := $relevant.zones[@xml:id=$zone.id]/xs:int(@uly)
+      let $y2 := $relevant.zones[@xml:id=$zone.id]/xs:int(@lry)
+      let $height := $y2 - $y1
+      let $width := $x2 - $x1
+      let $measure.data := 
+         if($start.index.correct and $end.index.correct) 
+         then(map {
             'measure.id': $measure.id,
             'zone.id': $zone.id,
             'measure number': $measure.number,
             'xyhw' : $x1 || ',' || $y1 || ',' || $height || ',' || $width
-        }
-       ) else ( array {})
+         }) 
+         else ( array {})
+       return map {
+         'measure.data': $measure.data
+       }
+      
     
-   return map {
-
-   'measure.data': $measure.data
-   }
-    
-    
-
-  return map {
-    'id':$id,
-    'range':$range,
-    'measures': $measures
-
-  }
-             
-return array { $files }
+      
+    return map {
+      'id':$id,
+      'range':$range,
+      'measures': $measures,
+      'pages': $relevant.pages
+    }             
+    return array { $files }

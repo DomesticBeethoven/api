@@ -1,4 +1,3 @@
-<?xml-model href="../../schemata/rng/bw_data.model_2014_rev1.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <mei xmlns="http://www.music-encoding.org/ns/mei" xmlns:xlink="http://www.w3.org/1999/xlink"
     meiversion="4.0.0"
     xml:id="C93-26_Vla1">

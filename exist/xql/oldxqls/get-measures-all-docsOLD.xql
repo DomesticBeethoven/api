@@ -7,7 +7,7 @@ xquery version "3.1";
     
     plus facsimile COORDINATES
 
-endpoint: .../<range>/<directory>/all-egs.json
+endpoint: .../<range>/<directory>/all-egs2.json
 
 :)
 

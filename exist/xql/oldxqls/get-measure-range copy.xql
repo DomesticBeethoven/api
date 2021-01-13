@@ -51,18 +51,74 @@ let $file := $database//mei:mei[@xml:id = $document.id]
 (: get the RANGE of the requested document, as passed by the controller :)
 let $range := request:get-parameter('measure.range','')
 
-let $range.start := substring-before($range,'-')
-let $range.end   := substring-after($range,'-')
+let $all.measures := ($file//mei:measure)
 
+let $range.sections := 
+   for $range.section in tokenize(normalize-space($range),',')
+   
+   let $section.type :=
+      if(contains($range.section,'-'))
+      then('range')
+      else('measure')
+   let $relevant.measures := 
+   
+      if($range.section = 'all')
+      then($all.measures)
+      
+      (:resolving individual measures, i.e. "…,5,…":)
+      else if($section.type = 'measure')
+      then($all.measures[position() = xs:int($range.section)])
+      
+      (:resolving measure ranges, i.e. "…,5-7,…":)
+      else if($section.type = 'range')
+      then(
+         let $start := substring-before($range.section,'-')
+         let $end   := substring-after($range.section,'-')
+         let $range.start := if($start = 'start') then(1) else(xs:int($start))
+         let $range.end := if($end = 'end') then(count($all.measures)) else(xs:int($end))
+         return $all.measures[position() ge $range.start and position() le $range.end]
+      )
+      else()
+    
+    let $measures :=
+      for $measure in $relevant.measures
+      let $measure.id := $measure/string(@xml:id)
+      let $zone.id := $measure/substring-after(@facs, '#')
+      let $measure.number := $measure/string(@n)
+      
+      (: get facs coordinates and convert to IIIF coordinates :)  
 
-let $file := $database//mei:mei[@xml:id = $document.id]
-
+      let $x1 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@ulx)
+      let $x2 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@lrx)
+      let $y1 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@uly)
+      let $y2 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@lry)
+      let $height := $y2 - $y1
+      let $width := $x2 - $x1
+      let $measure.data := 
+         
+         map {
+            'measure.id': $measure.id,
+            'zone.id': $zone.id,
+            'measure number': $measure.number,
+            'xyhw' : $x1 || ',' || $y1 || ',' || $height || ',' || $width
+         }
+         
+    
+      return map {
+         'measure.data': $measure.data
+      }
+   return $measures
+   
+return array {
+   $range.sections
+}
+      
+(:
     let $id := $file/string(@xml:id)
     
-    let $all.measures := ($file//mei:measure)
-    let $start.index := $file//mei:measure[@n = $range.start]/xs:int(@n)
-    let $end.index := $file//mei:measure[@n = $range.end]/xs:int(@n)
-    let $measure.count := xs:int($range.end) - xs:int($range.start) + 1
+    
+    let $start.index := xs:int($range.start) (\:$file//mei:measure[@n = $range.start]/xs:int(@n):\)
+    let $end.index := xs:int($range.end) (\:$file//mei:measure[@n = $range.end]/xs:int(@n):\)
     let $relevant.measures := $all.measures[position() ge $start.index and position() le $end.index]
       let $measures :=
          for $measure in $relevant.measures
@@ -72,7 +128,8 @@ let $file := $database//mei:mei[@xml:id = $document.id]
          let $start.index.correct := exists($all.measures[@n = $range.start])
          let $end.index.correct := exists($all.measures[@n = $range.end])
          
-         (: get facs coordinates and convert to IIIF coordinates :)  
+         
+         (\: get facs coordinates and convert to IIIF coordinates :\)  
 
           let $x1 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@ulx)
           let $x2 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@lrx)
@@ -94,14 +151,13 @@ let $file := $database//mei:mei[@xml:id = $document.id]
 
    'measure.data': $measure.data
    }
-    
-    
-
-  return map {
+:)
+  
+  (:return map {
     'id':$id,
     'range':$range,
     'measures': $measures
 
-  }
+  }:)
              
 

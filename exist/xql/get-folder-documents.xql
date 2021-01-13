@@ -44,7 +44,7 @@ let $files :=
       let $id := $file/string(@xml:id)
   
   return map {
-    'id': 'http://127.0.0.1:8081/exist/apps/bith-api'||$folder||'/'||$id||'.xml'          (: the ID of the file :)
+    'id': 'http://127.0.0.1:8081/exist/apps/bith-api/'||$folder||'/'||$id||'.xml'          (: the ID of the file :)
   }
 
 return array { $files }

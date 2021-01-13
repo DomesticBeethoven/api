@@ -1,5 +1,19 @@
 xquery version "3.0";
 
+(: 
+
+ENDPOINTS
+
+documents.json
+manifest.json
+measures.json
+annotlist.json
+range.json
+
+:)
+
+
+
 (:declare namespace exist="http://exist-db.org/xquery/response";
 :)
 declare variable $exist:path external;
@@ -7,26 +21,6 @@ declare variable $exist:resource external;
 declare variable $exist:controller external;
 declare variable $exist:prefix external;
 declare variable $exist:root external;
-
-(:
-documents.json
-manifest.json
-measures.json
-annotlist.json
-annotations.json
-range.json
-filelist.json
-all-egs.json
-:)
-
-
-
-(: 
-EMA =
-GET /{identifier}/{measureRanges}/{stavesToMeasures}/{beatsToMeasures}/{completeness} 
-For now:
-/source/filename/measure-range/measures.json
-:)
 
 
 (: LIST all documents in the database - documents.json = get-documents.xql :)
@@ -110,13 +104,29 @@ if(matches($exist:path,'/annotlist.json')) then (
 
 
 (: endpoint for GET-RANGE (page#s separated by hyphen)
-   .../<range>/<filename>/range.json = get.measure-range.xql :)
+   .../<range>/<filename>/range.json = get-measure-range.xql :)
 
 if(matches($exist:path,'/range.json')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <forward url="{$exist:controller}/resources/xql/get-measure-range.xql">
+
+            <add-parameter name="measure.range" value="{tokenize($exist:path,'/')[last() - 1]}"/>
+            <add-parameter name="document.id" value="{tokenize($exist:path,'/')[last() - 2]}"/>
+
+         </forward>
+    </dispatch>
+
+) else
+
+(: Test some MATH for bounding box  :)
+
+if(matches($exist:path,'/range2.json')) then (
+    response:set-header("Access-Control-Allow-Origin", "*"),
+
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <forward url="{$exist:controller}/resources/xql/get-measure-range2.xql">
   
   
             <add-parameter name="document.id" value="{tokenize($exist:path,'/')[last() - 1]}"/>
@@ -144,26 +154,9 @@ if(matches($exist:path,'/filelist.json')) then (
 
 ) else
 
-(: endpoint for annotationS .../annotations.json = annotations.xql
-   EDIT xql to insert filename/facs into "on":
- :)  
-   
-if(matches($exist:path,'/annotations.json')) then (
-    response:set-header("Access-Control-Allow-Origin", "*"),
-
-    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <forward url="{$exist:controller}/resources/xql/get-annotations.xql">
-  
-         (\:   pass in the Directory name :\)
-  
-            <add-parameter name="folder" value="{tokenize($exist:path,'/')[last() - 1]}"/>
-
-         </forward>
-    </dispatch>
-
-) else
 
 (: endpoint for Measures from files in a folder ...<range>/<foldername>/all-egs.json = get-measures-all-docs.xql :)
+
 
 if(matches($exist:path,'/all-egs.json')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
@@ -181,7 +174,6 @@ if(matches($exist:path,'/all-egs.json')) then (
     </dispatch>
 
 ) else
-
 
 (: endpoint for index.html :)
 if ($exist:path eq "/index.html") then (
