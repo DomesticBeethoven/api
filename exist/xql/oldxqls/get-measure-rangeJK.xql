@@ -11,6 +11,12 @@ This copy of get-measure-range is an attempt to process EMA
 
 endpoint: .../<filename>/<range>/measures.json
 
+
+NB:  measure numbers matched to @n (as opposed to @label)
+
+BUT will need to be matched to INDEX because possibility of alphanumeric measure numbers
+e.g.:  measure 43a
+
 :)
 
 (: import shared resources, mainly path to data folder :)
@@ -107,3 +113,51 @@ return array {
    $range.sections
 }
       
+(:
+    let $id := $file/string(@xml:id)
+    
+    
+    let $start.index := xs:int($range.start) (\:$file//mei:measure[@n = $range.start]/xs:int(@n):\)
+    let $end.index := xs:int($range.end) (\:$file//mei:measure[@n = $range.end]/xs:int(@n):\)
+    let $relevant.measures := $all.measures[position() ge $start.index and position() le $end.index]
+      let $measures :=
+         for $measure in $relevant.measures
+         let $measure.id := $measure/string(@xml:id)
+         let $zone.id := $measure/substring-after(@facs, '#')
+         let $measure.number := $measure/string(@n)
+         let $start.index.correct := exists($all.measures[@n = $range.start])
+         let $end.index.correct := exists($all.measures[@n = $range.end])
+         
+         
+         (\: get facs coordinates and convert to IIIF coordinates :\)  
+
+          let $x1 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@ulx)
+          let $x2 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@lrx)
+          let $y1 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@uly)
+          let $y2 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@lry)
+          let $height := $y2 - $y1
+          let $width := $x2 - $x1
+          let $measure.data := if($start.index.correct and $end.index.correct) then(
+       
+        map {
+            'measure.id': $measure.id,
+            'zone.id': $zone.id,
+            'measure number': $measure.number,
+            'xyhw' : $x1 || ',' || $y1 || ',' || $height || ',' || $width
+        }
+       ) else ( array {})
+    
+   return map {
+
+   'measure.data': $measure.data
+   }
+:)
+  
+  (:return map {
+    'id':$id,
+    'range':$range,
+    'measures': $measures
+
+  }:)
+             
+

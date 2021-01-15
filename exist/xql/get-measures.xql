@@ -2,8 +2,6 @@ xquery version "3.1";
 
 (: Get the facsimile zones for each measure and convert to IIIF coordinates :)
 
-(: so actually getting the zones, and then finding the corresponding measure number :)
-
 import module namespace config="http://api.domestic-beethoven.eu/xql/config" at "config.xqm";
 
 declare namespace xhtml="http://www.w3.org/1999/xhtml";
@@ -24,25 +22,7 @@ let $database := collection($config:data-root)
 (: get the ID of the requested document, as passed by the controller :)
 let $document.id := request:get-parameter('document.id','')
 
-(:  
-  let $surface.id := $surface/string(@xml:id)
-    
-  let $all.measures := ($file//mei:measure)
-  let $start.index := $all.measures[@label = $range.start][1]/position()
-  let $end.index := $all.measures[@label = $range.end][1]/position()
-  let $relevant.measures := $all.measures[position() ge $start.index and position() le $end.index]
-  
-  let $start.index.correct := exists($all.measures[@label = $range.start])
-  
-  let $output := if($start.index.correct and $end.index.correct) then(
-  
-   map {
-   'rel measures': $start.index
-   }
-  
-   
-  ) else ( array {})
-:)
+
 let $file := $database//mei:mei[@xml:id = $document.id]
 
 
@@ -52,8 +32,6 @@ let $file := $database//mei:mei[@xml:id = $document.id]
   let $title := $file//mei:title/text()
   
 (: TBD surfaces = canvases :)
-
-
 
   let $zones :=
    for $zone in $file//mei:zone
@@ -77,7 +55,7 @@ let $file := $database//mei:mei[@xml:id = $document.id]
        'zone.id': $zone.id,
        'type': $type,
        'measure': $measure.num,
-       'xyhw' : $x1 || ',' || $y1 || ',' || $width || ',' ||  $height
+       'xywh' : $x1 || ',' || $y1 || ',' || $width || ',' ||  $height
    }
   
     return map {
@@ -92,34 +70,3 @@ let $file := $database//mei:mei[@xml:id = $document.id]
 (:     'measure range' : $range.start || ' - ' || $range.end,:)
     
     }
-
-
-    
-(:
-    return map {
-    'zone.id': $zone.id,
-    'type': $type,
-    'measure': $measure.num,
-    'x': $x1,
-    'y': $y1,
-    'height' : $height,
-    'width' : $width,
-    'xyhw' : $x1 || ',' || $y1 || ',' || $height || ',' || $width,
-    'range.start': $range.start,
-    'all.measures': $all.measures
-    }
-
-   return
-
-      map {
-     
-     'file.id': $id,
-     'title': $title,
-     'description': 'List of measure zones',
-     'measure range' : $range.start || ' - ' || $range.end,
-  	'resources': $zones,
-  	'document.id': $uri,
-  	'surface.id': $surface.id,
-  	'range.start': $range.start
-      }
-:)

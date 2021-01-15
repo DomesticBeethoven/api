@@ -14,19 +14,15 @@ declare option exist:serialize "method=json media-type=application/json";
 
 let $header-addition := response:set-header("Access-Control-Allow-Origin","*")
 
-let $database := collection($config:data-root)
-
-(: get the ID of the requested document, as passed by the controller :)
-let $document.id := request:get-parameter('document.id','')
-
-let $file := $database//mei:mei[@xml:id = $document.id]
-
-let $filename := $file/string(@xml:id)
+(: SUBDIRECTORY for testing single file :)
+let $data.basePath := $config:data-root||'p2/'
   
-(:let $files :=
+let $files :=
   for $file in collection($data.basePath)//mei:mei
   let $id := $file/string(@xml:id)
-  let $filename := $file/(@xml:id):)
+  let $filename := $file/(@xml:id)
+  
+  let $title := $file//mei:titleStmt/mei:title/text()
   
   let $annotations :=
     for $annot in $file//mei:annot[@xml:id]
@@ -61,9 +57,10 @@ let $filename := $file/string(@xml:id)
 
       map {
      '@context': 'http://iiif.io/api/presentation/2/context.json',
-     'file.id': $filename,
+     'file.id': $id,
 (:     '@id': $title || '/annotationList.json',:)
      '@type': 'sc:AnnotationList',
   	'resources': $annotations
       }
 
+ return array { $files }

@@ -3,9 +3,9 @@ xquery version "3.1";
 (:
     get-measures-all-docs.xql
     
-    retrieve a RANGE of measures from ALL files in a folder
+    retrieve a RANGE of measures from an MEI file
     
-    plus facsimile COORDINATES
+    plus COORDINATES of single bounding box on facsimile 
 
 endpoint: .../<range>/<directory>/all-egs.json
 
@@ -13,8 +13,6 @@ IIIF: X Y W H
 
 NB:  measure numbers matched to @n (as opposed to @label)
 
-BUT will need to be matched to INDEX because possibility of alphanumeric measure numbers
-e.g.:  measure 43a
 
 :)
 
@@ -41,9 +39,8 @@ let $header-addition := response:set-header("Access-Control-Allow-Origin","*")
 
 let $database := collection($config:data-root)
 
-(: get the requested DIRECTORY, as passed by the controller :)
-let $folder := request:get-parameter('folder','')
-let $data.basePath := $config:data-root||$folder || '/'
+(: get the ID of the requested document, as passed by the controller :)
+let $document.id := request:get-parameter('document.id','')
 
 (: get the RANGE of the requested document, as passed by the controller :)
 let $range := request:get-parameter('measure.range','')
@@ -51,10 +48,9 @@ let $range := request:get-parameter('measure.range','')
 let $range.start := substring-before($range,'-')
 let $range.end   := substring-after($range,'-')
  
-let $files :=
-    for $file in collection($data.basePath)//mei:mei
-    let $id := $file/string(@xml:id)
-    
+
+let $file := $database//mei:mei[@xml:id = $document.id]
+
     let $all.measures := ($file//mei:measure)
     let $start.index := $file//mei:measure[@n = $range.start]/xs:int(@n)
     let $end.index := $file//mei:measure[@n = $range.end]/xs:int(@n)
@@ -112,9 +108,9 @@ let $files :=
     
       
     return map {
-      'id':$id,
+
       'range':$range,
       'measures': $measures,
       'pages': $relevant.pages
     }             
-    return array { $files }
+

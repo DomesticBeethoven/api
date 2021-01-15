@@ -9,6 +9,9 @@
             </titleStmt>
             <pubStmt/>
         </fileDesc>
+        <notesStmt>
+            <annot xml:id="11111" plist="#measure_01EQTEG1S6R552A172N8PBWD9P">An annotation for VIOLA 2.</annot>
+        </notesStmt>
         <encodingDesc>
             <appInfo>
                 <application isodate="2020-11-23T11:40:48.234Z" version="1.0.2">
@@ -22,6 +25,9 @@
                 <title>Op. 93 - Quintet : Viola 2</title>
             </work>
         </workDesc>
+        <notesStmt>
+            <annot xml:id="22222" plist="#measure_01EQTEG24E5Q7YFAMKR6NAHEVP">Viola 2 annot for a measure on last page.</annot>
+        </notesStmt>
     </meiHead>
     <music>
         <facsimile>

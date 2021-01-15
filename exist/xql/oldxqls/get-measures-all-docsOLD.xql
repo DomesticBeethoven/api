@@ -34,9 +34,8 @@ let $header-addition := response:set-header("Access-Control-Allow-Origin","*")
 
 let $database := collection($config:data-root)
 
-(: get the requested DIRECTORY, as passed by the controller :)
-let $folder := request:get-parameter('folder','')
-let $data.basePath := $config:data-root||$folder || '/'
+(: get the ID of the requested document, as passed by the controller :)
+let $document.id := request:get-parameter('document.id','')
 
 (: get the RANGE of the requested document, as passed by the controller :)
 let $range := request:get-parameter('measure.range','')
@@ -46,26 +45,76 @@ let $range.start := substring-before($range,'-')
 let $range.end   := substring-after($range,'-')
 
 
+let $file := $database//mei:mei[@xml:id = $document.id]
+
+let $id := $file/string(@xml:id)
+let $all.measures := ($file//mei:measure)
+let $start.index := $file//mei:measure[@label = $range.start]/xs:int(@label)
+let $end.index := $file//mei:measure[@label = $range.end]/xs:int(@label)
+let $relevant.measures := 
+   for $measure in $all.measures[position() ge $start.index and position() le $end.index]
+      let $measure.id := $measure/string(@xml:id)
+      let $zone.id := $measure/substring-after(@facs, '#')
+      let $measure.number := $measure/string(@n)
+      let $x1 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@ulx)
+      let $x2 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@lrx)
+      let $y1 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@uly)
+      let $y2 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@lry)
+      let $height := $y2 - $y1
+      let $width := $x2 - $x1
+      let $measure.data :=
+      
+       map {
+         'measure.id': $measure.id,
+         'zone.id': $zone.id,
+         'measure number': $measure.number,
+         'xyhw' : $x1 || ',' || $y1 || ',' || $height || ',' || $width
+         }
+    return map {
+         'measure.data': $measure.data
+         } 
+(:
+          let $x1 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@ulx)
+          let $x2 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@lrx)
+          let $y1 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@uly)
+          let $y2 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@lry)
+          let $height := $y2 - $y1
+          let $width := $x2 - $x1
+          let $measure.data := 
+               map {
+                   'measure.id': $measure.id,
+                   'zone.id': $zone.id,
+                   'measure number': $measure.number,
+                   'xyhw' : $x1 || ',' || $y1 || ',' || $height || ',' || $width
+               }
+          
+
+    
+  return map {
+    'id': $all.measures,
+    'range':$range,
+    'start': $start.index,
+    'end': $end.index,
+    'rel.measures': $relevant.measures
+
+  }:)
+
+return array { $relevant.measures }
+
+
  
- 
-let $files :=
+(:let $files :=
   for $file in collection($data.basePath)//mei:mei
     let $id := $file/string(@xml:id)
-    
     let $all.measures := ($file//mei:measure)
     let $start.index := $file//mei:measure[@label = $range.start]/xs:int(@label)
     let $end.index := $file//mei:measure[@label = $range.end]/xs:int(@label)
-    let $measure.count := xs:int($range.end) - xs:int($range.start) + 1
-    let $relevant.measures := $all.measures[position() ge $start.index and position() le $end.index]
-      let $measures :=
-         for $measure in $relevant.measures
+    let $relevant.measures := 
+      for $measure in $all.measures[position() ge $start.index]
          let $measure.id := $measure/string(@xml:id)
          let $zone.id := $measure/substring-after(@facs, '#')
          let $measure.number := $measure/string(@n)
-         let $start.index.correct := exists($all.measures[@label = $range.start])
-         let $end.index.correct := exists($all.measures[@label = $range.end])
-         
-         (: get facs coordinates and convert to IIIF coordinates :)  
+  
 
           let $x1 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@ulx)
           let $x2 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@lrx)
@@ -73,28 +122,22 @@ let $files :=
           let $y2 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@lry)
           let $height := $y2 - $y1
           let $width := $x2 - $x1
-          let $measure.data := if($start.index.correct and $end.index.correct) then(
-       
-        map {
-            'measure.id': $measure.id,
-            'zone.id': $zone.id,
-            'measure number': $measure.number,
-            'xyhw' : $x1 || ',' || $y1 || ',' || $height || ',' || $width
-        }
-       ) else ( array {})
-    
-   return map {
+          let $measure.data := 
+               map {
+                   'measure.id': $measure.id,
+                   'zone.id': $zone.id,
+                   'measure number': $measure.number,
+                   'xyhw' : $x1 || ',' || $y1 || ',' || $height || ',' || $width
+               }
+          
 
-   'measure.data': $measure.data
-   }
     
-    
-
   return map {
-    'id':$id,
+    'id': $all.measures,
     'range':$range,
-    'measures': $measures
+    'start': $start.index,
+    'end': $end.index,
+    'rel.measures': $relevant.measures
 
   }
-             
-return array { $files }
+:)
