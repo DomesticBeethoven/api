@@ -4,13 +4,14 @@ xquery version "3.0";
 
 ENDPOINTS
 
-documents.json
-manifest.json
-measures.json
-annotations.json
-annotlist.json
-range.json
-zones.json
+iiif/documents.json
+iiif/document/<filename>/manifest.json
+<filename>/measures.json
+<filename>/annotations.json
+<filename>/annotlist.json
+<filename>/<range>/range.json
+<filename>/<range>/zones.json
+
 
 :)
 
@@ -99,7 +100,6 @@ if(matches($exist:path,'/annotlist.json')) then (
          (\:   pass in the UUID of the document passed in the URI :\)
   
             <add-parameter name="document.id" value="{tokenize($exist:path,'/')[last() - 1]}"/>
-            <add-parameter name="measure.range" value="{tokenize($exist:path,'/')[last() - 2]}"/>
 
          </forward>
     </dispatch>
@@ -137,43 +137,6 @@ if(matches($exist:path,'/zones.json')) then (
 
             <add-parameter name="document.id" value="{tokenize($exist:path,'/')[last() - 2]}"/>
             <add-parameter name="measure.range" value="{tokenize($exist:path,'/')[last() - 1]}"/>
-
-         </forward>
-    </dispatch>
-
-) else
-
-
-
-(: List of files in Folder :)
-(: .../folder.json :)
-
-if(matches($exist:path,'/folder.json')) then (
-    response:set-header("Access-Control-Allow-Origin", "*"),
-
-    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <forward url="{$exist:controller}/resources/xql/get-folder-documents.xql">
-
-
-          <add-parameter name="folder" value="{tokenize($exist:path,'/')[last() - 1]}"/>
-
-
-         </forward>
-    </dispatch>
-
-) else
-
-(: endpoint for FILE LIST ...<foldername>/filelist.json = get-folder-documents.xql :)
-
-if(matches($exist:path,'/filelist.json')) then (
-    response:set-header("Access-Control-Allow-Origin", "*"),
-
-    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <forward url="{$exist:controller}/resources/xql/get-folder-documents.xql">
-  
-         (\:   pass in the Directory name :\)
-  
-            <add-parameter name="folder" value="{tokenize($exist:path,'/')[last() - 1]}"/>
 
          </forward>
     </dispatch>

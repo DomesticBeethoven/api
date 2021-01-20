@@ -7,7 +7,7 @@ xquery version "3.1";
     
     plus COORDINATES of single bounding box on facsimile 
 
-endpoint: .../<range>/<directory>/all-egs.json
+endpoint: .../<range>/<directory>/zones.json
 
 IIIF: X Y W H
 
@@ -45,16 +45,16 @@ let $document.id := request:get-parameter('document.id','')
 (: get the RANGE of the requested document, as passed by the controller :)
 let $range := request:get-parameter('measure.range','')
 
-let $range.start := substring-before($range,'-')
-let $range.end   := substring-after($range,'-')
+
+let $range.start := xs:int(substring-before($range,'-'))
+let $range.end   := xs:int(substring-after($range,'-'))
  
 
 let $file := $database//mei:mei[@xml:id = $document.id]
 
     let $all.measures := ($file//mei:measure)
-    let $start.index := $file//mei:measure[@n = $range.start]/xs:int(@n)
-    let $end.index := $file//mei:measure[@n = $range.end]/xs:int(@n)
-    let $relevant.measures := $all.measures[position() ge $start.index and position() le $end.index]
+
+    let $relevant.measures := $all.measures[position() ge $range.start and position() le $range.end]
     let $relevant.zones := 
       for $measure in $relevant.measures
       let $zone.id := $measure/substring-after(@facs, '#')
@@ -68,12 +68,13 @@ let $file := $database//mei:mei[@xml:id = $document.id]
       let $min.uly := min($zones.on.this.page/xs:int(@uly))
       let $max.lrx := max($zones.on.this.page/xs:int(@lrx))
       let $max.lry := max($zones.on.this.page/xs:int(@lry))
-      let $max.height := $max.lry - $min.uly
       let $max.width := $max.lrx - $min.ulx
+      let $max.height := $max.lry - $min.uly
+
       
       return map {
          'id': $surface/string(@xml:id),
-         'xyhw' : $min.ulx || ',' || $min.uly || ',' || $max.height || ',' || $max.width
+         'xywh' : $min.ulx || ',' || $min.uly || ',' || $max.width || ',' || $max.height
       }
     
     let $measures :=
@@ -90,15 +91,16 @@ let $file := $database//mei:mei[@xml:id = $document.id]
       let $x2 := $relevant.zones[@xml:id=$zone.id]/xs:int(@lrx)
       let $y1 := $relevant.zones[@xml:id=$zone.id]/xs:int(@uly)
       let $y2 := $relevant.zones[@xml:id=$zone.id]/xs:int(@lry)
-      let $height := $y2 - $y1
       let $width := $x2 - $x1
+      let $height := $y2 - $y1
       let $measure.data := 
          if($start.index.correct and $end.index.correct) 
          then(map {
+            'measure.number': $measure.number,
             'measure.id': $measure.id,
             'zone.id': $zone.id,
             'measure number': $measure.number,
-            'xyhw' : $x1 || ',' || $y1 || ',' || $height || ',' || $width
+            'xywh' : $x1 || ',' || $y1 || ',' || $width || ',' || $height
          }) 
          else ( array {})
        return map {

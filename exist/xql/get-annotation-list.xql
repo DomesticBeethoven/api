@@ -60,8 +60,8 @@ let $id := $file/string(@xml:id)
       '@id' : $annot.id,
       '@type':"oa:Annotation",
       'motivation': 'oa:commenting',
-      'resource': $resource,
-      'on': $on
+      'resource': $resource
+(:      'on': $on:)
     }
 
    return

@@ -24,6 +24,12 @@ declare namespace util="http://exist-db.org/xquery/util";
 declare namespace transform="http://exist-db.org/xquery/transform";
 declare namespace response="http://exist-db.org/xquery/response";
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
+declare namespace functx = "http://www.functx.com";
+declare function functx:is-a-number
+  ( $value as xs:anyAtomicType? )  as xs:boolean {
+
+   string(number($value)) != 'NaN'
+ } ;
 
 (: set output to JSON:)
 declare option output:method "json";
@@ -51,6 +57,7 @@ let $range.sections :=
    for $range.section in tokenize(normalize-space($range),',')
    
    let $section.type :=
+   
       if(contains($range.section,'-'))
       then('range')
       else('measure')
