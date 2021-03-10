@@ -2,18 +2,13 @@ xquery version "3.1";
 
 (:
     get-measures-all-docs.xql
-    
+
     retrieve a RANGE of measures from an MEI file
-    
-    plus COORDINATES of single bounding box on facsimile 
 
-endpoint: .../<range>/<directory>/zones.json
-
+    plus COORDINATES of single bounding box on facsimile
+endpoint: .../<range>/zones.json
 IIIF: X Y W H
-
 NB:  measure numbers matched to @n (as opposed to @label)
-
-
 :)
 
 (: import shared resources, mainly path to data folder :)
@@ -45,38 +40,44 @@ let $document.id := request:get-parameter('document.id','')
 (: get the RANGE of the requested document, as passed by the controller :)
 let $range := request:get-parameter('measure.range','')
 
-
 let $range.start := xs:int(substring-before($range,'-'))
 let $range.end   := xs:int(substring-after($range,'-'))
- 
+
+
 
 let $file := $database//mei:mei[@xml:id = $document.id]
 
     let $all.measures := ($file//mei:measure)
 
     let $relevant.measures := $all.measures[position() ge $range.start and position() le $range.end]
-    let $relevant.zones := 
+    let $relevant.zones :=
       for $measure in $relevant.measures
       let $zone.id := $measure/substring-after(@facs, '#')
       return $file//mei:zone[@xml:id=$zone.id]
-    
+
     let $relevant.pages :=
-      for $surface in $file//mei:surface[.//mei:zone[@xml:id = $relevant.zones/@xml:id]] 
+      for $surface in $file//mei:surface[.//mei:zone[@xml:id = $relevant.zones/@xml:id]]
       let $zones.on.this.page := $relevant.zones[@xml:id = $surface//mei:zone/@xml:id]
-      
+
       let $min.ulx := min($zones.on.this.page/xs:int(@ulx))
       let $min.uly := min($zones.on.this.page/xs:int(@uly))
       let $max.lrx := max($zones.on.this.page/xs:int(@lrx))
       let $max.lry := max($zones.on.this.page/xs:int(@lry))
       let $max.width := $max.lrx - $min.ulx
       let $max.height := $max.lry - $min.uly
-
       
+      let $xywh := $min.ulx || ',' || $min.uly || ',' || $max.width || ',' || $max.height
+      
+      let $iiif.url := 'https://edirom-images.beethovens-werkstatt.de/Scaler/IIIF/bith!' || $document.id || '/' || $xywh || '/full/0/default.jpg'
+
+
       return map {
-         'id': $surface/string(@xml:id),
-         'xywh' : $min.ulx || ',' || $min.uly || ',' || $max.width || ',' || $max.height
+         'document.id' : $document.id,
+(:       'id': $surface/string(@xml:id), :)
+         'xywh' : $min.ulx || ',' || $min.uly || ',' || $max.width || ',' || $max.height,
+         'IIIF image selection': $iiif.url
       }
-    
+
     let $measures :=
       for $measure in $relevant.measures
       let $measure.id := $measure/string(@xml:id)
@@ -84,8 +85,8 @@ let $file := $database//mei:mei[@xml:id = $document.id]
       let $measure.number := $measure/string(@n)
       let $start.index.correct := exists($all.measures[@n = $range.start])
       let $end.index.correct := exists($all.measures[@n = $range.end])
-      
-      (: get facs coordinates and convert to IIIF coordinates :)  
+
+      (: get facs coordinates and convert to IIIF coordinates :)
 
       let $x1 := $relevant.zones[@xml:id=$zone.id]/xs:int(@ulx)
       let $x2 := $relevant.zones[@xml:id=$zone.id]/xs:int(@lrx)
@@ -93,26 +94,25 @@ let $file := $database//mei:mei[@xml:id = $document.id]
       let $y2 := $relevant.zones[@xml:id=$zone.id]/xs:int(@lry)
       let $width := $x2 - $x1
       let $height := $y2 - $y1
-      let $measure.data := 
-         if($start.index.correct and $end.index.correct) 
+      let $measure.data :=
+         if($start.index.correct and $end.index.correct)
          then(map {
             'measure.number': $measure.number,
             'measure.id': $measure.id,
             'zone.id': $zone.id,
             'measure number': $measure.number,
             'xywh' : $x1 || ',' || $y1 || ',' || $width || ',' || $height
-         }) 
+         })
          else ( array {})
        return map {
          'measure.data': $measure.data
        }
-      
-    
-      
+
+
+
     return map {
 
       'range':$range,
       'measures': $measures,
       'pages': $relevant.pages
-    }             
-
+    }
