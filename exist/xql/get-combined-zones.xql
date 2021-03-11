@@ -1,5 +1,7 @@
 xquery version "3.1";
 
+(: Variable names still need to be changed in controller.xql - all camel case :)
+
 (:
     get-measures-all-docs.xql
 
@@ -72,10 +74,10 @@ let $file := $database//mei:mei[@xml:id = $document.id]
 
 
       return map {
-         'document.id' : $document.id,
+         'documentID' : $document.id,
 (:       'id': $surface/string(@xml:id), :)
          'xywh' : $min.ulx || ',' || $min.uly || ',' || $max.width || ',' || $max.height,
-         'IIIF image selection': $iiif.url
+         'IIIFregion': $iiif.url
       }
 
     let $measures :=
@@ -97,15 +99,14 @@ let $file := $database//mei:mei[@xml:id = $document.id]
       let $measure.data :=
          if($start.index.correct and $end.index.correct)
          then(map {
-            'measure.number': $measure.number,
-            'measure.id': $measure.id,
-            'zone.id': $zone.id,
-            'measure number': $measure.number,
+            'measureNumber': $measure.number,
+            'measureID': $measure.id,
+            'zoneID': $zone.id,
             'xywh' : $x1 || ',' || $y1 || ',' || $width || ',' || $height
          })
          else ( array {})
        return map {
-         'measure.data': $measure.data
+         'measureData': $measure.data
        }
 
 
