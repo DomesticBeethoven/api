@@ -17,8 +17,8 @@
             </appInfo>
         </encodingDesc>
         <notesStmt>
-            <annot xml:id="ztztz" plist="#measure_01EQTDYNCDMQ6YDJF5YW0D5NES">Viola 1 annot on measure 11</annot>
-            <annot xml:id="ztztz" plist="#measure_01EQTDYNCKBMW437A7W9X3MVMR">Viola 1 - annotation m.18</annot>
+            <annot xml:id="Measure annotation" plist="#measure_01EQTDYNCDMQ6YDJF5YW0D5NES">Viola 1 annot on measure 11</annot>
+            <annot xml:id="Note here" plist="#measure_01EQTDYNCKBMW437A7W9X3MVMR">Annot 2, Viola 1 - measure 18</annot>
         </notesStmt>
     </meiHead>
     <music>
