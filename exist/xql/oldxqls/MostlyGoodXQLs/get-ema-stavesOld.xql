@@ -1,15 +1,16 @@
 xquery version "3.1";
 
 (:
-This copy of get-measure-range is an attempt to process EMA 
+This is intentded for retrieval of EMA Staves. 
+For now just staves, then will be linked up with measures
 
-    get-measures-all-docs.xql
+    get-ema-staves.xql
     
-    retrieve a RANGE of measures from a given file
+    retrieve a RANGE of STAVES from a given file
     
     plus facsimile COORDINATES
 
-endpoint: .../<filename>/<range>/measures.json
+endpoint: .../<filename>/<EMAmeasures>/<EMAstaves>/staves.json = get-ema-staves.xql
 
 :)
 
@@ -42,10 +43,15 @@ let $header-addition := response:set-header("Access-Control-Allow-Origin","*")
 
 let $database := collection($config:data-root)
 
+
 (: get the ID of the requested document, as passed by the controller :)
 let $document.id := request:get-parameter('document.id','')
 
 let $file := $database//mei:mei[@xml:id = $document.id]
+
+(: get the STAVES request of the requested document, as passed by the controller :)
+(: ----//  For now, just a SINGLE DIGIT  \\----:)
+let $staves := request:get-parameter('staves.request','')
 
 (: get the RANGE of the requested document, as passed by the controller :)
 let $range := request:get-parameter('measure.range','')
@@ -86,11 +92,6 @@ let $range.sections :=
       let $zone.id := $measure/substring-after(@facs, '#')
       let $measure.number := $measure/string(@n)
       
-      (:get facsimile image:)
-      
-      let $facs.graphic.id := $file//mei:surface[//@zone=$zone.id]/@xml:id
-      (:get surface dimensions:)
-      
       (: get facs coordinates and convert to IIIF coordinates :)  
 
       let $x1 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@ulx)
@@ -103,7 +104,6 @@ let $range.sections :=
          
          map {
             'measure.id': $measure.id,
-            'facs.graphic.id': $facs.graphic.id,
             'zone.id': $zone.id,
             'measure number': $measure.number,
             'xywh' : $x1 || ',' || $y1 || ','  ||  $width  || ',' || $height
@@ -118,4 +118,3 @@ let $range.sections :=
 return array {
    $range.sections
 }
-      

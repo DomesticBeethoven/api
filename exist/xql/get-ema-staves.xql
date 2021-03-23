@@ -1,11 +1,11 @@
 xquery version "3.1";
 
-(:
+(:    EMA STAVES
 This copy of get-measure-range is an attempt to process EMA 
 
     get-measures-all-docs.xql
     
-    retrieve a RANGE of measures from a given file
+    retrieve a RANGE of measures and staves from a given file
     
     plus facsimile COORDINATES
 
@@ -42,6 +42,7 @@ let $header-addition := response:set-header("Access-Control-Allow-Origin","*")
 
 let $database := collection($config:data-root)
 
+
 (: get the ID of the requested document, as passed by the controller :)
 let $document.id := request:get-parameter('document.id','')
 
@@ -50,21 +51,25 @@ let $file := $database//mei:mei[@xml:id = $document.id]
 (: get the RANGE of the requested document, as passed by the controller :)
 let $range := request:get-parameter('measure.range','')
 
+(: get the STAVES of the requested document, as passed by the controller :)
+let $staves := request:get-parameter('staves','')
+
 let $all.measures := ($file//mei:measure)
 
 let $range.sections := 
    for $range.section in tokenize(normalize-space($range),',')
-   
+
    let $section.type :=
    
       if(contains($range.section,'-'))
       then('range')
       else('measure')
+      
    let $relevant.measures := 
    
       if($range.section = 'all')
       then($all.measures)
-      
+     
       (:resolving individual measures, i.e. "…,5,…":)
       else if($section.type = 'measure')
       then($all.measures[position() = xs:int($range.section)])
@@ -79,17 +84,18 @@ let $range.sections :=
          return $all.measures[position() ge $range.start and position() le $range.end]
       )
       else()
-    
+
     let $measures :=
       for $measure in $relevant.measures
       let $measure.id := $measure/string(@xml:id)
       let $zone.id := $measure/substring-after(@facs, '#')
       let $measure.number := $measure/string(@n)
       
-      (:get facsimile image:)
+(: one staff :)
+      let $staff := $measure/mei:staff[@n=$staves]
+      let $staff.id := $measure/mei:staff[@n=$staves]/string(@xml:id)
+
       
-      let $facs.graphic.id := $file//mei:surface[//@zone=$zone.id]/@xml:id
-      (:get surface dimensions:)
       
       (: get facs coordinates and convert to IIIF coordinates :)  
 
@@ -103,12 +109,12 @@ let $range.sections :=
          
          map {
             'measure.id': $measure.id,
-            'facs.graphic.id': $facs.graphic.id,
             'zone.id': $zone.id,
             'measure number': $measure.number,
-            'xywh' : $x1 || ',' || $y1 || ','  ||  $width  || ',' || $height
+            'xywh' : $x1 || ',' || $y1 || ','  ||  $width  || ',' || $height,
+            'staff': $staff,
+            'staves': $staves
          }
-         
     
       return map {
          'measure.data': $measure.data
@@ -118,4 +124,3 @@ let $range.sections :=
 return array {
    $range.sections
 }
-      

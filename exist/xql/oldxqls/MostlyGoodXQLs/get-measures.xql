@@ -1,6 +1,7 @@
 xquery version "3.1";
 
 (: Get the facsimile zones for each measure and convert to IIIF coordinates :)
+(: Endpoint for MEASURES ...<fileID>/measures.json :)
 
 import module namespace config="http://api.domestic-beethoven.eu/xql/config" at "config.xqm";
 
@@ -27,6 +28,7 @@ let $file := $database//mei:mei[@xml:id = $document.id]
 
 
   let $id := $file/string(@xml:id)
+
   let $filename := $file/(@xml:id)
   let $uri := document-uri(root($file))
   let $title := $file//mei:title/text()
@@ -34,11 +36,11 @@ let $file := $database//mei:mei[@xml:id = $document.id]
 (: TBD surfaces = canvases :)
 
   let $zones :=
-   for $zone in $file//mei:zone
-   let $zone.id := $zone/string(@xml:id)
-   let $type := $zone/string(@type)
-   let $measure := $file//mei:measure[@facs='#'||$zone.id]
-   let $measure.num := $measure/string(@n)
+    for $zone in $file//mei:zone
+    let $zone.id := $zone/string(@xml:id)
+    let $type := $zone/string(@type)
+    let $measure := $file//mei:measure[@facs='#'||$zone.id]
+    let $measure.num := $measure/string(@n)
    
 (: get facs coordinates and convert to IIIF coordinates :)  
 
@@ -48,25 +50,23 @@ let $file := $database//mei:mei[@xml:id = $document.id]
     let $y2 := $file//mei:zone[@xml:id=$zone.id]/xs:int(@lry)
     let $width := $x2 - $x1
     let $height := $y2 - $y1
-
-
    
-   return map {
-       'zone.id': $zone.id,
-       'type': $type,
-       'measure': $measure.num,
-       'xywh' : $x1 || ',' || $y1 || ',' || $width || ',' ||  $height
-   }
-  
     return map {
-    
-     'file.id': $id,
-     'title': $title,
-     'description': 'List of measure zones',
-  	'resources': $zones,
-  	'document.id': $uri
-(:  	'surface.id': $surface.id:)
-(:  	'range': $range:)
-(:     'measure range' : $range.start || ' - ' || $range.end,:)
+        'zone.id': $zone.id,
+        'type': $type,
+        'measure': $measure.num,
+        'xywh' : $x1 || ',' || $y1 || ',' || $width || ',' ||  $height
+    }
+ 
+   return map {
+  
+      'file.id': $id,
+      'title': $title,
+      'description': 'List of measure zones',
+      'resources': $zones,
+      'document.id': $uri
+   (: 'surface.id': $surface.id:)
+   (: 'range': $range:)
+   (: 'measure range' : $range.start || ' - ' || $range.end,:)
     
     }
