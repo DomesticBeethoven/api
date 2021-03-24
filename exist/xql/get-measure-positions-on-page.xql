@@ -7,8 +7,14 @@ xquery version "3.1";
 :)
 
 (: import shared ressources, mainly path to data folder :)
-import module namespace config="https://api.beethovens-werkstatt.de" at "../../xqm/config.xqm";
-import module namespace iiif="https://edirom.de/iiif" at "../../xqm/iiif.xqm";
+
+
+(:import module namespace config="https://api.beethovens-werkstatt.de" at "xqm/config.xqm";:)
+(:import module namespace iiif="https://edirom.de/iiif" at "../../xqm/iiif.xqm";:)
+
+import module namespace config="http://api.domestic-beethoven.eu/xql/config" at "config.xqm";
+import module namespace iiif="http://api.domestic-beethoven.eu/xql/iiif" at "iiif.xqm";
+
 
 declare namespace xhtml="http://www.w3.org/1999/xhtml";
 declare namespace mei="http://www.music-encoding.org/ns/mei";

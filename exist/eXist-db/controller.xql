@@ -74,12 +74,13 @@ if(matches($exist:path,'/[\da-zA-Z-_\.]+/measures.json')) then (
 ) else
 
 (: From BEETHOVENS WERKSTATT :)
+
 (: retrieves a IIIF annotation list for the zones on a given page :)
 if(matches($exist:path,'/iiif/document/[\da-zA-Z-_\.]+/list/[\da-zA-Z-_\.]+_zones$')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <forward url="{$exist:controller}/resources/xql/iiif/get-measure-positions-on-page.xql">
+        <forward url="{$exist:controller}/resources/xql/get-measure-positions-on-page.xql">
           (\: pass in the UUID of the document passed in the URI :\)
           <add-parameter name="document.id" value="{tokenize($exist:path,'/')[last() - 2]}"/>
           <add-parameter name="canvas.id" value="{substring-before(tokenize($exist:path,'/')[last()],'_zones')}"/>
@@ -87,7 +88,7 @@ if(matches($exist:path,'/iiif/document/[\da-zA-Z-_\.]+/list/[\da-zA-Z-_\.]+_zone
     </dispatch>
 
 
-
+) else
 
 (: endpoint for ANNOTATIONS ...<file.id>/annotations.json   - get-annotatins.xql :)
 (: retrieves measure data and facs zones for ALL measures in a file :)
