@@ -3,7 +3,7 @@ xquery version "3.1";
 module namespace ef="https://edirom.de/file";
 
 (: import shared ressources, mainly path to data folder :)
-import module namespace config="https://api.beethovens-werkstatt.de" at "./config.xqm";
+import module namespace config="https://edirom.de/ns/config" at "./config.xqm";
 
 
 declare namespace repo="http://exist-db.org/xquery/repo";

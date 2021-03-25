@@ -31,7 +31,27 @@ gulp.task('deploy-xql', gulp.series('xql', function() {
 
 //watches xql for changes
 gulp.task('watch-xql',function() {
-    return gulp.watch(['exist/xql/**/*','exist/xqm/**/*'], gulp.series('deploy-xql'));
+    return gulp.watch(['exist/xql/**/*'], gulp.series('deploy-xql'));
+})
+
+gulp.task('xqm', function(){
+
+    return gulp.src('exist/xqm/**/*')
+        .pipe(newer('build/resources/xqm/'))
+        .pipe(gulp.dest('build/resources/xqm/'));
+});
+
+//deploys xqm to exist-db
+gulp.task('deploy-xqm', gulp.series('xqm', function() {
+
+    return gulp.src(['**/*'], {cwd: 'build/resources/xqm/'})
+        .pipe(existClient.newer({target: "/db/apps/bith-api/resources/xqm/"}))
+        .pipe(existClient.dest({target: '/db/apps/bith-api/resources/xqm/'}));
+}))
+
+//watches xqm for changes
+gulp.task('watch-xqm',function() {
+    return gulp.watch(['exist/xqm/**/*'], gulp.series('deploy-xqm'));
 })
 
 //handles controller changes
@@ -182,7 +202,7 @@ gulp.task('deploy', function() {
         .pipe(existClient.dest({target: '/db/apps/bith-api/'}));
 })
 
-gulp.task('watch', gulp.parallel('watch-xql','watch-xslt','watch-data','watch-controller','watch-html'));
+gulp.task('watch', gulp.parallel('watch-xql', 'watch-xqm', 'watch-xslt','watch-data','watch-controller','watch-html'));
 
 
 gulp.task('dist-finish', function() {
