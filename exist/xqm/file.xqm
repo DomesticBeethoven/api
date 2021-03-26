@@ -31,7 +31,8 @@ declare function ef:getElementLink($file.id as xs:string, $element.id as xs:stri
     return $link
 };
 
-declare function ef:getMeiByAnnotsLink($file.id as xs:string, $annot.ids as xs:string*) as xs:string {
+(:declare function ef:getMeiByAnnotsLink($file.id as xs:string, $annot.ids as xs:string*) as xs:string {
     let $link := $config:module3-basepath || $file.id || '/annots/' || string-join($annot.ids,',') || '.mei'
     return $link
 };
+:)

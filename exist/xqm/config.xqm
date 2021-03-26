@@ -29,15 +29,16 @@ declare variable $config:app-root :=
 
 (:declare variable $config:baseuri := "https://api.domestic-beethoven.eu/";:)
 
-
 declare variable $config:baseuri := "http://localhost:8080/exist/apps/bith-api/";
 
-(:
-declare variable $config:data-root := $config:baseuri || 'data/';:)
+
+(: declare variable $config:data-root := $config:baseuri || 'data/'; :)
 
 declare variable $config:data-root := $config:app-root || '/content/';
 
+(: $iiif.url := 'https://edirom-images.beethovens-werkstatt.de/Scaler/IIIF/bith!' || $document.id || '/' || $xywh || '/full/0/default.jpg' :)
 
+(:declare variable $config:iiif-basepath := "https://edirom-images.beethovens-werkstatt.de/Scaler/IIIF/bith!' || $document.id || '/' || $xywh || '/full/0/default.jpg'" ; :)
 declare variable $config:iiif-basepath := $config:baseuri || 'iiif/';
 
 declare variable $config:file-basepath := $config:baseuri || 'file/';
@@ -50,6 +51,8 @@ declare variable $config:repo-descriptor := doc(concat($config:baseuri, '/repo.x
 
 declare variable $config:expath-descriptor := doc(concat($config:baseuri, '/expath-pkg.xml'))/expath:package;
 
+(: declare variable $config:module3-root := $config:baseuri || 'module3/'; :)
+
 (: declare variable $config:module3-basepath := 'https://api.beethovens-werkstatt.de/module3/'; :)
 
-(: declare variable $config:module3-root := $config:baseuri || 'module3/'; :)
+

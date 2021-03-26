@@ -21,7 +21,7 @@
         </notesStmt>
     </meiHead>
     <music>
-        <facsimile>
+        <facsimile xml:id="c93-26_Vc_facs">
             <surface xml:id="surface_01EQTFB26SVJTX0WB6CSN3FZ9Y" n="1" ulx="0" uly="0" lrx="2986" lry="3862">
                 <graphic xml:id="graphic_01EQTFB26V69AN2Y9RCB8EY0QE" target="00043.jpg" type="facsimile" width="2986" height="3862"/> 
                 <zone xml:id="zone_01EQTFB26X8J7QQ4X8AYGVN6NC" type="measure" ulx="1656" uly="538" lrx="1860" lry="776"/>

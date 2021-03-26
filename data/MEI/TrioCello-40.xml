@@ -8,7 +8,7 @@
         </fileDesc>
     </meiHead>
     <music>
-        <facsimile>
+        <facsimile xml:id="C93-23_Vc">
             <surface xml:id="surface_d5754325-beae-456d-ae0b-f0afd373f04f" n="1" ulx="0" uly="0" lrx="3247" lry="4071">
                 <graphic xml:id="graphic_211123e7-471d-43e8-b00f-1f08931ba345" target="00039.jpg" type="facsimile" width="3247" height="4071"/>
                 <zone xml:id="zone_a3c5473c-4642-4705-b574-dc5186a059d1" type="measure" ulx="271" uly="343" lrx="1073" lry="776"/>
