@@ -171,6 +171,19 @@ let $sequences :=
     'canvases': array { $canvases }
   }
 
+let $thumbnail := 
+   let $imageId := ($file//mei:surface/mei:graphic/string(@target))[1]
+   return map {
+      '@id': $imageId || '/full/280,/0/default.jpg',
+      'service': map {
+         '@context': 'http://iiif.io/api/image/2/context.json',
+         '@id': $imageId,
+         'profile': 'http://iiif.io/api/image/2/level2.json',
+         'protocol': 'http://iiif.io/api/image'
+      },
+      'format': 'image/jpeg'
+   }
+
 return map {
   '@context': $file.context,
   '@type': $file.type,
@@ -181,5 +194,6 @@ return map {
   'attribution': $attribution,
   'sequences': array { $sequences },
   'viewingDirection': $viewingDirection,
-  'viewingHint': $viewingHint
+  'viewingHint': $viewingHint,
+  'thumbnail': $thumbnail
 }
