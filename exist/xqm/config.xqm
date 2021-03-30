@@ -27,18 +27,14 @@ declare variable $config:app-root :=
 ;
 
 
-(:declare variable $config:baseuri := "https://api.domestic-beethoven.eu/";:)
+declare variable $config:baseuri := "https://api.domestic-beethoven.eu/";
 
-declare variable $config:baseuri := "http://localhost:8080/exist/apps/bith-api/";
-
+(: declare variable $config:baseuri := "http://localhost:8080/exist/apps/bith-api/"; :)
 
 (: declare variable $config:data-root := $config:baseuri || 'data/'; :)
 
 declare variable $config:data-root := $config:app-root || '/content/';
 
-(: $iiif.url := 'https://edirom-images.beethovens-werkstatt.de/Scaler/IIIF/bith!' || $document.id || '/' || $xywh || '/full/0/default.jpg' :)
-
-(:declare variable $config:iiif-basepath := "https://edirom-images.beethovens-werkstatt.de/Scaler/IIIF/bith!' || $document.id || '/' || $xywh || '/full/0/default.jpg'" ; :)
 declare variable $config:iiif-basepath := $config:baseuri || 'iiif/';
 
 declare variable $config:file-basepath := $config:baseuri || 'file/';

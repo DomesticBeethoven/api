@@ -212,7 +212,14 @@ declare function iiif:getIiifAnnotation($file.id as xs:string, $annot.id as xs:s
 
 declare function iiif:getImageResource($width as xs:integer, $height as xs:integer, $url as xs:string) as map(*) {
     map {
+    
         '@id': $url || '/full/full/0/default.jpg',
+
+(:      '@id': 'https://edirom-images.beethovens-werkstatt.de/Scaler/IIIF/bith!Klvaus-79' || '/full/full/0/default.jpg', :)        
+
+(:      '@id': 'http://localhost:8182/iiif/2/' :)
+         
+         
         '@type': 'dctypes:Image',
         'service': map {
           '@context': 'http://iiif.io/api/image/2/context.json',
