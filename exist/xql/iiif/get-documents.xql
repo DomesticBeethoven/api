@@ -7,7 +7,7 @@ xquery version "3.1";
 :)
 
 (: import shared ressources, mainly path to data folder :)
-import module namespace config="https://edirom.de/ns/config" at "../../config.xqm";
+import module namespace config="https://edirom.de/ns/config" at "../../xqm/config.xqm";
 import module namespace ef="https://edirom.de/file" at "../../xqm/file.xqm";
 
 declare namespace xhtml="http://www.w3.org/1999/xhtml";
