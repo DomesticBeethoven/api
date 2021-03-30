@@ -212,7 +212,7 @@ gulp.task('dist-finish', function() {
 })
 
 //creates a dist version
-gulp.task('dist', gulp.series('xar-structure', gulp.parallel('xql','xslt','data','html'), 'dist-finish'))
+gulp.task('dist', gulp.series('xar-structure', gulp.parallel('xql','xqm','xslt','data','html'), 'dist-finish'))
 
 //creates a dist version with a version bump at patch level
 /*gulp.task('dist-patch', gulp.series('bump-patch', 'dist'));*/
