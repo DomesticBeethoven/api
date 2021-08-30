@@ -91,6 +91,9 @@ let $workDateOfPublication.line := $work.auth || $lod:gndo.dateOfPublication || 
 let $workTitle := '"' || $file//mei:work/mei:title[@type='uniform']/text() || '"'
 let $workTitle.line := $work.auth || $lod:rdfs.label || $workTitle || $lod:nq.eol
 
+let $workShortTitle := '"' || $file//mei:work/mei:title[@type='abbreviated']/text() || '"'
+let $workShortTitle.line := $work.auth || $lod:bibo.shortTitle || $workShortTitle || $lod:nq.eol
+
 let $publisherName := '"' || $file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/text() || '"'
 let $publisherName.line := $publisher || $lod:rdfs.label || $publisherName || $lod:nq.eol
 
@@ -111,6 +114,7 @@ return
    $workComposer.line ||
    $workDateOfPublication.line ||
    $workTitle.line ||
+   $workShortTitle.line ||
    $workComposerLabel.line ||
    $workIdentifier.line || 
    $publisherName.line ||
