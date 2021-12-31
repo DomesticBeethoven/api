@@ -27,9 +27,9 @@ declare variable $config:app-root :=
 ;
 
 
-(: declare variable $config:baseuri := "https://api.domestic-beethoven.eu/"; :) 
+declare variable $config:baseuri := "https://api.domestic-beethoven.eu/"; 
 
-declare variable $config:baseuri := "http://localhost:8080/exist/apps/bith-api/";
+(: declare variable $config:baseuri := "http://localhost:8080/exist/apps/bith-api/"; :)
 
 (: declare variable $config:data-root := $config:baseuri || 'data/'; :)
 
