@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mei
+    xmlns="http://www.music-encoding.org/ns/mei">
+    <meiHead meiversion="4.0.0" xml:id="D-BNba_Nc_4-1846_Schil">
+        <fileDesc>
+            <titleStmt>
+                <title type="desc">Op 92 / 2nd mov - Persischer Nachtgesang</title>
+                <title type="alternative">D-BNbaNc4_1846_Schil.mei</title>
+                <respStmt>
+                    <persName xml:id="bithTeam_lr" role="mrk trc">Lisa Rosendahl</persName>
+                </respStmt>
+            </titleStmt>
+            <pubStmt>
+                <date isodate="2021-06-30" type="encoding-date">2021-06-30</date>
+            </pubStmt>
+        </fileDesc>
+        <encodingDesc>
+            <appInfo xml:id="m5f3b3c8b-1fbd-4b55-be4d-01017e466300">
+                <application xml:id="m8ba9e0c4-fed8-4fac-82af-458f18de9681">
+                    <name xml:id="m023ebd58-90da-4b75-a87e-22e99f5f8144">MuseScore</name>
+                </application>
+                <application xml:id="m162f9d1a-895e-476b-84b6-2677962ead0b"
+                    isodate="2021-06-30T14:49:34"
+                    version="3.5.0-dev-a2dcf5d">
+                    <name xml:id="m1acfd27b-0a6b-45bc-878b-52b6161f1bd0">Verovio</name>
+                    <p xml:id="m71d4fbcf-8d32-42c2-b355-e48da270f4cc">Transcoded from MusicXML</p>
+                </application>
+                <application isodate="2022-03-02T08:36:44.176Z" version="1.0.2">
+                    <name>Deep Optical Measure Detector</name>
+                    <p>Measures detected with Deep Optical Measure Detector</p>
+                </application>
+            </appInfo>
+        </encodingDesc>
+        <workList>
+            <work auth.uri="http://d-nb.info/gnd/300016417">
+                <identifier type="opusNumber">92</identifier>
+                <title type="uniform" xml:lang="de">Sinfonien, Nr. 7, op. 92 (A-Dur)</title>
+                <title type="abbreviated" xml:lang="en">7th Symphony</title>
+                <composer>
+                    <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
+                </composer>
+                <creation>
+                    <date startdate="1811" enddate="1816"/>
+                </creation>
+                <expressionList>
+                    <expression xml:id="c4babeba-1ae0-11ec-9621-0242ac130002">
+                        <identifier type="genre"
+                            auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q131186"/>
+                        <title type="desc">Persischer Nachtgesang</title>
+                        <arranger>
+                            <persName auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q700090">Friedrich Silcher</persName>
+                        </arranger>
+                        <perfMedium>
+                            <perfResList>
+                                <perfRes auth.uri="http://id.loc.gov/authorities/performanceMediums/mp2013015441"/>
+                                <perfRes auth.uri="http://id.loc.gov/authorities/performanceMediums/mp2013015441"/>
+                                <perfRes auth.uri="http://id.loc.gov/authorities/performanceMediums/mp2013015441"/>
+                                <perfRes auth.uri="http://id.loc.gov/authorities/performanceMediums/mp2013015441"/>
+                            </perfResList>
+                        </perfMedium>
+                    </expression>
+                </expressionList>
+            </work>
+        </workList>
+        <manifestationList>
+            <manifestation>
+                <titleStmt>
+                    <title>Persischer Nachtgesang: (aus den Bildern des Orients von H. Stieglitz); aus Beethovens A-Dur-Sinfonie für 4 Männerstimmen eingerichtet von Fr. Silcher.</title>
+                </titleStmt>
+                <pubStmt>
+                    <pubPlace>
+                        <geogName auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q1022"/>
+                    </pubPlace>
+                    <date isodate="1846"/>
+                    <publisher>
+                        <corpName auth.uri="https://www.wikidata.org/wiki/Q1874484">Hallberger</corpName>
+                    </publisher>
+                </pubStmt>
+                <itemList>
+                    <item xml:id="e931c89c-1ae0-11ec-9621-0242ac130002">
+                        <physLoc>
+                            <repository>D-BNba</repository>
+                            <identifier>Nc 4 / 1846 Schil</identifier>
+                        </physLoc>
+                    </item>
+                </itemList>
+                <relationList>
+                    <relation rel="isEmbodimentOf" target="#c4babeba-1ae0-11ec-9621-0242ac130002"/>
+                </relationList>
+            </manifestation>
+        </manifestationList>
+        <revisionDesc>
+            <change n="1" isodate="2021-09-21" resp="#bithTeam_lr">
+                <changeDesc>
+                    <p/>
+                </changeDesc>
+            </change>
+            <change resp="#bithTeam_lr" n="2" isodate="2022-01-26">
+                <changeDesc>
+                    <p>Applied "cleanMscz.xsl"</p>
+                    <p>Remove unwanted attributes and mistakes from MuseScore export</p>
+                </changeDesc>
+            </change>
+            <change resp="#bithTeam_lr" n="3" isodate="2022-01-26">
+                <changeDesc>
+                    <p>Applied "IDs4Mscz.xsl"</p>
+                    <p>Delete IDs from Musescore; insert UUID(s) for the document, encoding description and music elements</p>
+                </changeDesc>
+            </change>
+        </revisionDesc>
+    </meiHead>
+    <music>
+        <facsimile xml:id="https://images.domestic-beethoven.eu/iiif/2/D-BNba%20Nc%204%2F1846%20Schil%2F00015.jpg/info.json">
+            <surface xml:id="surface_01FX4WCGGNAH7075W3WN01XMSB" n="1" ulx="0" uly="0" lrx="1915" lry="2383">
+                <graphic xml:id="graphic_01FX4WCGGQSZJJXE9862H274TM" target="00015.jpg" width="1916" height="2384"/>
+                <zone xml:id="zone_01FX4WCGGRPNE7NWXHK4NP5JND" type="measure" ulx="431" uly="443" lrx="943" lry="973"/>
+                <zone xml:id="zone_01FX4WCGGSCAADBCQQZTDXC1E4" type="measure" ulx="893" uly="454" lrx="1081" lry="959"/>
+                <zone xml:id="zone_01FX4WCGGSRCAWE0GS61YN93Q7" type="measure" ulx="1043" uly="459" lrx="1288" lry="948"/>
+                <zone xml:id="zone_01FX4WCGGSWVK2FYVKK39CAKC5" type="measure" ulx="1257" uly="467" lrx="1438" lry="955"/>
+                <zone xml:id="zone_01FX4WCGGTTC9RNXDGXW6RE1D6" type="measure" ulx="1397" uly="468" lrx="1653" lry="934"/>
+                <zone xml:id="zone_01FX4WCGGV3WD6XHWDF1BMTXZX" type="measure" ulx="331" uly="992" lrx="657" lry="1470"/>
+                <zone xml:id="zone_01FX4WCGGVTKCDC620RFHSRCYF" type="measure" ulx="621" uly="975" lrx="873" lry="1477"/>
+                <zone xml:id="zone_01FX4WCGGVX9XZWYPEQYA79Y8P" type="measure" ulx="831" uly="985" lrx="1019" lry="1473"/>
+                <zone xml:id="zone_01FX4WCGGVXDNKZRKP8JVCXQ9T" type="measure" ulx="981" uly="988" lrx="1260" lry="1461"/>
+                <zone xml:id="zone_01FX4WCGGWH30WQQ8VV01ARS8G" type="measure" ulx="1228" uly="988" lrx="1435" lry="1469"/>
+                <zone xml:id="zone_01FX4WCGGWNPEFM06NPR6GDGYZ" type="measure" ulx="1404" uly="999" lrx="1654" lry="1463"/>
+                <zone xml:id="zone_01FX4WCGGWSP0D8FQQTN4GAM48" type="measure" ulx="321" uly="1468" lrx="629" lry="1926"/>
+                <zone xml:id="zone_01FX4WCGGXD38RYJEW3C2DEZKX" type="measure" ulx="598" uly="1472" lrx="852" lry="1923"/>
+                <zone xml:id="zone_01FX4WCGGXXPS5MYKP5C30NJZV" type="measure" ulx="820" uly="1465" lrx="1027" lry="1934"/>
+                <zone xml:id="zone_01FX4WCGGXMV1SNS5XWMB69CFS" type="measure" ulx="988" uly="1455" lrx="1236" lry="1937"/>
+                <zone xml:id="zone_01FX4WCGGXD4PN0YAH6JWKXNAQ" type="measure" ulx="1201" uly="1455" lrx="1407" lry="1934"/>
+            </surface>
+        </facsimile>
+        <body>
+            <mdiv xml:id="mdiv_01FX4WCGGGNN5CJV1EEGPWMMBP" n="1" label="">
+                <score>
+                    <scoreDef/>
+                    <section>
+                        <pb/>
+                        <measure xml:id="measure_01FX4WCGGS099KH8J2B1W324TA" n="1" label="1" facs="#zone_01FX4WCGGRPNE7NWXHK4NP5JND"/>
+                        <measure xml:id="measure_01FX4WCGGSBCX48WT8EE0JXNBQ" n="2" label="2" facs="#zone_01FX4WCGGSCAADBCQQZTDXC1E4"/>
+                        <measure xml:id="measure_01FX4WCGGS44G3B666K0856W03" n="3" label="3" facs="#zone_01FX4WCGGSRCAWE0GS61YN93Q7"/>
+                        <measure xml:id="measure_01FX4WCGGTZ39SRE8BWZKN9NHB" n="4" label="4" facs="#zone_01FX4WCGGSWVK2FYVKK39CAKC5"/>
+                        <measure xml:id="measure_01FX4WCGGTV1HBY7N6HQN0Y5SM" n="5" label="5" facs="#zone_01FX4WCGGTTC9RNXDGXW6RE1D6"/>
+                        <sb/>
+                        <measure xml:id="measure_01FX4WCGGV6JXEPYV4K2BDMSTS" n="6" label="6" facs="#zone_01FX4WCGGV3WD6XHWDF1BMTXZX"/>
+                        <measure xml:id="measure_01FX4WCGGV46FD56Y5YBCNGG23" n="7" label="7" facs="#zone_01FX4WCGGVTKCDC620RFHSRCYF"/>
+                        <measure xml:id="measure_01FX4WCGGVNQZ326CWY3133XAS" n="8" label="8" facs="#zone_01FX4WCGGVX9XZWYPEQYA79Y8P"/>
+                        <measure xml:id="measure_01FX4WCGGWA31EBDQR1RB2QA8E" n="9" label="9" facs="#zone_01FX4WCGGVXDNKZRKP8JVCXQ9T"/>
+                        <measure xml:id="measure_01FX4WCGGW1VPXGEDP6B5PYBC7" n="10" label="10" facs="#zone_01FX4WCGGWH30WQQ8VV01ARS8G"/>
+                        <measure xml:id="measure_01FX4WCGGWARHKPKW058Y6V906" n="11" label="11" facs="#zone_01FX4WCGGWNPEFM06NPR6GDGYZ"/>
+                        <sb/>
+                        <measure xml:id="measure_01FX4WCGGX8R7SD7QBHG2MVZBK" n="12" label="12" facs="#zone_01FX4WCGGWSP0D8FQQTN4GAM48"/>
+                        <measure xml:id="measure_01FX4WCGGX2SEDKYWX62GBBF3X" n="13" label="13" facs="#zone_01FX4WCGGXD38RYJEW3C2DEZKX"/>
+                        <measure xml:id="measure_01FX4WCGGX31AEHXSK43D6RV37" n="14" label="14" facs="#zone_01FX4WCGGXXPS5MYKP5C30NJZV"/>
+                        <measure xml:id="measure_01FX4WCGGXSBN1XBVJ4R90M0A4" n="15" label="15" facs="#zone_01FX4WCGGXMV1SNS5XWMB69CFS"/>
+                        <measure xml:id="measure_01FX4WCGGYNAVZ7AZSBN3FKBJW" n="16" label="16" facs="#zone_01FX4WCGGXD4PN0YAH6JWKXNAQ"/>
+                        <sb/>
+                        <pb/>
+                    </section>
+                </score>
+            </mdiv>
+        </body>
+    </music>
+</mei>
