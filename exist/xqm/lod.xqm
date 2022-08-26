@@ -36,6 +36,8 @@ declare variable $lod:dce.publisher := ' <http://purl.org/dc/elements/1.1/publis
 declare variable $lod:rdau.composer := ' <http://rdaregistry.info/Elements/u/P60426> ';
 declare variable $lod:rdfs.label := ' <http://www.w3.org/2000/01/rdf-schema#label> ';
 declare variable $lod:frbr.embodiment := ' <http://purl.org/vocab/frbr/core#embodiment> ';
+declare variable $lod:iiif.manifest := ' <http://iiif.io/api/presentation/2#Manifest> ';
+declare variable $lod:iiif.hasManifests := ' <http://iiif.io/api/presentation/2#hasManifests> ';
 
 declare function lod:resolveDateToString($date as element(mei:date)) as xs:string {
    let $string :=

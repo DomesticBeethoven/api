@@ -46,7 +46,7 @@ if(matches($exist:path,'/iiif/document/[\da-zA-Z-_\.]+/manifest.json')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <forward url="{$exist:controller}/resources/xql/get-manifest.json.xql">
+        <forward url="{$exist:controller}/resources/xql/iiif/get-manifest.json.xql">
           (: pass in the UUID of the document passed in the URI :)
           <add-parameter name="document.id" value="{tokenize($exist:path,'/')[last() - 1]}"/>
         </forward>

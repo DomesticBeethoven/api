@@ -99,6 +99,8 @@ let $publisherName.line := $publisher || $lod:rdfs.label || $publisherName || $l
 
 let $embodiment.line := $file.subject || $lod:frbr.embodiment || '<' || $config:file-basepath || $document.id || '.mei>' || $lod:nq.eol
 
+let $iiif.manifest.line := $file.subject || $lod:iiif.hasManifests || '<' || $config:iiif-basepath || 'document/' || $document.id || '/manifest.json>' || $lod:nq.eol
+
 return 
    $vivoScore.line || 
    $title.line || 
@@ -118,4 +120,5 @@ return
    $workComposerLabel.line ||
    $workIdentifier.line || 
    $publisherName.line ||
-   $embodiment.line
+   $embodiment.line ||
+   $iiif.manifest.line
