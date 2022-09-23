@@ -1,4 +1,5 @@
 xquery version "3.1";
+
 (:
     get-manifest.json.xql
 
@@ -19,6 +20,7 @@ declare namespace response="http://exist-db.org/xquery/response";
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 declare namespace f = "http://local.link";
 declare namespace map="http://www.w3.org/2005/xpath-functions/map";
+declare namespace xi = "http://www.w3.org/2001/XInclude";
 
 declare function f:addConditionally($map, $key, $data) as map(*) {
   if (exists($data)) then map:put($map, $key, $data) else $map
@@ -40,18 +42,18 @@ let $document.id := request:get-parameter('document.id','')
 let $document.uri := $config:iiif-basepath || 'document/' || $document.id || '/'
 
 (: get file from database :)
-let $file := ($database//mei:mei[@xml:id = $document.id] | $database//mei:facsimile[@xml:id = $document.id]/ancestor::mei:mei)
+let $file := ($database//mei:mei[@xml:id = $document.id] | $database//mei:facsimile[@xml:id = $document.id]/ancestor::mei:mei | $database//mei:manifestation[@xml:id = $document.id]/ancestor::mei:mei)
 (: is this a link to a facsimile only, or to a document :)
-let $is.facsimile.id := not($file/@xml:id = $document.id)
+let $is.facsimile.id := exists($file//mei:facsimile[@xml:id = $document.id])
 
 (: build variable for file:)
 let $file.context := 'http://iiif.io/api/presentation/2/context.json'
 let $file.type := 'sc:Manifest'
 let $id := $document.uri || 'manifest.json'
-let $label := normalize-space(string-join($file//mei:fileDesc/mei:titleStmt/mei:composer//text(),' ')) || ': ' ||  string-join($file//mei:fileDesc/mei:titleStmt/mei:title//normalize-space(text()),' / ')
-let $navDate := 'tbd' (: TODO :)
+let $label := $file//mei:manifestation/mei:physLoc/mei:repository/mei:identifier[@auth = 'RISM']/text() || ' ' || $file//mei:manifestation/mei:physLoc/mei:identifier/text()
+let $description := normalize-space(string-join($file//mei:fileDesc/mei:titleStmt/mei:composer//text(),' ')) || ': ' ||  string-join($file//mei:fileDesc/mei:titleStmt/mei:title//normalize-space(text()),' / ')
 let $license := 'http://rightsstatements.org/vocab/CNE/1.0/' (: TODO: this should be made more specific, if possible :)
-let $attribution := 'Beethovens Werkstatt'
+let $attribution := 'Domestic Beethoven'
 let $viewingDirection := 'left-to-right'
 let $viewingHint := 'paged'
 
@@ -65,6 +67,8 @@ let $relevantFacsimiles :=
 let $sequences :=
   for $facsimile in $relevantFacsimiles
   let $sequence.type := 'sc:Sequence'
+  let $sequence.id := $document.uri || 'seq1'
+  let $sequence.viewingDir := 'left-to-right'
 
   (: build variables for canvases = surfaces :)
   let $canvases :=
@@ -78,6 +82,13 @@ let $sequences :=
         then($canvas/string(@n))
         else(string($canvas.index))
 
+    let $canvas.width := $canvas/mei:graphic[@width][1]/xs:integer(@width)
+    let $canvas.height := $canvas/mei:graphic[@height][1]/xs:integer(@height)
+    let $folium := (
+        $file//mei:folium[(@recto = '#' || $canvas/@xml:id) or (@verso = '#' || $canvas/@xml:id)] |
+        $file//mei:bifolium[(@inner.recto = '#' || $canvas/@xml:id) or (@inner.verso = '#' || $canvas/@xml:id) or (@outer.recto = '#' || $canvas/@xml:id) or (@outer.verso = '#' || $canvas/@xml:id)]
+    )[1]
+
     (: build variables for images = graphics:)
     let $images :=
       for $image in $canvas/mei:graphic
@@ -86,28 +97,9 @@ let $sequences :=
       let $image.width := $image/xs:integer(@width)
       let $image.height := $image/xs:integer(@height)
 
-      let $image.resource := iiif:getImageResource($image.width, $image.height, $image/string(@target))
-
-
-      let $image.on := $canvas.id
-      return map {
-        '@type': $image.type,
-        'motivation': $image.motivation,
-        'resource': $image.resource,
-        'on': $image.on
-      }
-    let $canvas.width := $canvas/mei:graphic[@width][1]/xs:integer(@width)
-    let $canvas.height := $canvas/mei:graphic[@height][1]/xs:integer(@height)
-
-    let $folium := (
-        $file//mei:folium[(@recto = '#' || $canvas/@xml:id) or (@verso = '#' || $canvas/@xml:id)] |
-        $file//mei:bifolium[(@inner.recto = '#' || $canvas/@xml:id) or (@inner.verso = '#' || $canvas/@xml:id) or (@outer.recto = '#' || $canvas/@xml:id) or (@outer.verso = '#' || $canvas/@xml:id)]
-    )[1]
-
-    let $canvas.service :=
+      let $image.service :=
         if($folium/@width and $folium/@height and $folium/@unit)
         then(
-
             let $factor :=
                 if($folium/@unit = 'mm')
                 then(1)
@@ -119,6 +111,7 @@ let $sequences :=
 
             let $scale := round(xs:decimal($folium/@height) * xs:decimal($factor) div xs:decimal($canvas.height) * 10000) div 10000
             return map {
+                '@id': $canvas.id || '_physdim',
                 '@context': 'http://iiif.io/api/annex/services/physdim/1/context.json',
                 'profile': 'http://iiif.io/api/annex/services/physdim',
                 'physicalScale': $scale,
@@ -127,73 +120,88 @@ let $sequences :=
         )
         else()
 
+      let $image.resource :=
+        if(exists($image.service))
+        then(iiif:getImageResourceWithService($image.width, $image.height, $image/string(@target), $image.service))
+        else(iiif:getImageResource($image.width, $image.height, $image/string(@target)))
+
+
+      let $image.on := $canvas.id
+      return map {
+        '@type': $image.type,
+        'motivation': $image.motivation,
+        'resource': $image.resource,
+        'on': $image.on
+      }
+
     let $otherContent :=
-        if($canvas/mei:zone)
-        then(
-            map {
-              '@id': $document.uri || 'list/' || (if($canvas/@xml:id) then($canvas/@xml:id) else($canvas.index)) || '_zones',
-              '@type': 'sc:AnnotationList',
-              'label': 'measure positions'
-            }
-        )
-        else()
+
+        let $zoneContent :=
+
+            if($canvas/mei:zone)
+            then(
+                map {
+                  '@id': $document.uri || 'list/' || (if($canvas/@xml:id) then($canvas/@xml:id) else($canvas.index)) || '_zones',
+                  '@type': 'sc:AnnotationList',
+                  'within': map {
+                    '@id': $document.uri || 'layer/measureZones',
+                    '@type': 'sc:Layer',
+                    'label': 'measure positions'
+                  }
+                }
+            )
+            else()
+
+        (: overlaysPlus/ has enriched SVG shapes, overlays/ has the plain file :)
+        let $svgContent :=
+            if($canvas/xi:include)
+            then(
+                map {
+                    '@id': $document.uri || 'overlaysPlus/' || $canvas/xi:include/tokenize(normalize-space(@href),'/')[last()],
+                    '@type': 'sc:AnnotationList',
+                    'within': map {
+                        '@id': $document.uri || 'layer/svgShapes',
+                        '@type': 'sc:Layer',
+                        'label': 'svg shapes'
+                      }
+                }
+            )
+            else()
+        return array { $zoneContent, $svgContent }
 
     let $canvas.map :=
-        if($folium/@width and $folium/@height and $folium/@unit)
-        then(
-            map {
-                '@id': $canvas.id,
-                '@type': $canvas.type,
-                'label': $canvas.label,
-                'images': array { $images },
-                'width': $canvas.width,
-                'height': $canvas.height,
-                'otherContent': array { $otherContent },
-                'service': $canvas.service
-            }
-        )
-        else(
-            map {
-                '@id': $canvas.id,
-                '@type': $canvas.type,
-                'label': $canvas.label,
-                'images': array { $images },
-                'width': $canvas.width,
-                'height': $canvas.height,
-                'otherContent': array { $otherContent }
-            }
-        )
+        map {
+            '@id': $canvas.id,
+            '@type': $canvas.type,
+            'label': $canvas.label,
+            'images': array { $images },
+            'width': $canvas.width,
+            'height': $canvas.height,
+            'otherContent': $otherContent
+        }
 
     return $canvas.map
 
   return map {
+    '@id': $sequence.id,
     '@type': $sequence.type,
+    'viewingDirection': $sequence.viewingDir,
     'canvases': array { $canvases }
   }
 
-let $thumbnail := 
-   let $imageId := ($file//mei:surface/mei:graphic/string(@target))[1]
-   return map {
-      '@id': $imageId || '/full/280,/0/default.jpg',
-      'service': map {
-         '@context': 'http://iiif.io/api/image/2/context.json',
-         '@id': $imageId,
-         'profile': 'http://iiif.io/api/image/2/level2.json',
-         'protocol': 'http://iiif.io/api/image'
-      },
-      'format': 'image/jpeg'
-   }
+(: content structures like movements :)
+let $structures := iiif:getStructures_iiifPresentationAPI2($file, $document.uri)
 
 return map {
   '@context': $file.context,
   '@type': $file.type,
   '@id': $id,
   'label': $label,
-  'navDate': $navDate,
   'license': $license,
   'attribution': $attribution,
   'sequences': array { $sequences },
+  'description': $description,
+  'structures': $structures,
   'viewingDirection': $viewingDirection,
-  'viewingHint': $viewingHint,
-  'thumbnail': $thumbnail
+  'viewingHint': $viewingHint
 }

@@ -27,9 +27,9 @@ declare variable $config:app-root :=
 ;
 
 
-(: declare variable $config:baseuri := "https://api.domestic-beethoven.eu/"; :) 
+declare variable $config:baseuri := "https://api.domestic-beethoven.eu/";  
 
-declare variable $config:baseuri := "http://localhost:8080/exist/apps/bith-api/";
+(:declare variable $config:baseuri := "http://localhost:8080/exist/apps/bith-api/";:)
 
 (: declare variable $config:data-root := $config:baseuri || 'data/'; :)
 
@@ -39,6 +39,8 @@ declare variable $config:data-root := $config:app-root || '/content/';
 declare variable $config:iiif-basepath := $config:baseuri || 'iiif/';
 
 declare variable $config:file-basepath := $config:baseuri || 'file/';
+
+declare variable $config:ld-basepath := $config:baseuri || 'lod/';
 
 declare variable $config:ema-basepath := $config:baseuri || 'ema/';
 

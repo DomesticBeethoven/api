@@ -35,7 +35,7 @@ if(ends-with($exist:path,'/iiif/documents.json')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <forward url="{$exist:controller}/resources/xql/get-documents.xql"/>
+        <forward url="{$exist:controller}/resources/xql/iiif/get-documents.xql"/>
     </dispatch>
 
 ) else

@@ -33,11 +33,21 @@ declare variable $lod:rdau.placeOfPublication := ' <http://rdaregistry.info/Elem
 declare variable $lod:gndo.dateOfPublication := ' <https://d-nb.info/standards/elementset/gnd#dateOfPublication> ';
 declare variable $lod:gndo.arranger := ' <https://d-nb.info/standards/elementset/gnd#arranger> ';
 declare variable $lod:dce.publisher := ' <http://purl.org/dc/elements/1.1/publisher> '; 
+declare variable $lod:dct.format := ' <http://purl.org/dc/terms/format> '; 
 declare variable $lod:rdau.composer := ' <http://rdaregistry.info/Elements/u/P60426> ';
 declare variable $lod:rdfs.label := ' <http://www.w3.org/2000/01/rdf-schema#label> ';
 declare variable $lod:frbr.embodiment := ' <http://purl.org/vocab/frbr/core#embodiment> ';
 declare variable $lod:iiif.manifest := ' <http://iiif.io/api/presentation/2#Manifest> ';
 declare variable $lod:iiif.hasManifests := ' <http://iiif.io/api/presentation/2#hasManifests> ';
+
+declare function lod:getLodLink($file.id as xs:string?) as xs:string? {
+    if ($file.id)
+    then(
+        let $link := $config:baseuri || 'lod/' || $file.id || '.nq'
+        return $link
+    )
+    else()
+};
 
 declare function lod:resolveDateToString($date as element(mei:date)) as xs:string {
    let $string :=
@@ -49,6 +59,12 @@ declare function lod:resolveDateToString($date as element(mei:date)) as xs:strin
       then($date/string(@startdate) || '-?')
       else if($date/@enddate)
       then('?-' || $date/string(@enddate))
+      else if($date/@notbefore and $date/@notafter)
+      then('between ' || $date/string(@notbefore) || ' and ' || $date/string(@notafter))
+      else if($date/@notbefore)
+      then('not before ' || $date/string(@notbefore))
+      else if($date/@notafter)
+      then('not after ' || $date/string(@notafter))
       else('')
    return $string
 };

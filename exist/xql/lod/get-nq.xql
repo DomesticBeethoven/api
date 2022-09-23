@@ -35,12 +35,12 @@ let $document.id := request:get-parameter('document.id','')
 (: get file from database :)
 let $file := $database//mei:mei[@xml:id = $document.id]
 
-let $file.id := $config:baseuri || 'lod/' || $document.id
+let $file.id := $config:baseuri || 'id/' || $document.id
 let $file.subject := '<' || $file.id || '>'
 
 let $vivoScore.line := $file.subject || $lod:rdf.type || $lod:vivoScore || $lod:nq.eol
 
-let $title := '"' || '$file//mei:manifestation/mei:titleStmt/mei:title/text()' || '"'
+let $title := '"' || ($file//mei:manifestation/mei:titleStmt/mei:title[@type='main'])[1]/text() || '"'
 (: let $title := "'"  || $file//mei:manifestation/mei:titleStmt/mei:title/text() || "'" :)
 let $title.line := $file.subject || $lod:dce || $title || $lod:nq.eol
 
@@ -64,17 +64,55 @@ let $perfRes.lines :=
    return $perfRes.line
 let $perfMedium := string-join($perfRes.lines,'')
 
-let $pubPlace := "<" || $file//mei:manifestation/mei:pubStmt/mei:pubPlace/mei:geogName[@auth.uri and string-length(normalize-space(@auth.uri)) gt 0]/@auth.uri || ">"
-let $pubPlace.line := $file.subject || $lod:rdau.placeOfPublication || $pubPlace || $lod:nq.eol
+let $pubPlace := 
+    if ($file//mei:manifestation/mei:pubStmt/mei:pubPlace/mei:geogName/@auth.uri)
+    then (
+        "<" || $file//mei:manifestation/mei:pubStmt/mei:pubPlace/mei:geogName[@auth.uri and string-length(normalize-space(@auth.uri)) gt 0]/@auth.uri || ">"
+    ) else if ($file//mei:manifestation/mei:pubStmt/mei:pubPlace/mei:geogName/text() and string-length($file//mei:manifestation/mei:pubStmt/mei:pubPlace/mei:geogName/normalize-space(text())) gt 0)
+    then (
+        '"' || $file//mei:manifestation/mei:pubStmt/mei:pubPlace/mei:geogName/normalize-space(text()) || '"'
+    )
+    else ()
+let $pubPlace.line := 
+    if ($pubPlace)
+    then( $file.subject || $lod:rdau.placeOfPublication || $pubPlace || $lod:nq.eol)
+    else()
 
 let $pubDate := '"' || lod:resolveDateToString($file//mei:manifestation/mei:pubStmt/mei:date) || '"'
 let $pubDate.line := $file.subject || $lod:gndo.dateOfPublication || $pubDate || $lod:nq.eol 
 
-let $arranger := '<' || $file//mei:expression/mei:arranger/mei:persName/@auth.uri || '>'
-let $arranger.line := $file.subject || $lod:gndo.arranger || $arranger || $lod:nq.eol
+let $arranger := 
+    if ($file//mei:expression/mei:arranger/mei:persName/@auth.uri)
+    then ('<' || $file//mei:expression/mei:arranger/mei:persName/@auth.uri || '>')
+    else if ($file//mei:expression/mei:arranger/mei:persName/text() and string-length($file//mei:expression/mei:arranger/mei:persName/normalize-space(text())) gt 0)
+    then ('"' || $file//mei:expression/mei:arranger/mei:persName/normalize-space(text()) || '"')
+    else ()
+let $arranger.line := 
+    if ($arranger)
+    then ($file.subject || $lod:gndo.arranger || $arranger || $lod:nq.eol)
+    else ()
 
-let $publisher := '<' || $file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/@auth.uri|| '>'
-let $publisher.line := $file.subject || $lod:dce.publisher || $publisher || $lod:nq.eol 
+let $publisher := 
+    if ($file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/@auth.uri)
+    then (
+        '<' || $file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/@auth.uri|| '>'
+
+    ) else if ($file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/text() and string-length($file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/normalize-space(text())) gt 0)
+    then (
+        '"' || $file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/normalize-space(text()) || '"'
+    ) else if ($file//mei:manifestation/mei:pubStmt/mei:publisher/mei:persName/@auth.uri)
+    then (
+        '<' || $file//mei:manifestation/mei:pubStmt/mei:publisher/mei:persName/@auth.uri|| '>'
+
+    ) else if ($file//mei:manifestation/mei:pubStmt/mei:publisher/mei:persName/text() and string-length($file//mei:manifestation/mei:pubStmt/mei:publisher/mei:persName/normalize-space(text())) gt 0)
+    then (
+        '"' || $file//mei:manifestation/mei:pubStmt/mei:publisher/mei:persName/normalize-space(text()) || '"'
+    )
+    else ()
+let $publisher.line := 
+    if ($publisher)
+    then ($file.subject || $lod:dce.publisher || $publisher || $lod:nq.eol)
+    else ()
 
 let $workComposer.auth := '<' || $file//mei:work/mei:composer/mei:persName/@auth.uri || '>'
 let $workComposer.line := $work.auth || $lod:rdau.composer || $workComposer.auth || $lod:nq.eol
@@ -96,10 +134,38 @@ let $workShortTitle.line := $work.auth || $lod:bibo.shortTitle || $workShortTitl
 
 let $publisherName := '"' || $file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/text() || '"'
 let $publisherName.line := $publisher || $lod:rdfs.label || $publisherName || $lod:nq.eol
+(:
+let $publisherName := 
+    if ($file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/@auth.uri)
+    then ('<' || $file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/@auth.uri || '>')
+    else if ($file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/text() and string-length($file//mei:expression/mei:arranger/mei:persName/normalize-space(text())) gt 0)
+    then ('"' || $file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/normalize-space(text()) || '"')
+    else ()
+let $publisherName.line := 
+    if ($arranger)
+    then ($file.subject || $lod:gndo.arranger || $arranger || $lod:nq.eol)
+    else ()
+:)
 
-let $embodiment.line := $file.subject || $lod:frbr.embodiment || '<' || $config:file-basepath || $document.id || '.mei>' || $lod:nq.eol
+let $mei.lines := 
+    if ($file//mei:measure//mei:note)
+    then (
+        let $mei.link := '<' || $config:file-basepath || $document.id || '.mei>'
+        let $line.1 := $file.subject || $lod:frbr.embodiment || $mei.link || $lod:nq.eol
+        let $line.2 := $mei.link || $lod:dct.format || '<http://www.music-encoding.org/ns/mei>' || $lod:nq.eol
+        return $line.1 || $line.2
+    )
+    else ()
 
-let $iiif.manifest.line := $file.subject || $lod:iiif.hasManifests || '<' || $config:iiif-basepath || 'document/' || $document.id || '/manifest.json>' || $lod:nq.eol
+let $iiif.lines := 
+    if ($file//mei:surface/mei:graphic/@target)
+    then(
+        let $iiif.link := '<' || $config:iiif-basepath || 'document/' || $document.id || '/manifest.json>'
+        let $line.1 := $file.subject || $lod:frbr.embodiment || $iiif.link || $lod:nq.eol
+        let $line.2 := $iiif.link || $lod:rdf.type || '<http://iiif.io/api/presentation/2#Manifest>' || $lod:nq.eol
+        return $line.1 || $line.2
+    )
+    else ()
 
 return 
    $vivoScore.line || 
@@ -120,5 +186,5 @@ return
    $workComposerLabel.line ||
    $workIdentifier.line || 
    $publisherName.line ||
-   $embodiment.line ||
-   $iiif.manifest.line
+   $mei.lines ||
+   $iiif.lines

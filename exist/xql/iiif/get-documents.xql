@@ -9,6 +9,7 @@ xquery version "3.1";
 (: import shared ressources, mainly path to data folder :)
 import module namespace config="https://edirom.de/ns/config" at "../../xqm/config.xqm";
 import module namespace ef="https://edirom.de/file" at "../../xqm/file.xqm";
+import module namespace lod="https://edirom.de/ns/lod" at "../../xqm/lod.xqm";
 
 declare namespace xhtml="http://www.w3.org/1999/xhtml";
 declare namespace mei="http://www.music-encoding.org/ns/mei";
@@ -40,7 +41,8 @@ let $files :=
     'id': $id,              (: the ID of the file :)
     'manifest': $manifest,  (: link to the IIIF manifest :)
     'pages': $pages,        (: the number of pages :)
-    'file': ef:getFileLink($file.id)
+    'file': ef:getFileLink($file.id),
+    'ld': lod:getLodLink($file.id)
   }
 
 (:
