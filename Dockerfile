@@ -3,33 +3,18 @@
 # 1. set up the build environment and build the expath-package
 # 2. run the eXist-db
 #########################
-FROM openjdk:8-jdk as builder
+FROM node:10-alpine as builder
 LABEL maintainer="Johannes Kepper"
 
-ENV API_BUILD_HOME="/opt/bith-api-build"
+WORKDIR /app
 
-ADD https://deb.nodesource.com/setup_10.x /tmp/nodejs_setup
+COPY package*.json ./
 
-WORKDIR ${API_BUILD_HOME}
+RUN npm install
 
-RUN apt-get update \
-    && apt-get install -y --force-yes git \
-    # installing nodejs
-    && chmod 755 /tmp/nodejs_setup; sync \
-    && /tmp/nodejs_setup \
-    && apt-get install -y nodejs \
-    && ln -s /usr/bin/nodejs /usr/local/bin/node
+COPY ./ .
 
-COPY . .
-
-RUN addgroup apibuilder \
-    && adduser apibuilder --ingroup apibuilder --disabled-password --system \
-    && chown -R apibuilder:apibuilder ${API_BUILD_HOME}
-
-USER apibuilder:apibuilder
-
-RUN npm install \
-    && cp existConfig.tmpl.json existConfig.json \
+RUN cp existConfig.tmpl.json existConfig.json \
     && ./node_modules/.bin/gulp dist
 
 #########################
@@ -49,4 +34,4 @@ ENV EXIST_DEFAULT_APP_PATH="xmldb:exist:///db/apps/bith-api"
 
 # simply copy our xar package
 # to the eXist-db autodeploy folder
-COPY --from=builder /opt/bith-api-build/dist/*.xar ${EXIST_HOME}/autodeploy/
+COPY --from=builder /app/dist/*.xar ${EXIST_HOME}/autodeploy/
