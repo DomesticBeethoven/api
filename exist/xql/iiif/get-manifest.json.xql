@@ -47,12 +47,12 @@ let $file := ($database//mei:mei[@xml:id = $document.id] | $database//mei:facsim
 let $is.facsimile.id := exists($file//mei:facsimile[@xml:id = $document.id])
 
 (: build variable for file:)
-let $file.context := 'http://iiif.io/api/presentation/2/context.json'
+let $file.context := 'https://iiif.io/api/presentation/2/context.json'
 let $file.type := 'sc:Manifest'
 let $id := $document.uri || 'manifest.json'
 let $label := $file//mei:manifestation/mei:physLoc/mei:repository/mei:identifier[@auth = 'RISM']/text() || ' ' || $file//mei:manifestation/mei:physLoc/mei:identifier/text()
 let $description := normalize-space(string-join($file//mei:fileDesc/mei:titleStmt/mei:composer//text(),' ')) || ': ' ||  string-join($file//mei:fileDesc/mei:titleStmt/mei:title//normalize-space(text()),' / ')
-let $license := 'http://rightsstatements.org/vocab/CNE/1.0/' (: TODO: this should be made more specific, if possible :)
+let $license := 'https://rightsstatements.org/vocab/CNE/1.0/' (: TODO: this should be made more specific, if possible :)
 let $attribution := 'Domestic Beethoven'
 let $viewingDirection := 'left-to-right'
 let $viewingHint := 'paged'
@@ -112,8 +112,8 @@ let $sequences :=
             let $scale := round(xs:decimal($folium/@height) * xs:decimal($factor) div xs:decimal($canvas.height) * 10000) div 10000
             return map {
                 '@id': $canvas.id || '_physdim',
-                '@context': 'http://iiif.io/api/annex/services/physdim/1/context.json',
-                'profile': 'http://iiif.io/api/annex/services/physdim',
+                '@context': 'https://iiif.io/api/annex/services/physdim/1/context.json',
+                'profile': 'https://iiif.io/api/annex/services/physdim',
                 'physicalScale': $scale,
                 'physicalUnits': 'mm'
             }
