@@ -185,4 +185,15 @@
       </sch:rule>
    </sch:pattern>
    
+   <sch:pattern id="check_score">
+      <sch:rule context="mei:score">
+         <sch:assert test="local-name(child::mei:*[1]) = 'scoreDef'">
+            Every score needs to have a scoreDef as first child element. 
+         </sch:assert>
+         <sch:assert test="not(.//mei:measure[not(.//mei:layer)])">
+            Measures should be encoded down to the layer level, for easier display with our tooling. There's an XSLT that will add those, called generatyEmptyStaves.xsl.
+         </sch:assert>
+      </sch:rule>
+   </sch:pattern>
+   
 </sch:schema>
