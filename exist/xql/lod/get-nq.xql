@@ -114,6 +114,26 @@ let $publisher.line :=
     then ($file.subject || $lod:dce.publisher || $publisher || $lod:nq.eol)
     else ()
 
+let $publisherName := 
+    if (starts-with($publisher, '<'))
+    then (
+        if ($file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/text() and string-length($file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/normalize-space(text())) gt 0)
+        then (
+            '"' || $file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/normalize-space(text()) || '"'
+        )
+        else if($file//mei:manifestation/mei:pubStmt/mei:publisher/mei:persName/text() and string-length($file//mei:manifestation/mei:pubStmt/mei:publisher/mei:persName/normalize-space(text())) gt 0)
+        then (
+            '"' || $file//mei:manifestation/mei:pubStmt/mei:publisher/mei:persName/normalize-space(text()) || '"'
+        )
+        else ()
+    )
+    else ()
+
+let $publisherName.line := 
+    if ($publisherName)
+    then ($publisher || $lod:rdfs.label || $publisherName || $lod:nq.eol)
+    else()
+
 let $workComposer.auth := '<' || $file//mei:work/mei:composer/mei:persName/@auth.uri || '>'
 let $workComposer.line := $work.auth || $lod:rdau.composer || $workComposer.auth || $lod:nq.eol
 
@@ -131,21 +151,6 @@ let $workTitle.line := $work.auth || $lod:rdfs.label || $workTitle || $lod:nq.eo
 
 let $workShortTitle := '"' || $file//mei:work/mei:title[@type='abbreviated']/text() || '"'
 let $workShortTitle.line := $work.auth || $lod:bibo.shortTitle || $workShortTitle || $lod:nq.eol
-
-let $publisherName := '"' || $file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/text() || '"'
-let $publisherName.line := $publisher || $lod:rdfs.label || $publisherName || $lod:nq.eol
-(:
-let $publisherName := 
-    if ($file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/@auth.uri)
-    then ('<' || $file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/@auth.uri || '>')
-    else if ($file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/text() and string-length($file//mei:expression/mei:arranger/mei:persName/normalize-space(text())) gt 0)
-    then ('"' || $file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/normalize-space(text()) || '"')
-    else ()
-let $publisherName.line := 
-    if ($arranger)
-    then ($file.subject || $lod:gndo.arranger || $arranger || $lod:nq.eol)
-    else ()
-:)
 
 let $mei.lines := 
     if ($file//mei:measure//mei:note)
@@ -179,12 +184,12 @@ return
    $pubDate.line ||
    $arranger.line ||
    $publisher.line ||
+   $publisherName.line ||
    $workComposer.line ||
    $workDateOfPublication.line ||
    $workTitle.line ||
    $workShortTitle.line ||
    $workComposerLabel.line ||
    $workIdentifier.line || 
-   $publisherName.line ||
    $mei.lines ||
    $iiif.lines
