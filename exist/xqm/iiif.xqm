@@ -185,7 +185,7 @@ declare function iiif:getIiifAnnotation($file.id as xs:string, $annot.id as xs:s
     let $annotation.uri.base := $config:iiif-basepath || 'document/' || $file.id || '/annotation/'
 
     return map {
-        '@context': 'http://iiif.io/api/presentation/2/context.json',
+        '@context': 'https://iiif.io/api/presentation/2/context.json',
         '@id': $annotation.uri.base || $annot.id,
         '@type': 'oa:Annotation',
         'motivation': array { 'oa:commenting' },
@@ -224,9 +224,9 @@ declare function iiif:getImageResource($width as xs:integer, $height as xs:integ
         '@id': $url || '/full/full/0/default.jpg',
         '@type': 'dctypes:Image',
         'service': map {
-          '@context': 'http://iiif.io/api/image/2/context.json',
+          '@context': 'https://iiif.io/api/image/2/context.json',
           '@id': $url,
-          'profile': 'http://iiif.io/api/image/2/level2.json'
+          'profile': 'https://iiif.io/api/image/2/level2.json'
         },
         'format': 'image/jpeg',
         'width': $width,
@@ -239,9 +239,9 @@ declare function iiif:getImageResourceWithService($width as xs:integer, $height 
         '@id': $url || '/full/full/0/default.jpg',
         '@type': 'dctypes:Image',
         'service': map {
-          '@context': 'http://iiif.io/api/image/2/context.json',
+          '@context': 'https://iiif.io/api/image/2/context.json',
           '@id': $url,
-          'profile': 'http://iiif.io/api/image/2/level2.json',
+          'profile': 'https://iiif.io/api/image/2/level2.json',
           'service': $service
         },
         'format': 'image/jpeg',
