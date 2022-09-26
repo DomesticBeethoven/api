@@ -5,17 +5,88 @@
 <mei xmlns="http://www.music-encoding.org/ns/mei" xml:id="t0da96e98-2e50-4d64-9ab7-8a195bdd7d16">
     <meiHead>
         <fileDesc>
-            <titleStmt/>
-            <pubStmt/>
+            <titleStmt>
+                <title type="desc">Silcher vocal arrangement</title>
+                <title type="alternative"></title>
+                <respStmt>
+                    <persName xml:id="bithTeam_lr" role="mrk crr">Lisa Rosendahl</persName>
+                </respStmt>
+            </titleStmt>
+            <pubStmt>
+                <date isodate="2022-09-26" type="encoding-date">2022-09-26</date>
+            </pubStmt>
         </fileDesc>
         <encodingDesc>
             <appInfo>
-                <application xml:id="application_22af8de5-faa3-463f-a4db-68ba0150ae3b" isodate="2022-04-07">
+                <application xml:id="application_4d1bf602-5f38-4e04-bbb3-69333df25faa" isodate="2022-04-07">
                     <name>Vertaktoid v2.0.2</name>
                     <ptr target="https://github.com/cemfi/vertaktoid/releases/tag/v2.0.2"/>
                 </application>
             </appInfo>
         </encodingDesc>
+        <workList>
+            <work auth.uri="http://d-nb.info/gnd/300016417">
+                <identifier type="opusNumber">92</identifier>
+                <title type="uniform" xml:lang="de">Sinfonien, Nr. 7, op. 92 (A-Dur)</title>
+                <title type="abbreviated">Beethoven 7th Symphony</title>
+                <composer>
+                    <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
+                </composer>
+                <creation>
+                    <date enddate="1816"/>
+                </creation>
+                <expressionList>
+                    <expression xml:id="td59ceeaf-f763-4066-9e78-1d80d3e7f63f">
+                        <identifier type="genre"
+                            auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q7190079"/>
+                        <title type="desc">Silcher vocal arrangement</title>
+                        <arranger>
+                            <persName auth.uri="http://d-nb.info/gnd/118614339">Friedrich Silcher</persName>
+                        </arranger>
+                        <perfMedium>
+                            <perfResList>
+                                <perfRes auth.uri="https://id.loc.gov/authorities/performanceMediums/mp2013015550"/>
+                                <perfRes auth.uri="https://id.loc.gov/authorities/performanceMediums/mp2013015791"/>
+                            </perfResList>
+                        </perfMedium>
+                    </expression>
+                </expressionList>
+            </work>
+        </workList>
+        <manifestationList>
+            <manifestation>
+                <titleStmt>
+                    <title type="main">Gesang der Peri's</title>
+                </titleStmt>
+                <pubStmt>
+                    <pubPlace>
+                        <geogName auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q1022"/>
+                    </pubPlace>
+                    <date notbefore="1871"/>
+                    <publisher>
+                        <persName auth.uri="http://d-nb.info/gnd/1064327222">G. A. Zumsteeg</persName>
+                    </publisher>
+                </pubStmt>
+                <itemList>
+                    <item xml:id="t6e26125e-95b4-40f3-a973-106f1fb5c690">
+                        <physLoc>
+                            <repository>D-BNba</repository>
+                            <identifier>C SILCH / 5</identifier>
+                        </physLoc>
+                    </item>
+                </itemList>
+                <relationList>
+                    <relation rel="isEmbodimentOf" target="#td59ceeaf-f763-4066-9e78-1d80d3e7f63f"/>
+                </relationList>
+            </manifestation>
+        </manifestationList>
+        <revisionDesc>
+            <change resp="#bithTeam_ms #bithTeam_jk" n="1" isodate="2022-09-26">
+                <changeDesc>
+                    <p>added metadata</p>
+                </changeDesc>
+            </change>
+        </revisionDesc>
     </meiHead>
     <music>
         <facsimile xml:id="t0c29dc8d-62e3-4098-82d5-d2b4c9d6431a">

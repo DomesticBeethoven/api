@@ -5,17 +5,88 @@
 <mei xmlns="http://www.music-encoding.org/ns/mei" xml:id="t54e4f616-df2b-4d65-adfb-56340bfcae16">
     <meiHead>
         <fileDesc>
-            <titleStmt/>
-            <pubStmt/>
+            <titleStmt>
+                <title type="desc">Star Brightly Shining</title>
+                <title type="alternative"></title>
+                <respStmt>
+                    <persName xml:id="bithTeam_lr" role="mrk crr">Lisa Rosendahl</persName>
+                </respStmt>
+            </titleStmt>
+            <pubStmt>
+                <date isodate="2022-09-26" type="encoding-date">2022-09-26</date>
+            </pubStmt>
         </fileDesc>
         <encodingDesc>
             <appInfo>
-                <application xml:id="application_d0267153-6c92-4d5f-98e5-1c20977ae969" isodate="2022-04-07">
+                <application xml:id="application_4d1bf602-5f38-4e04-bbb3-69333df25faa" isodate="2022-04-07">
                     <name>Vertaktoid v2.0.2</name>
                     <ptr target="https://github.com/cemfi/vertaktoid/releases/tag/v2.0.2"/>
                 </application>
             </appInfo>
         </encodingDesc>
+        <workList>
+            <work auth.uri="http://d-nb.info/gnd/300016417">
+                <identifier type="opusNumber">92</identifier>
+                <title type="uniform" xml:lang="de">Sinfonien, Nr. 7, op. 92 (A-Dur)</title>
+                <title type="abbreviated">Beethoven 7th Symphony</title>
+                <composer>
+                    <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
+                </composer>
+                <creation>
+                    <date enddate="1816"/>
+                </creation>
+                <expressionList>
+                    <expression xml:id="tf0703d8b-c987-4654-83f8-1603636992cb">
+                        <identifier type="genre"
+                            auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q7190079"/>
+                        <title type="desc">Star Brightly Shining</title>
+                        <arranger>
+                            <persName auth.uri="http://d-nb.info/gnd/1124865284">Josiah Pittman</persName>
+                        </arranger>
+                        <perfMedium>
+                            <perfResList>
+                                <perfRes auth.uri="https://id.loc.gov/authorities/performanceMediums/mp2013015550"/>
+                                <perfRes auth.uri="https://id.loc.gov/authorities/performanceMediums/mp2013015791"/>
+                            </perfResList>
+                        </perfMedium>
+                    </expression>
+                </expressionList>
+            </work>
+        </workList>
+        <manifestationList>
+            <manifestation>
+                <titleStmt>
+                    <title type="main">No. 7. The Epiphany 'Star Brightly Shining, Where Dost Thou Lead Us?</title>
+                </titleStmt>
+                <pubStmt>
+                    <pubPlace>
+                        <geogName auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q84"/>
+                    </pubPlace>
+                    <date notbefore="1859"/>
+                    <publisher>
+                        <corpName auth.uri="http://d-nb.info/gnd/11072942461">Augener &amp; Co.</corpName>
+                    </publisher>
+                </pubStmt>
+                <itemList>
+                    <item xml:id="t3099c76b-baeb-4d7b-adb6-fd84caaaa32c">
+                        <physLoc>
+                            <repository>D-BNba</repository>
+                            <identifier> C92 / 48</identifier>
+                        </physLoc>
+                    </item>
+                </itemList>
+                <relationList>
+                    <relation rel="isEmbodimentOf" target="#tf0703d8b-c987-4654-83f8-1603636992cb"/>
+                </relationList>
+            </manifestation>
+        </manifestationList>
+        <revisionDesc>
+            <change resp="#bithTeam_ms #bithTeam_jk" n="1" isodate="2022-09-26">
+                <changeDesc>
+                    <p>added metadata</p>
+                </changeDesc>
+            </change>
+        </revisionDesc>
     </meiHead>
     <music>
         <facsimile xml:id="t435b19ca-2113-4b17-8a74-731141040717">
