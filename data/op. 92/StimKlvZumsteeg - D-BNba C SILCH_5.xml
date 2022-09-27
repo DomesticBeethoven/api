@@ -86,6 +86,11 @@
                     <p>added metadata</p>
                 </changeDesc>
             </change>
+            <change resp="#bithTeam_ms" n="2" isodate="2022-09-27">
+                <changeDesc>
+                    <p>replace music element with older version containing measure content</p>
+                </changeDesc>
+            </change>
         </revisionDesc>
     </meiHead>
     <music>
