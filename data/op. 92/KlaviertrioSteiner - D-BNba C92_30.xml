@@ -112,6 +112,7 @@
    </meiHead>
    <music meiversion="5.0.0-dev">
       <body xml:id="md51fa38c-13d1-4201-9712-a92a00f2eb26">
+         <!--  
          <mdiv xml:id="eba11522-aa99-43a4-8a98-db3d0c04d59e" n="1" label="Poco sostenuto – Vivace">
             <score xml:id="a9a9a38c-af81-44df-8b3e-79392ea97e00">
                <scoreDef xml:id="mb6e5f090-b146-4ed1-bda8-d7e6d75b4ed2">
@@ -149,6 +150,7 @@
                </section>
             </score>
          </mdiv>
+         -->
          <mdiv xml:id="m95c45e86-b31c-4fd0-b521-70dbd6458863" n="2" label="Allegretto">
             <score xml:id="m5e3fd2d1-47dc-4e05-b3de-1486f6828c5a">
                <scoreDef xml:id="ma6e5f090-b146-4ed1-bda8-d7e6d75b4ed2">
@@ -31151,6 +31153,7 @@
                </section>
             </score>
          </mdiv>
+         <!--
          <mdiv xml:id="eca11522-aa99-43a4-8a98-db3d0c04d59e" n="3" label="Presto">
             <score xml:id="a1a9a38c-af81-44df-8b3e-79392ea97e00">
                <scoreDef xml:id="mc6e5f090-b146-4ed1-bda8-d7e6d75b4ed2">
@@ -31188,6 +31191,9 @@
                </section>
             </score>
          </mdiv>
+         -->
+      
+         <!--
          <mdiv xml:id="eda11522-aa99-43a4-8a98-db3d0c04d59e" n="4" label="Allegro con brio">
             <score xml:id="a2a9a38c-af81-44df-8b3e-79392ea97e00">
                <scoreDef xml:id="md6e5f090-b146-4ed1-bda8-d7e6d75b4ed2">
@@ -31225,6 +31231,7 @@
                </section>
             </score>
          </mdiv>
+         -->
       </body>
    </music>
 </mei>
