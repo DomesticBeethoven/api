@@ -41,7 +41,7 @@
                <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
             </composer>
             <creation>
-               <date startdate="1811" enddate="1812"/>
+               <date enddate="1816"/>
             </creation>
             <expressionList>
                <expression xml:id="b9037034-f6f0-11ec-b939-0242ac120002">
@@ -111,7 +111,7 @@
    </meiHead>
    <music meiversion="5.0.0-dev">
       <body xml:id="mf9258774-e4ac-4181-b251-1207aa98ace0">
-         <mdiv xml:id="m899ed4ae-fe76-4dcf-940b-f5ea5170bb89">
+         <mdiv xml:id="m899ed4ae-fe76-4dcf-940b-f5ea5170bb89" label="Allegretto">
             <score xml:id="mac7d65da-5745-457f-ad08-423f7bba0c37">
                <scoreDef xml:id="m4963913b-2f97-4fa5-ad67-7a700ad8dea5">
                   <staffGrp xml:id="m65556916-03ab-4ff9-95ae-666863b262b5">
