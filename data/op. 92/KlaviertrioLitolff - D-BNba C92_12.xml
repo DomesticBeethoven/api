@@ -43,7 +43,7 @@
                <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
             </composer>
             <creation>
-               <date startdate="1811" enddate="1812"/>
+               <date enddate="1816"/>
             </creation>
             <expressionList>
                <expression xml:id="g725cbc0-2925-4edg-95d6-b95850ac8d70">
@@ -425,7 +425,7 @@
          </surface>
       </facsimile>
       <body xml:id="md6fc8964-03d2-48d1-8b60-242a0e8abccc">
-         <mdiv xml:id="m0139a344-b992-460e-ae68-9520bd767952">
+         <mdiv xml:id="m0139a344-b992-460e-ae68-9520bd767952" label="Allegretto">
             <score xml:id="m8d3bda44-e7a3-4086-b1b7-65455e99cc5e">
                <scoreDef xml:id="m10142309-2b6c-4e09-ba2b-ad516263db48">
                   <staffGrp xml:id="m262a3e85-ee35-443f-aaa8-75be047a430e">
