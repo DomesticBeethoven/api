@@ -3,7 +3,7 @@
 <?xml-model href="https://music-encoding.org/schema/dev/mei-all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="https://music-encoding.org/schema/dev/mei-all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <mei xmlns="http://www.music-encoding.org/ns/mei"
-     xml:id="me18b9e86-b7b6-47fe-9b66-0ad6f179b6a4"
+     xml:id="bf6941e0-4fa8-11ed-bdc3-0242ac120002"
      meiversion="5.0.0-dev">
    <meiHead meiversion="5.0.0-dev">
       <fileDesc>
