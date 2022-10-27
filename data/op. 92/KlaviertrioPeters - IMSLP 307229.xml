@@ -31,6 +31,9 @@
                <p xml:id="mf4f89943-b881-45c1-8a33-63ebbe227942">Transcoded from MusicXML</p>
             </application>
          </appInfo>
+         <samplingDecl xml:id="ec8e0379-2ff3-428c-9133-91dbec5dd505">
+            <p>contains only measures 19-26</p>
+         </samplingDecl>
       </encodingDesc>
       <workList>
          <work auth.uri="http://d-nb.info/gnd/300016417">
@@ -475,7 +478,7 @@
                      </staff>
                   </measure>
                   </section>
-                  <section xml:id="me829b92b-8ac0-4480-9e20-2ac687a4f6a1" resp="#bithTeam_lr">
+                  <section xml:id="me829b92b-8ac0-4480-9e20-2ac687a4f6a1" resp="#bithTeam_lr" decls="#ec8e0379-2ff3-428c-9133-91dbec5dd505">
                      <measure xml:id="m2a57423a-de38-40d1-b7af-cb05cf2472dd" n="19">
                         <staff xml:id="m25309a0e-cf53-4fe7-bb6c-875e2bf70d10" n="1">
                            <layer xml:id="mcb4195f3-a0c1-4949-abf7-f13952c55da9" n="1">
