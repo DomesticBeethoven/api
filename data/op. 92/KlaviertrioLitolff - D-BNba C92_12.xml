@@ -52,8 +52,10 @@
                   <title type="desc">Op 92 / 2nd mov - Piano trio (Litolff)</title>
                   <arranger>
                      <persName auth.uri="https://www.wikidata.org/wiki/Q1065884">Renaud de Vilbac</persName>
+                     <!--
                      <persName auth.uri="https://www.wikidata.org/wiki/Q89102916">August Schulz</persName>
                      <persName>Heinrich Plock</persName>
+                     -->
                   </arranger>
                   <perfMedium>
                      <perfResList>
