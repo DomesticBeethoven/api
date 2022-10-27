@@ -30,6 +30,9 @@
                <p xml:id="m6e2fb933-597e-4368-9951-0c0792cce7f9">Transcoded from MusicXML</p>
             </application>
          </appInfo>
+         <samplingDecl xml:id="c6940530-3f01-4b88-884e-62000ca36ed3">
+            <p>contains only the second movement</p>
+         </samplingDecl>
       </encodingDesc>
       <workList>
          <work auth.uri="http://d-nb.info/gnd/300016417">
@@ -112,46 +115,7 @@
    </meiHead>
    <music meiversion="5.0.0-dev">
       <body xml:id="md51fa38c-13d1-4201-9712-a92a00f2eb26">
-         <!--  
-         <mdiv xml:id="eba11522-aa99-43a4-8a98-db3d0c04d59e" n="1" label="Poco sostenuto – Vivace">
-            <score xml:id="a9a9a38c-af81-44df-8b3e-79392ea97e00">
-               <scoreDef xml:id="mb6e5f090-b146-4ed1-bda8-d7e6d75b4ed2">
-                  <staffGrp xml:id="m47f9e888-34f0-4614-9e30-b5228854621f"> 
-                     <staffDef xml:id="m9f4a16d7-392f-4e2d-9824-2eee00f0ab72" n="1" lines="5">
-                        <label xml:id="mf53230d3-165a-4fc0-950d-eb97b44c2b42">Violine</label>
-                        <clef xml:id="m4d6150a0-b9df-44b6-8a56-d000c0664d72" shape="G" line="2"/>
-                        <keySig xml:id="mc0b321fa-8f3f-401d-bc44-1ebdbe2cf061" sig="0"/>
-                        <meterSig xml:id="m2c58d4b0-ee0a-47b2-b2df-65dd3555560d" count="2" unit="4"/>
-                     </staffDef>
-                     <staffDef xml:id="m5c19b0c4-6fb9-4fe3-b430-7843cc6d0e06" n="2" lines="5">
-                        <label xml:id="me46321c2-230d-40ed-9a2b-9c92722e8f0d">Violoncello</label>
-                        <clef xml:id="m556d18a5-2b38-4f05-b484-ff0fad1cd3ca" shape="F" line="4"/>
-                        <keySig xml:id="me4ddd4f1-c6db-4416-9e8c-4ea91acafcfc" sig="0"/>
-                        <meterSig xml:id="m3546fd73-45f5-4019-b54a-a1446e5bd7cb" count="2" unit="4"/>
-                     </staffDef>
-                     <staffGrp xml:id="m43c91278-525d-4bb4-88ec-2fe44ef6e35c" bar.thru="true">
-                        <label xml:id="mba1529b4-d45c-4a09-b522-0ffe7c415631">Klavier</label>
-                        <staffDef xml:id="m8d6479dd-3e18-43ba-a0f4-fb39c54c6a43" n="3" lines="5">
-                           <clef xml:id="m9b28577f-c9bb-44c4-a05f-36abff5ebe69" shape="G" line="2"/>
-                           <keySig xml:id="m8536a23c-a178-43df-9d28-42dd36e69359" sig="0"/>
-                           <meterSig xml:id="m83db14bd-cfc5-4313-b518-9a627ecf7928" count="2" unit="4"/>
-                        </staffDef>
-                        <staffDef xml:id="m41897d6c-37f5-4f5a-a4ef-529223334b0c" n="4" lines="5">
-                           <clef xml:id="m40f92936-8b3a-47e5-acd0-57652275ba8c" shape="F" line="4"/>
-                           <keySig xml:id="m9835a68d-f7cb-4f96-96f0-05fdf2f2bb71" sig="0"/>
-                           <meterSig xml:id="m6f48226c-be8b-4ae1-a88e-ebd6ce5331c5" count="2" unit="4"/>
-                        </staffDef>
-                        <grpSym xml:id="m37694afc-f6f8-485a-a197-57638188d246" symbol="brace"/>
-                     </staffGrp>   
-                  </staffGrp>
-               </scoreDef>
-               <section xml:id="m1ca98e5c-6784-4409-9b18-39591ee3aa25">
-                  <gap reason="sampling"/>
-               </section>
-            </score>
-         </mdiv>
-         -->
-         <mdiv xml:id="m95c45e86-b31c-4fd0-b521-70dbd6458863" n="2" label="Allegretto">
+         <mdiv xml:id="m95c45e86-b31c-4fd0-b521-70dbd6458863" decls="#c6940530-3f01-4b88-884e-62000ca36ed3" label="Allegretto">
             <score xml:id="m5e3fd2d1-47dc-4e05-b3de-1486f6828c5a">
                <scoreDef xml:id="ma6e5f090-b146-4ed1-bda8-d7e6d75b4ed2">
                   <staffGrp xml:id="m37f9e888-34f0-4614-9e30-b5228854621f"> 
@@ -31153,85 +31117,6 @@
                </section>
             </score>
          </mdiv>
-         <!--
-         <mdiv xml:id="eca11522-aa99-43a4-8a98-db3d0c04d59e" n="3" label="Presto">
-            <score xml:id="a1a9a38c-af81-44df-8b3e-79392ea97e00">
-               <scoreDef xml:id="mc6e5f090-b146-4ed1-bda8-d7e6d75b4ed2">
-                  <staffGrp xml:id="m57f9e888-34f0-4614-9e30-b5228854621f"> 
-                     <staffDef xml:id="m1f4a16d7-392f-4e2d-9824-2eee00f0ab72" n="1" lines="5">
-                        <label xml:id="mg53230d3-165a-4fc0-950d-eb97b44c2b42">Violine</label>
-                        <clef xml:id="m5d6150a0-b9df-44b6-8a56-d000c0664d72" shape="G" line="2"/>
-                        <keySig xml:id="md0b321fa-8f3f-401d-bc44-1ebdbe2cf061" sig="0"/>
-                        <meterSig xml:id="m3c58d4b0-ee0a-47b2-b2df-65dd3555560d" count="2" unit="4"/>
-                     </staffDef>
-                     <staffDef xml:id="m6c19b0c4-6fb9-4fe3-b430-7843cc6d0e06" n="2" lines="5">
-                        <label xml:id="mf46321c2-230d-40ed-9a2b-9c92722e8f0d">Violoncello</label>
-                        <clef xml:id="m656d18a5-2b38-4f05-b484-ff0fad1cd3ca" shape="F" line="4"/>
-                        <keySig xml:id="mf4ddd4f1-c6db-4416-9e8c-4ea91acafcfc" sig="0"/>
-                        <meterSig xml:id="m4546fd73-45f5-4019-b54a-a1446e5bd7cb" count="2" unit="4"/>
-                     </staffDef>
-                     <staffGrp xml:id="m53c91278-525d-4bb4-88ec-2fe44ef6e35c" bar.thru="true">
-                        <label xml:id="mca1529b4-d45c-4a09-b522-0ffe7c415631">Klavier</label>
-                        <staffDef xml:id="m9d6479dd-3e18-43ba-a0f4-fb39c54c6a43" n="3" lines="5">
-                           <clef xml:id="m1b28577f-c9bb-44c4-a05f-36abff5ebe69" shape="G" line="2"/>
-                           <keySig xml:id="m9536a23c-a178-43df-9d28-42dd36e69359" sig="0"/>
-                           <meterSig xml:id="m93db14bd-cfc5-4313-b518-9a627ecf7928" count="2" unit="4"/>
-                        </staffDef>
-                        <staffDef xml:id="m51897d6c-37f5-4f5a-a4ef-529223334b0c" n="4" lines="5">
-                           <clef xml:id="m50f92936-8b3a-47e5-acd0-57652275ba8c" shape="F" line="4"/>
-                           <keySig xml:id="m1835a68d-f7cb-4f96-96f0-05fdf2f2bb71" sig="0"/>
-                           <meterSig xml:id="m7f48226c-be8b-4ae1-a88e-ebd6ce5331c5" count="2" unit="4"/>
-                        </staffDef>
-                        <grpSym xml:id="m47694afc-f6f8-485a-a197-57638188d246" symbol="brace"/>
-                     </staffGrp>   
-                  </staffGrp>
-               </scoreDef>
-               <section xml:id="m2ca98e5c-6784-4409-9b18-39591ee3aa25">
-                  <gap reason="sampling"/>
-               </section>
-            </score>
-         </mdiv>
-         -->
-      
-         <!--
-         <mdiv xml:id="eda11522-aa99-43a4-8a98-db3d0c04d59e" n="4" label="Allegro con brio">
-            <score xml:id="a2a9a38c-af81-44df-8b3e-79392ea97e00">
-               <scoreDef xml:id="md6e5f090-b146-4ed1-bda8-d7e6d75b4ed2">
-                  <staffGrp xml:id="m67f9e888-34f0-4614-9e30-b5228854621f"> 
-                     <staffDef xml:id="m2f4a16d7-392f-4e2d-9824-2eee00f0ab72" n="1" lines="5">
-                        <label xml:id="mh53230d3-165a-4fc0-950d-eb97b44c2b42">Violine</label>
-                        <clef xml:id="m6d6150a0-b9df-44b6-8a56-d000c0664d72" shape="G" line="2"/>
-                        <keySig xml:id="me0b321fa-8f3f-401d-bc44-1ebdbe2cf061" sig="0"/>
-                        <meterSig xml:id="m4c58d4b0-ee0a-47b2-b2df-65dd3555560d" count="2" unit="4"/>
-                     </staffDef>
-                     <staffDef xml:id="m7c19b0c4-6fb9-4fe3-b430-7843cc6d0e06" n="2" lines="5">
-                        <label xml:id="mg46321c2-230d-40ed-9a2b-9c92722e8f0d">Violoncello</label>
-                        <clef xml:id="m756d18a5-2b38-4f05-b484-ff0fad1cd3ca" shape="F" line="4"/>
-                        <keySig xml:id="mg4ddd4f1-c6db-4416-9e8c-4ea91acafcfc" sig="0"/>
-                        <meterSig xml:id="m7546fd73-45f5-4019-b54a-a1446e5bd7cb" count="2" unit="4"/>
-                     </staffDef>
-                     <staffGrp xml:id="m63c91278-525d-4bb4-88ec-2fe44ef6e35c" bar.thru="true">
-                        <label xml:id="mda1529b4-d45c-4a09-b522-0ffe7c415631">Klavier</label>
-                        <staffDef xml:id="m1d6479dd-3e18-43ba-a0f4-fb39c54c6a43" n="3" lines="5">
-                           <clef xml:id="m2b28577f-c9bb-44c4-a05f-36abff5ebe69" shape="G" line="2"/>
-                           <keySig xml:id="m1536a23c-a178-43df-9d28-42dd36e69359" sig="0"/>
-                           <meterSig xml:id="m13db14bd-cfc5-4313-b518-9a627ecf7928" count="2" unit="4"/>
-                        </staffDef>
-                        <staffDef xml:id="m61897d6c-37f5-4f5a-a4ef-529223334b0c" n="4" lines="5">
-                           <clef xml:id="m60f92936-8b3a-47e5-acd0-57652275ba8c" shape="F" line="4"/>
-                           <keySig xml:id="m2835a68d-f7cb-4f96-96f0-05fdf2f2bb71" sig="0"/>
-                           <meterSig xml:id="m8f48226c-be8b-4ae1-a88e-ebd6ce5331c5" count="2" unit="4"/>
-                        </staffDef>
-                        <grpSym xml:id="m57694afc-f6f8-485a-a197-57638188d246" symbol="brace"/>
-                     </staffGrp>   
-                  </staffGrp>
-               </scoreDef>
-               <section xml:id="m3ca98e5c-6784-4409-9b18-39591ee3aa25">
-                  <gap reason="sampling"/>
-               </section>
-            </score>
-         </mdiv>
-         -->
       </body>
    </music>
 </mei>
