@@ -49,6 +49,12 @@
                   <identifier type="genre"
                               auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q9734"/>
                   <title type="desc">Op 92 - OA Part (Steiner)</title>
+                  <composer>
+                     <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
+                  </composer>
+                  <arranger>
+                     <persName/>
+                  </arranger>
                   <perfMedium>
                      <perfResList>
                         <perfRes auth.uri="http://id.loc.gov/authorities/performanceMediums/mp2013015516"/>
