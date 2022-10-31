@@ -50,6 +50,9 @@
                   <identifier type="genre"
                               auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q1425997"/>
                   <title type="desc">Op 92 - Piano trio (Steiner)</title>
+                  <arranger>
+                     <persName>anonymous</persName>
+                  </arranger>
                   <perfMedium>
                      <perfResList>
                         <perfRes auth.uri="https://id.loc.gov/authorities/performanceMediums/mp2013015550"/>
