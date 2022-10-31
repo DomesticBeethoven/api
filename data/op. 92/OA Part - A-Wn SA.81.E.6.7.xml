@@ -53,7 +53,7 @@
                      <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
                   </composer>
                   <arranger>
-                     <persName/>
+                     <persName>There is no arranger.</persName> <!-- test -->
                   </arranger>
                   <perfMedium>
                      <perfResList>
