@@ -44,12 +44,12 @@
                <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
             </composer>
             <creation>
-               <date enddate="1816"/>
+               <date enddate="1816"/> <!-- startdate="1811" enddate="1812", changed temporarily for the BitH-Annotator-->
             </creation>
             <expressionList>
                <expression xml:id="a4265e60-3abb-11ed-a261-0242ac120002">
                   <identifier type="genre"
-                              auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q1414262"/>
+                     auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q379755"/>
                   <title type="desc">Op 92 / 2nd mov - Piano trio ad lib. (Peters)</title>
                   <arranger>
                      <persName auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q3477764">Richard Hofmann</persName>
@@ -77,9 +77,9 @@
                <pubPlace>
                   <geogName auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q2079"/>
                </pubPlace>
-               <date isodate="1916"/>
+               <date notafter="1916"/>
                <publisher>
-                  <corpName auth.uri="https://d-nb.info/dnbn/330003461">C. F. Peters</corpName>
+                  <corpName auth.uri="https://d-nb.info/dnbn/330003461">Edition Peters</corpName>
                </publisher>
             </pubStmt>
             <itemList>
@@ -618,7 +618,7 @@
                         <dynam xml:id="m5cd4786d-236a-4b8d-b13a-000fbb66ecc0"
                                place="below"
                                staff="4"
-                               startid="#m7fc3cf3a-c80d-4f18-a3c1-3b28f11b227f">sempre</dynam>
+                               tstamp="1">sempre pp</dynam>
                      </measure>
                      <measure xml:id="m0a37c6f6-513d-4d7d-a0db-8d04207cae70" n="20">
                         <staff xml:id="mb7b78abe-0bdd-4b2b-9581-9cc67465460f" n="1">

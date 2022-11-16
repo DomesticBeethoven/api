@@ -41,12 +41,12 @@
                <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
             </composer>
             <creation>
-               <date enddate="1816"/>
+               <date enddate="1816"/> <!-- startdate="1811" enddate="1812", changed temporarily for the BitH-Annotator-->
             </creation>
             <expressionList>
                <expression xml:id="b9037034-f6f0-11ec-b939-0242ac120002">
                   <identifier type="genre"
-                              auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q1414262"/>
+                     auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q379755"/>
                   <title type="desc">Op 92 / 2nd mov - Piano trio (Peters)</title>
                   <arranger>
                      <persName auth.uri="http://viaf.org/viaf/19944637">Hans Sitt</persName>
@@ -90,18 +90,13 @@
          </manifestation>
       </manifestationList>
       <revisionDesc>
-         <change n="1" isodate="2022-06-28" resp="#bithTeam_lr">
-            <changeDesc>
-               <p/>
-            </changeDesc>
-         </change>
-         <change resp="#bithTeam_lr" n="2" isodate="2022-06-28">
+         <change resp="#bithTeam_lr" n="1" isodate="2022-06-28">
             <changeDesc>
                <p>Applied "cleanMscz.xsl"</p>
                <p>Remove unwanted attributes and mistakes from MuseScore export; add schema</p>
             </changeDesc>
          </change>
-         <change resp="#bithTeam_lr" n="3" isodate="2022-06-28">
+         <change resp="#bithTeam_lr" n="2" isodate="2022-06-28">
             <changeDesc>
                <p>Applied "IDs4Mscz.xsl"</p>
                <p>Delete IDs from Musescore; insert UUID(s) for the document, encoding description and music elements</p>
@@ -191,6 +186,11 @@
                             staff="1"
                             tstamp="1"
                             xml:lang="it">Allegretto.</tempo>
+                     <tempo xml:id="ma1c4d844-442f-4794-a5a8-63a47f396e13"
+                        place="above"
+                        staff="3"
+                        tstamp="1"
+                        xml:lang="it">Allegretto.</tempo>
                      <dynam xml:id="m6d139c89-e647-42ab-b23c-d138998f2a98"
                             place="below"
                             staff="1"
@@ -383,10 +383,18 @@
                             place="above"
                             staff="4"
                             tstamp="1">p</dynam>
+                     <dynam xml:id="m6ff04b67-4e15-43ce-a9e2-5e2e94cd8c48"
+                        place="below"
+                        staff="2"
+                        tstamp="1">p</dynam>
                      <dir xml:id="m8c9af18c-e6c7-493e-9b2f-383a0fad5b9f"
                           place="above"
                           staff="4"
                           tstamp="1">ten.</dir>
+                     <dir xml:id="m9c9af18c-e6c7-493e-9b2f-383a0fad5b9f"
+                        place="above"
+                        staff="2"
+                        tstamp="1">ten.</dir>
                   </measure>
                   <measure xml:id="mffae4ebf-180b-47ea-8424-750c9b08d5c6" n="4">
                      <staff xml:id="mb5e891a0-4174-414c-b85c-d4f5d6b90b2c" n="1">
@@ -9965,6 +9973,10 @@
                      <tie xml:id="me62c431c-0474-4cf7-8ed6-26bfd61d79a8"
                           startid="#m80982aec-4242-4a7f-9639-aeb227051dc9"
                           endid="#m77bc2eae-1eef-4ea3-8b0b-5598e7353ecf"/>
+                     <dynam xml:id="mb690e0fd-3274-4e1b-a915-f2f320cece96"
+                        place="below"
+                        staff="3"
+                        tstamp="1">p</dynam>
                      <dynam xml:id="mb590e0fd-3274-4e1b-a915-f2f320cece96"
                             place="below"
                             staff="4"
@@ -15856,7 +15868,7 @@
                             staff="1"
                             tstamp="1"
                             tstamp2="0m+2.0000"
-                            extender="true"
+                            extender="false"
                             lform="dashed">cresc.</dynam>
                      <slur xml:id="m07551631-016b-4670-b469-234d9573c1f5"
                            startid="#md6430fb1-f08e-4334-a353-db10c8880fde"
@@ -15867,7 +15879,7 @@
                             staff="2"
                             tstamp="1"
                             tstamp2="0m+2.0000"
-                            extender="true"
+                            extender="false"
                             lform="dashed">cresc.</dynam>
                      <slur xml:id="m57f4238f-0d40-4abd-8f3b-2f362de75348"
                            startid="#me6b17dc6-986e-4af2-bfc3-106f62a24d73"
@@ -15878,7 +15890,7 @@
                             staff="3"
                             tstamp="1"
                             tstamp2="0m+2.5000"
-                            extender="true"
+                            extender="false"
                             lform="dashed">cresc.</dynam>
                   </measure>
                   <measure xml:id="mdbe88521-609f-4484-b330-abdca4c999c2" n="144">
@@ -24512,7 +24524,8 @@
                      </staff>
                      <tie xml:id="m2bf21bf9-baf3-4778-bcb8-03acbde21ae3"
                           startid="#m6bd6f65a-9ebf-4314-8f1d-c9fe8d7a997e"
-                          endid="#m35a936ee-9323-4fda-b301-c4301a53fba4"/>
+                          endid="#m35a936ee-9323-4fda-b301-c4301a53fba4"
+                        curvedir="above"/>
                   </measure>
                   <measure xml:id="mc3f00f5b-2249-4fcf-ba16-756ea522fd66" n="206">
                      <staff xml:id="m6f76954d-f968-4230-bf1f-b03641aa4eab" n="1">
@@ -27209,6 +27222,10 @@
                            </beam>
                         </layer>
                      </staff>
+                     <dir xml:id="m4611f9e3-761c-4594-8a46-439a9b7130bf"
+                        place="above"
+                        staff="4"
+                        tstamp="1">ten.</dir>
                   </measure>
                   <measure xml:id="m7a3b980b-488e-4ce7-b9ab-fcadf4120199" n="221">
                      <staff xml:id="mdd7eff29-91aa-4a1b-8227-009d63dfa12a" n="1">
@@ -32597,6 +32614,27 @@
                            </chord>
                         </layer>
                      </staff>
+                     <tie xml:id="mf165de21-0452-4620-a1b6-9d9d91ac39d1"
+                        startid="#mf0b70ea0-df54-40bc-a3e5-4ae00e45a95e"
+                        endid="#mb2ac6e86-62a9-47c3-bf80-906dfe43d9f1"/>
+                     <tie xml:id="m013a0ddb-4628-4164-84d4-c07dc94a61a4"
+                        startid="#m5b681ef7-92f0-441b-86c4-6e00f47522a0"
+                        endid="#m92811ff9-f4ed-4250-a137-73ee061c7e5b"/>
+                     <tie xml:id="m248661ca-8a39-4e65-9f5e-71e5f5b5f7d6"
+                        startid="#mb125e755-4ea7-4928-be50-bd795851ae64"
+                        endid="#m9eeaf3aa-047b-4736-841f-44fafa49b1d2"/>
+                     <tie xml:id="mf9f8f326-d595-4b03-ade1-597883c32907"
+                        startid="#m592646c5-3d12-4dac-8e4a-e01916aae94f"
+                        endid="#m9e78db27-19e1-4b0c-bb99-e627ed286aa9"/>
+                     <tie xml:id="me5a69e59-7e5a-40c0-b162-f5694f4e6f5f"
+                        startid="#m15568a93-f327-461a-b22c-2af5f298289e"
+                        endid="#m5ca4b122-1738-4010-9599-417ff23ca587"/>
+                     <tie xml:id="m21001680-8ae0-4035-ab5b-9e2e65afed04"
+                        startid="#mf4618d3a-050f-4831-8d30-ce6ba9d32eae"
+                        endid="#m60f5af86-c3f4-4fbe-9b0b-256a0e2d99c3"/>
+                     <tie xml:id="m0f1529c3-a576-417b-9911-353327f8959f"
+                        startid="#mfd834057-9656-4aa5-9cfd-fcaca2f09119"
+                        endid="#mfa308222-305e-4b11-a8d5-e391e8e1a767"/>
                   </measure>
                   <measure xml:id="m58dc3106-eed2-4d46-a4cc-854d9aba9526" right="end" n="278">
                      <staff xml:id="m006d3d4a-500b-489b-976b-6170aa1776bf" n="1">

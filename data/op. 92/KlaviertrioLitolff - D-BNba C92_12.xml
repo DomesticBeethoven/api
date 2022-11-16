@@ -43,19 +43,19 @@
                <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
             </composer>
             <creation>
-               <date enddate="1816"/>
+               <date enddate="1816"/> <!-- startdate="1811" enddate="1812", changed temporarily for the BitH-Annotator-->
             </creation>
             <expressionList>
                <expression xml:id="g725cbc0-2925-4edg-95d6-b95850ac8d70">
                   <identifier type="genre"
-                              auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q1425997"/>
+                     auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q379755"/>
                   <title type="desc">Op 92 / 2nd mov - Piano trio (Litolff)</title>
                   <arranger>
                      <persName auth.uri="https://www.wikidata.org/wiki/Q1065884">Renaud de Vilbac</persName>
                      <!--
                      <persName auth.uri="https://www.wikidata.org/wiki/Q89102916">August Schulz</persName>
                      <persName>Heinrich Plock</persName>
-                     -->
+                     changed temporarily for the BitH-Annotator-->
                   </arranger>
                   <perfMedium>
                      <perfResList>
@@ -77,7 +77,7 @@
                <pubPlace>
                   <geogName auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q2773"/>
                </pubPlace>
-               <date notafter="1879"/>
+               <date notbefore="1894"/>
                <publisher>
                   <corpName auth.uri="https://d-nb.info/dnbn/1027856756">Henry Litolff's Verlag</corpName>
                </publisher>
@@ -96,18 +96,13 @@
          </manifestation>
       </manifestationList>
       <revisionDesc>
-         <change n="1" isodate="2022-02-22" resp="#bithTeam_lr">
-            <changeDesc>
-               <p/>
-            </changeDesc>
-         </change>
-         <change resp="#bithTeam_lr" n="2" isodate="2022-03-29">
+         <change resp="#bithTeam_lr" n="1" isodate="2022-03-29">
             <changeDesc>
                <p>Applied "cleanMscz.xsl"</p>
                <p>Remove unwanted attributes and mistakes from MuseScore export; add schema</p>
             </changeDesc>
          </change>
-         <change resp="#bithTeam_lr" n="3" isodate="2022-03-29">
+         <change resp="#bithTeam_lr" n="2" isodate="2022-03-29">
             <changeDesc>
                <p>Applied "IDs4Mscz.xsl"</p>
                <p>Delete IDs from Musescore; insert UUID(s) for the document, encoding description and music elements</p>
@@ -515,6 +510,11 @@
                             staff="1"
                             tstamp="1"
                             xml:lang="it">Allegretto.</tempo>
+                     <tempo xml:id="ma1c9d844-442f-4794-a5a8-63a47f396e13"
+                        place="above"
+                        staff="3"
+                        tstamp="1"
+                        xml:lang="it">Allegretto.</tempo>
                      <hairpin xml:id="mf5df2795-4483-493a-a4a9-a8da1eb8b73b"
                               staff="1"
                               tstamp="1"
@@ -4816,7 +4816,7 @@
                           place="below"
                           staff="1"
                           tstamp="1"
-                          tstamp2="0m+3.0000"
+                          tstamp2="0m+2.5000"
                           lform="dashed"
                           extender="true">più cresc.</dir>
                      <slur xml:id="m90c824c8-9cd7-4eb1-bad8-44ba5873ef3f"
@@ -11204,11 +11204,11 @@
                            endid="#m6aacaf79-1ec0-4bdb-a750-23e360b1ab75"
                            curvedir="below"/>
                      <hairpin xml:id="mf79f968e-0980-4b7b-85a2-af61053516df"
-                              staff="4"
+                              staff="3"
                               tstamp="1"
                               tstamp2="1m+1.5000"
                               form="dim"
-                              place="above"/>
+                              place="below"/>
                   </measure>
                   <measure xml:id="me93f6e6b-b308-46cf-8196-73061fd7c433" facs="#d972c58fd-2b2f-4744-8798-07290630458c" n="115">
                      <staff xml:id="m68a189bd-e1a8-4fdd-93a4-5cb7763c247d" n="1">
@@ -12545,7 +12545,7 @@
                             staff="1"
                             tstamp="1"
                             tstamp2="0m+3.0000"
-                            extender="true"
+                            extender="false"
                             lform="dashed">cresc.</dynam>
                      <slur xml:id="me5f732fa-f360-4d48-9bdb-2d78c667b19c"
                            startid="#me73741d4-98c6-4c61-b07b-8dcd71fb9636"
@@ -12556,7 +12556,7 @@
                             staff="2"
                             tstamp="1"
                             tstamp2="0m+3.0000"
-                            extender="true"
+                            extender="false"
                             lform="dashed">cresc.</dynam>
                      <slur xml:id="m165ad7b7-6ad6-4669-98df-02823274a805"
                            startid="#mfdc10a87-c00b-48f3-b056-f43af110a985"
@@ -12571,7 +12571,7 @@
                             staff="3"
                             tstamp="2"
                             tstamp2="0m+2.6667"
-                            extender="true"
+                            extender="false"
                             lform="dashed">cresc.</dynam>
                   </measure>
                   <measure xml:id="mec7100ae-0308-44ee-b646-58fd587db02d" facs="#d33d0dad8-02e9-47e6-b6fb-a88226d8ba12" n="124">
@@ -13108,7 +13108,7 @@
                             staff="1"
                             tstamp="1"
                             tstamp2="0m+3.0000"
-                            extender="true"
+                            extender="false"
                             lform="dashed">dim.</dynam>
                      <slur xml:id="m9d763562-4bec-439d-be6d-a6b5225533a1"
                            startid="#m6eae6542-c1c2-4812-ac76-b9db227b6426"
@@ -13123,7 +13123,7 @@
                             staff="2"
                             tstamp="2"
                             tstamp2="3m+2.6667"
-                            extender="true"
+                            extender="false"
                             lform="dashed">dim.</dynam>
                      <slur xml:id="mdf21e23c-2101-4b42-9d7a-14b0477a0094"
                            startid="#mfef58357-d9be-4a38-b62a-5288809982f4"
@@ -13138,7 +13138,7 @@
                             staff="3"
                             tstamp="2"
                             tstamp2="0m+2.6667"
-                            extender="true"
+                            extender="false"
                             lform="dashed">dim.</dynam>
                   </measure>
                   <sb/>
@@ -14325,8 +14325,22 @@
                             staff="3"
                             tstamp="2"
                             tstamp2="0m+2.6667"
-                            extender="true"
+                            extender="false"
                             lform="dashed">dim.</dynam>
+                     <dynam xml:id="m18db8bc7-3bac-407e-a873-fead44254ef8"
+                        place="below"
+                        staff="1"
+                        tstamp="2"
+                        tstamp2="0m+2.6667"
+                        extender="false"
+                        lform="dashed">dim.</dynam>
+                     <dynam xml:id="m19db8bc7-3bac-407e-a873-fead44254ef8"
+                        place="below"
+                        staff="2"
+                        tstamp="2"
+                        tstamp2="0m+2.6667"
+                        extender="false"
+                        lform="dashed">dim.</dynam>
                   </measure>
                   <measure xml:id="md3134396-ebb7-4a8e-a99e-a764e6ab8940" facs="#d8ec31e4d-801f-4bdc-9a23-e843cf7f147c" n="136">
                      <staff xml:id="mad42aa80-541d-4089-8714-857c67db73c6" n="1">
@@ -15442,7 +15456,7 @@
                             staff="1"
                             tstamp="1"
                             tstamp2="0m+2.5000"
-                            extender="true"
+                            extender="false"
                             lform="dashed">cresc.</dynam>
                      <slur xml:id="m0eb91994-8f9d-4366-887c-7a11c1e4ea25"
                            startid="#md9ea6003-adad-4a1d-86de-858be95130d8"
@@ -15453,7 +15467,7 @@
                             staff="2"
                             tstamp="2"
                             tstamp2="0m+2.5000"
-                            extender="true"
+                            extender="false"
                             lform="dashed">cresc.</dynam>
                      <slur xml:id="me467051f-e02f-42f6-a4de-8bd553a74f1d"
                            startid="#ma852c01f-5f0f-4ddd-9197-5226f61faba7"
@@ -15464,7 +15478,7 @@
                             staff="3"
                             tstamp="2"
                             tstamp2="0m+2.6667"
-                            extender="true"
+                            extender="false"
                             lform="dashed">cresc.</dynam>
                   </measure>
                   <measure xml:id="mfb29d118-b188-456c-baf5-b2353104b17b" facs="#d05620012-d8af-4f6c-8550-374d91e19990" n="144">
@@ -28087,11 +28101,11 @@
                            endid="#mee165fbd-e9f2-4eb4-a0b4-ec43484d6f9e"
                            curvedir="below"/>
                      <hairpin xml:id="m8d77fcd3-fe2b-4c80-b673-676249bc50e8"
-                              staff="4"
+                              staff="3"
                               tstamp="1"
                               tstamp2="1m+2.5000"
                               form="dim"
-                              place="above"/>
+                              place="below"/>
                   </measure>
                   <measure xml:id="mbc7f1dcd-f444-4417-908f-895c929b6c7f" facs="#d56b4c787-8cec-4693-b217-a52688cb14fe" n="238">
                      <staff xml:id="m72bb1c60-d497-4cc7-bd40-8755ace6521b" n="1">
@@ -31139,11 +31153,11 @@
                      <staff xml:id="mc77ae6b1-eb92-41b6-b6d2-ce8a006884c1" n="4">
                         <layer xml:id="m8f37ecdb-d794-476d-8743-a228830f8e81" n="5">
                            <chord xml:id="m8f2d8032-73e7-4770-9519-5da24657940e"
-                                  dur="2"
                                   stem.dir="down">
-                              <note xml:id="mb327ba25-7313-454f-b36a-64420aeaf7b2" oct="3" pname="e"/>
-                              <note xml:id="m253e5729-80c2-42e8-8534-7abaa55dfd93" oct="3" pname="a"/>
-                              <note xml:id="m1639c5db-5d48-4efa-b6f8-115bcefee48a" oct="4" pname="c"/>
+                              <note xml:id="mb327ba25-7313-454f-b36a-64420aeaf7b2" oct="3" pname="e" dur="2"/>
+                              <note xml:id="m253e5729-80c2-42e8-8534-7abaa55dfd93" oct="3" pname="a" dur="2"/>
+                              <note xml:id="m1639c5db-5d48-4efa-b6f8-115bcefee48a" oct="4" pname="c" dur="2"/>
+                              <note xml:id="m1639c6db-5h48-4efa-b6f8-115bcefee48a" oct="2" pname="a" dur="4"/>
                            </chord>
                         </layer>
                         <layer xml:id="mbb6be2ff-13df-4959-80e1-dd6dbdfa252f" n="6">
@@ -31299,6 +31313,27 @@
                               startid="#m3e7f8085-71ca-4447-871b-54e043451965"
                               form="norm"
                               place="above"/>
+                     <tie xml:id="mag5b34ac-7375-4aee-b55b-852249783a12"
+                        startid="#m3b6cc0ce-2ee4-4a1b-8198-c41e3696140a"
+                        endid="#mcd73ce22-08d2-41a1-a1e3-8bd29bbeeb46"/>
+                     <tie xml:id="m9e5b6d77-a6c9-4e1f-82b8-c1776c27a517"
+                        startid="#m3fd3bb59-2856-4f68-8322-28a7bfc3abb1"
+                        endid="#mc4b99412-ed4c-4dc3-a833-414fc44571c3"/>
+                     <tie xml:id="m034b2574-d5fe-49f2-8877-fcba898077a3"
+                        startid="#m401d4005-5c66-42da-8265-770ba78a7b3e"
+                        endid="#m78752655-78f9-405d-8f31-4bcf9b48b502"/>
+                     <tie xml:id="m43e149c9-75d2-4ecb-b822-df304f324065"
+                        startid="#m9d370038-f970-451d-b0c1-b6d1e98aa04b"
+                        endid="#m4b5ccffc-d851-4cd1-bd3c-5daed2ac1280"/>
+                     <tie xml:id="m429dc53a-a0ca-42d9-8801-884dc1a61db2"
+                        startid="#m5524cdb6-1867-46f1-8ea2-4371e064f182"
+                        endid="#mcfc46605-8193-4b05-afa2-31a0c42e2b2c"/>
+                     <tie xml:id="m91e50464-72f3-453c-86e6-2587acc17bb7"
+                        startid="#m1a5efd0f-54c4-43bc-bf76-019b7a1abafc"
+                        endid="#m3861abb2-503b-49a7-80f2-bf8d3f9774d5"/>
+                     <tie xml:id="mf9d25709-9b84-49bb-ab55-6aea88a03cab"
+                        startid="#m7623c04c-460b-4589-a438-6b4745f03b8a"
+                        endid="#m380adf59-6d68-448f-91c3-5ac42a06838e"/>
                   </measure>
                </section>
             </score>
