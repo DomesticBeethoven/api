@@ -249,7 +249,7 @@
                         <layer xml:id="m75692447-5029-4020-b437-ac3b57276cb8" n="1">
                            <chord xml:id="m5d327c5f-498e-4dd0-a730-41e0c7f2e7d4"
                               dur="2"
-                              stem.dir="up">
+                              stem.dir="down">
                               <note xml:id="m5cf41041-ca9f-4a66-985d-b937136245e9" oct="4" pname="e"/>
                               <note xml:id="m14554321-8948-4b3f-9e57-ca02efcc0bb8" oct="4" pname="a"/>
                               <note xml:id="m723c9bae-df6e-4714-bb4f-1c219072eeb3" oct="5" pname="c"/>
