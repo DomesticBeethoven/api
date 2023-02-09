@@ -75,7 +75,7 @@ if(matches($exist:path,'/[\da-zA-Z_\.-]+/measures.json')) then (
 
 (: From BEETHOVENS WERKSTATT :)
 (: retrieves a IIIF annotation list for the zones on a given page :)
-(:if(matches($exist:path,'/iiif/document/[\da-zA-Z-_\.]+/list/[\da-zA-Z-_\.]+_zones$')) then (
+(:if(matches($exist:path,'/iiif/document/[\da-zA-Z_\.-]+/list/[\da-zA-Z_\.-]+_zones$')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
@@ -86,7 +86,7 @@ if(matches($exist:path,'/[\da-zA-Z_\.-]+/measures.json')) then (
         </forward>
     </dispatch>:)
 
-if(matches($exist:path,'/iiif/document/[\da-zA-Z_\.-]+/list/[\da-zA-Z-_\.]+_zones$')) then (
+if(matches($exist:path,'/iiif/document/[\da-zA-Z_\.-]+/list/[\da-zA-Z_\.-]+_zones$')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
