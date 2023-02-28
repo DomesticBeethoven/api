@@ -3,7 +3,7 @@ xquery version "3.0";
 
 (: Variable names still need to be changed in controller.xql - all camel case :)
 
-(: 
+(:
 
 ENDPOINTS
 
@@ -42,7 +42,7 @@ if(ends-with($exist:path,'/iiif/documents.json')) then (
 
 
 (: retrieves a IIIF MANIFEST for a given document - manifest.json = get-manifest.json.xql :)
-if(matches($exist:path,'/iiif/document/[\da-zA-Z-_\.]+/manifest.json')) then (
+if(matches($exist:path,'/iiif/document/[\da-zA-Z_\.-]+/manifest.json')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
@@ -59,14 +59,14 @@ if(matches($exist:path,'/iiif/document/[\da-zA-Z-_\.]+/manifest.json')) then (
 
 (: MAKE SURE this regex works for all possibilites (e.g. umlauts?) :)
 
-if(matches($exist:path,'/[\da-zA-Z-_\.]+/measures.json')) then (
+if(matches($exist:path,'/[\da-zA-Z_\.-]+/measures.json')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <forward url="{$exist:controller}/resources/xql/get-measures.xql">
-  
+
          (\:   pass in the UUID of the document passed in the URI :\)
-  
+
             <add-parameter name="document.id" value="{tokenize($exist:path,'/')[last() - 1]}"/>
 
         </forward>
@@ -75,7 +75,7 @@ if(matches($exist:path,'/[\da-zA-Z-_\.]+/measures.json')) then (
 
 (: From BEETHOVENS WERKSTATT :)
 (: retrieves a IIIF annotation list for the zones on a given page :)
-(:if(matches($exist:path,'/iiif/document/[\da-zA-Z-_\.]+/list/[\da-zA-Z-_\.]+_zones$')) then (
+(:if(matches($exist:path,'/iiif/document/[\da-zA-Z_\.-]+/list/[\da-zA-Z_\.-]+_zones$')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
@@ -85,8 +85,8 @@ if(matches($exist:path,'/[\da-zA-Z-_\.]+/measures.json')) then (
           <add-parameter name="canvas.id" value="{substring-before(tokenize($exist:path,'/')[last()],'_zones')}"/>
         </forward>
     </dispatch>:)
-    
-if(matches($exist:path,'/iiif/document/[\da-zA-Z-_\.]+/list/[\da-zA-Z-_\.]+_zones$')) then (
+
+if(matches($exist:path,'/iiif/document/[\da-zA-Z_\.-]+/list/[\da-zA-Z_\.-]+_zones$')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
@@ -97,21 +97,21 @@ if(matches($exist:path,'/iiif/document/[\da-zA-Z-_\.]+/list/[\da-zA-Z-_\.]+_zone
         </forward>
     </dispatch>
 
-) else 
+) else
 
 (: endpoint for ANNOTATIONS ...<file.id>/annotations.json   - get-annotatins.xql :)
 (: retrieves measure data and facs zones for ALL measures in a file :)
 
 (: MAKE SURE this regex works for all possibilites (e.g. umlauts?) :)
 
-if(matches($exist:path,'/[\da-zA-Z-_\.]+/annotations.json')) then (
+if(matches($exist:path,'/[\da-zA-Z_\.-]+/annotations.json')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <forward url="{$exist:controller}/resources/xql/get-annotations.xql">
-  
+
          (\:   pass in the UUID of the document passed in the URI :\)
-  
+
             <add-parameter name="document.id" value="{tokenize($exist:path,'/')[last() - 1]}"/>
 
         </forward>
@@ -125,9 +125,9 @@ if(matches($exist:path,'/annotlist.json')) then (
 
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <forward url="{$exist:controller}/resources/xql/get-annotation-list.xql">
-  
+
          (\:   pass in the UUID of the document passed in the URI :\)
-  
+
             <add-parameter name="document.id" value="{tokenize($exist:path,'/')[last() - 1]}"/>
 
          </forward>
@@ -136,7 +136,7 @@ if(matches($exist:path,'/annotlist.json')) then (
 ) else
 
 
-(: endpoint for EMA MEASURES 
+(: endpoint for EMA MEASURES
    .../<filename>/<range>/measures.json = get-measure-range.xql :)
 
 if(matches($exist:path,'/range.json')) then (
@@ -154,7 +154,7 @@ if(matches($exist:path,'/range.json')) then (
 ) else
 
 
-(: endpoint for EMA: Measures and Staves 
+(: endpoint for EMA: Measures and Staves
    .../<filename>/<EMAmeasures>/<EMAstaves>/staves.json = get-ema-staves.xql :)
 if(matches($exist:path,'/staves.json')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
@@ -168,10 +168,10 @@ if(matches($exist:path,'/staves.json')) then (
 
          </forward>
     </dispatch>
- 
+
 ) else
 
-(: endpoint for COMBINED ZONES 
+(: endpoint for COMBINED ZONES
    .../<filename>/<range>/zones.json = get-combined-zones.xql :)
 
 if(matches($exist:path,'/zones.json')) then (
@@ -191,14 +191,14 @@ if(matches($exist:path,'/zones.json')) then (
 (: endpoint for nq linked open data :)
 
 
-if(matches($exist:path,'/lod/[\da-zA-Z-_\.]+.nq')) then (
+if(matches($exist:path,'/lod/[\da-zA-Z_\.-]+.nq')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <forward url="{$exist:controller}/resources/xql/lod/get-nq.xql">
-  
+
          (\:   pass in the UUID of the document passed in the URI :\)
-  
+
             <add-parameter name="document.id" value="{substring-before(tokenize($exist:path,'/')[last()],'.nq')}"/>
 
         </forward>
@@ -206,14 +206,14 @@ if(matches($exist:path,'/lod/[\da-zA-Z-_\.]+.nq')) then (
 ) else
 
 (: endpoint for complete files :)
-if(matches($exist:path,'/file/[\da-zA-Z-_\.]+.mei')) then (
+if(matches($exist:path,'/file/[\da-zA-Z_\.-]+.mei')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),
 
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <forward url="{$exist:controller}/resources/xql/file/get-file.xql">
-  
+
          (\:   pass in the UUID of the document passed in the URI :\)
-  
+
             <add-parameter name="document.id" value="{substring-before(tokenize($exist:path,'/')[last()],'.mei')}"/>
 
         </forward>
