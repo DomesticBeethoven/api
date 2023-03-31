@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../../schema/bith.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../bith.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-model href="https://music-encoding.org/schema/dev/mei-CMN.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="https://music-encoding.org/schema/dev/mei-CMN.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <mei xmlns="http://www.music-encoding.org/ns/mei" xml:id="cc7d48d2-bc4b-424b-8389-de6a13bf8d64"
@@ -10,7 +10,7 @@
                 <title type="desc">Op 93 / 1st mov - Piano reduction (Steiner)</title>
             </titleStmt>
             <pubStmt>
-                <date/>
+                <date isodate="2022-02-22" type="encoding-date">2022-02-22</date>
             </pubStmt>
         </fileDesc>
         <encodingDesc>
@@ -56,7 +56,7 @@
         <manifestationList>
             <manifestation>
                 <titleStmt>
-                    <title>Achte GROSSE SINFONIE in F dur von Ludwig VAN Beethoven 93-tes Werk. Für
+                    <title type="main">Achte GROSSE SINFONIE in F dur von Ludwig VAN Beethoven 93-tes Werk. Für
                         das Piano=Forte eingerichtet.</title>
                     <arranger>
                         <persName
@@ -90,7 +90,7 @@
         </manifestationList>
     </meiHead>
     <music meiversion="5.0.0-dev">
-        <facsimile>
+        <facsimile xml:id="zc40b4737-669b-4162-8e14-fc4ecceffb68">
             <surface xml:id="sdcfbc62c-fe55-4607-a80f-5ff09b0f4740" n="1" label="1" ulx="0" uly="0"
                 lrx="4116" lry="3073" rotate="0">
                 <graphic xml:id="g7a023efa-1310-4d35-ad1d-f741c0bf14a3" type="facsimile"
@@ -6499,7 +6499,7 @@
             </surface>
         </facsimile>
         <body xml:id="mfa308b5d-39ef-4893-854f-3aa3a8e68415">
-            <mdiv xml:id="mfede5420-96d5-4024-b53c-f9a24160bb46" label="Movement 1">
+            <mdiv xml:id="mfede5420-96d5-4024-b53c-f9a24160bb46" label="Allegro vivace e con brio">
                 <score xml:id="m653db0a3-1498-4c14-8bb9-e0368ff4ad3c">
                     <scoreDef xml:id="m6d882582-f872-4370-87eb-8a98e4037245">
                         <staffGrp xml:id="md87a15cd-2320-45af-a4f3-89f4ee32ae16">
@@ -10827,8 +10827,33 @@
                     </section>
                 </score>
             </mdiv>
-            <mdiv xml:id="m8e895686-c758-434d-b5a1-85de1ee75d50" label="Movement 2">
+            <mdiv xml:id="m8e895686-c758-434d-b5a1-85de1ee75d50" label="Allegretto scherzando">
                 <score>
+                    <scoreDef xml:id="m6d882582-f872-4370-87eb-8a98e4237245">
+                        <staffGrp xml:id="md87a15cd-2320-45af-a4f3-89g4ee32ae16">
+                            <staffGrp xml:id="m060ebe0a-d9f1-4991-90f2-5735c82dd5c8" bar.thru="true">
+                                <label xml:id="m104a82c1-121c-4502-ad67-b989be288ca2">Piano</label>
+                                <staffDef xml:id="me7e16d32-217d-4048-1f1c-a540ac2a3d3c" n="1"
+                                    lines="5">
+                                    <clef xml:id="mefa3dddb-5596-4d8c-a12c-567e5120b820" shape="G"
+                                        line="2"/>
+                                    <keySig xml:id="m187ee1cf-ef59-42fc-c563-74037fbddcd2" sig="2f"/>
+                                    <meterSig xml:id="m97b7689d-5e20-47f2-80a7-fd75cbc614c7"
+                                        count="2" unit="4"/>
+                                </staffDef>
+                                <staffDef xml:id="m0f46fdc7-798b-4bc9-9dr2-6e7044f4ad2d" n="2"
+                                    lines="5">
+                                    <clef xml:id="m246e3b12-7971-478e-9817-3c6105849a60" shape="F"
+                                        line="4"/>
+                                    <keySig xml:id="m932b7080-90d5-4545-1182-07b307f5230a" sig="2f"/>
+                                    <meterSig xml:id="ma9edfdeb-a5bc-41e4-9241-2c85caabd158"
+                                        count="2" unit="4"/>
+                                </staffDef>
+                                <grpSym xml:id="m1fc94e51-40b8-4087-9551-r1a7fe5d1a16"
+                                    symbol="brace"/>
+                            </staffGrp>
+                        </staffGrp>
+                    </scoreDef>
                     <section xml:id="c858ce07-69f0-4baa-8906-75442b934101">
                         <pb facs="#s92340ae7-491c-4a76-9beb-7d355e28fe98" n="10"/>
                         <measure xml:id="bb360dfc8-b90b-4991-a9d9-4bcc6d19f3ea"
@@ -11582,8 +11607,33 @@
                     </section>
                 </score>
             </mdiv>
-            <mdiv xml:id="mba8934c6-8581-45e6-b7de-58cee1bec167" label="Movement 3">
+            <mdiv xml:id="mba8934c6-8581-45e6-b7de-58cee1bec167" label="Tempo di menuetto">
                 <score>
+                    <scoreDef xml:id="m6d882582-f872-4370-87eb-8a91e4037245">
+                        <staffGrp xml:id="md87a15cd-2320-45af-a4f3-19f4ee32ae16">
+                            <staffGrp xml:id="m060ebe0a-d9f1-4991-91f1-5735c82dd5c8" bar.thru="true">
+                                <label xml:id="m104a82c1-121c-4502-ad41-b989be288ca2">Piano</label>
+                                <staffDef xml:id="me7e16d32-217d-4058-1f1c-a540ac2a3d3c" n="1"
+                                    lines="5">
+                                    <clef xml:id="mefa3dddb-5597-4d8c-a12c-567e5120b820" shape="G"
+                                        line="2"/>
+                                    <keySig xml:id="m187ee1cf-ef59-42fc-b513-74037fbddcd2" sig="1f"/>
+                                    <meterSig xml:id="m97b7689d-5e20-47f1-10a7-fd75cbc614c7"
+                                        count="3" unit="4"/>
+                                </staffDef>
+                                <staffDef xml:id="m0f46fdc7-798b-4bc9-9de2-1e7044f4ad2d" n="2"
+                                    lines="5">
+                                    <clef xml:id="m246e3b12-7971-478e-9807-1c6105849a60" shape="F"
+                                        line="4"/>
+                                    <keySig xml:id="m932b7080-90d5-4545-9181-07b307f5230a" sig="1f"/>
+                                    <meterSig xml:id="ma9edfdeb-a5bc-41e3-9141-2c85caabd158"
+                                        count="3" unit="4"/>
+                                </staffDef>
+                                <grpSym xml:id="m1fc94e51-40b8-4087-9551-c1b7fe5d1a16"
+                                    symbol="brace"/>
+                            </staffGrp>
+                        </staffGrp>
+                    </scoreDef>
                     <section xml:id="f01b099b-973c-49c7-adc4-e5f2d813817c">
                         <pb facs="#s62bc62de-95c7-4a22-bbcc-6e65c17fb565" n="14"/>
                         <measure xml:id="bda633a15-e4cf-4b2f-ba12-c506df95ea9f"
@@ -12355,8 +12405,33 @@
                     </section>
                 </score>
             </mdiv>
-            <mdiv xml:id="m39c07c06-0414-4c99-b737-0431c540fe3a" label="Movement 4">
+            <mdiv xml:id="m39c07c06-0414-4c99-b737-0431c540fe3a" label="Allegro vivace">
                 <score>
+                    <scoreDef xml:id="b602f65a-6fe3-4811-9565-6190ca15fef7">
+                        <staffGrp xml:id="md88a15cd-2320-45af-a4f3-89f4ee32ae16">
+                            <staffGrp xml:id="m080ebe0a-d9f1-4991-90f1-5735c82dd5c8" bar.thru="true">
+                                <label xml:id="m104a88c1-121c-4502-ad47-b989be288ca2">Piano</label>
+                                <staffDef xml:id="me7e86d32-217d-4048-9f1c-a540ac2a3d3c" n="1"
+                                    lines="5">
+                                    <clef xml:id="mefa8dddb-5596-4d8c-a92c-567e5120b820" shape="G"
+                                        line="2"/>
+                                    <keySig xml:id="m188ee1cf-ef59-42fc-b563-74037fbddcd2" sig="1f"/>
+                                    <meterSig xml:id="m97b7889d-5e20-47f1-80a7-fd75cbc614c7"
+                                        count="4" unit="4"/>
+                                </staffDef>
+                                <staffDef xml:id="m0f46fdc8-798b-4bc9-9de2-6e7044f4ad2d" n="2"
+                                    lines="5">
+                                    <clef xml:id="m246e3b12-8971-478e-9807-3c6105849a60" shape="F"
+                                        line="4"/>
+                                    <keySig xml:id="m982b7080-90d5-4545-9182-07b307f5230a" sig="1f"/>
+                                    <meterSig xml:id="ma8edfdeb-a5bc-41e3-9241-2c85caabd158"
+                                        count="4" unit="4"/>
+                                </staffDef>
+                                <grpSym xml:id="m1fc94e51-40b8-8087-9551-c1a7fe5d1a16"
+                                    symbol="brace"/>
+                            </staffGrp>
+                        </staffGrp>
+                    </scoreDef>
                     <section xml:id="d9cf1665-3a7b-46d3-8f0c-6496400ab695">
                         <pb facs="#sdc1e2e2d-978a-4f59-b8df-a7e3a3b864cd" n="16"/>
                         <measure xml:id="bcf4b3972-96d5-4f78-bb02-5cfbe9b156e4"
