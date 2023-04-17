@@ -31,8 +31,7 @@
                 <title type="uniform" xml:lang="de">Sinfonien, Nr. 8, op. 93 (F-Dur)</title>
                 <title type="abbreviated" xml:lang="en">8th Symphony</title>
                 <composer>
-                    <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van
-                        Beethoven</persName>
+                    <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
                 </composer>
                 <creation>
                     <date isodate="1813"/><!-- startdate="1812" enddate="1813" -->
