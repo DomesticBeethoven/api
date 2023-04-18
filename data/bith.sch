@@ -11,22 +11,14 @@
 
    <sch:pattern id="check-mei-id">
       <sch:rule context="mei:mei">
-         <sch:assert test="@xml:id">An MEI file must have an id</sch:assert>
-      </sch:rule>
-   </sch:pattern>
-   <sch:pattern id="check-facsimile-id">
-      <sch:rule context="mei:facsimile">
-         <sch:assert test="@xml:id">A facsimile must have an id</sch:assert>
+         <sch:assert test="@xml:id">An mei file must have an id</sch:assert>
       </sch:rule>
    </sch:pattern>
    <sch:pattern id="check-title">
       <sch:rule context="mei:work">
-         <sch:assert test="mei:title[@type='uniform']/text()">A work must have a title with @type="uniform"</sch:assert>
-         <sch:assert test="mei:title[@type='abbreviated']/text()">A work must have a title with @type="abbreviated"</sch:assert>
+         <sch:assert  test="mei:title">A work must have a title</sch:assert>
       </sch:rule>
    </sch:pattern>
-   
-   
    <sch:pattern id="check-page-layout-attributes">
       <sch:rule context="mei:rend">
          <sch:report role="warning" test="@fontfam">fontfamily unnecessary and should be deleted</sch:report>
@@ -60,20 +52,20 @@
    
    <sch:pattern id="check_manifestation">
       <sch:rule context="mei:manifestation">
-         <sch:assert test="./mei:titleStmt/mei:title[@type='main']/text() and string-length(./mei:titleStmt/mei:title[@type='main']/text()) gt 0">
-            Every manifestation should have a title with @type="main".
+         <sch:assert test="./mei:titleStmt/mei:title/text() and string-length(./mei:titleStmt/mei:title/text()) gt 0">
+            Every manifestation should have a title.
          </sch:assert>
          <sch:assert test="./mei:pubStmt">
             Every manifestation needs a publication statement.
          </sch:assert>
-         <sch:assert test="./mei:pubStmt/mei:pubPlace/mei:geogName[@auth.uri or text()]">
-            Every manifestation needs a publication place, expressed as a geogName, which needs either @auth.uri or text() content.
+         <sch:assert test="./mei:pubStmt/mei:pubPlace/mei:geogName">
+            Every manifestation needs a publication place, expressed as a geogName.
          </sch:assert>
          <sch:assert test="./mei:pubStmt/mei:date">
             Every manifestation needs a publication date.
          </sch:assert>
-         <sch:assert test="./mei:pubStmt/mei:publisher[mei:corpName[@auth.uri or text()] or mei:persName[@auth.uri or text()]]">
-            Every manifestation should have a publisher with a corpName, which needs either @auth.uri or text() content.
+         <sch:assert test="./mei:pubStmt/mei:publisher/mei:corpName">
+            Every manifestation should have a publisher with a corpName.
          </sch:assert>
          <sch:assert test=".//mei:item">
             Every manifestations needs at least one item.
@@ -171,8 +163,8 @@
    
    <sch:pattern id="check_dates">
       <sch:rule context="mei:date">
-         <sch:assert test="@isodate or @startdate or @enddate or @notafter or @notbefore">
-            A date needs either an @isodate, @startdate, @enddate, @notafter, or @notbefore.
+         <sch:assert test="@isodate or (@startdate and @enddate)">
+            A date needs either an @isodate or a @startdate and an @enddate.
          </sch:assert>         
       </sch:rule>
    </sch:pattern>
@@ -181,17 +173,6 @@
       <sch:rule context="@auth.uri">
          <sch:assert test="string-length(normalize-space(.)) gt 0">
             Every reference to an authority needs to be longer than zero.
-         </sch:assert>
-      </sch:rule>
-   </sch:pattern>
-   
-   <sch:pattern id="check_score">
-      <sch:rule context="mei:score">
-         <sch:assert test="local-name(child::mei:*[1]) = 'scoreDef'">
-            Every score needs to have a scoreDef as first child element. 
-         </sch:assert>
-         <sch:assert test="not(.//mei:measure[not(.//mei:layer)])">
-            Measures should be encoded down to the layer level, for easier display with our tooling. There's an XSLT that will add those, called generateEmptyStaves.xsl.
          </sch:assert>
       </sch:rule>
    </sch:pattern>
