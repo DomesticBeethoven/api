@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../bith.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="https://music-encoding.org/schema/dev/mei-all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="https://music-encoding.org/schema/dev/mei-all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../custom-bith.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../custom-bith.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <mei xmlns="http://www.music-encoding.org/ns/mei"
      xml:id="dbe44e4f-efed-4bcd-a3b5-a1cd841f91a4"
      meiversion="5.0.0-dev">
@@ -9,29 +8,87 @@
       <fileDesc>
          <titleStmt>
             <title type="desc">Op 92 - OA Part (Steiner)</title>
+            <composer>Ludwig van Beethoven</composer>
             <respStmt>
-               <persName xml:id="bithTeam_lr" role="mrk trc">Lisa Rosendahl</persName>
+               <resp>Transcribed and encoded by</resp>
+               <persName sameas="#bithTeam_lr" role="mrk trc"/>
             </respStmt>
          </titleStmt>
          <pubStmt>
-            <date isodate="2021-12-14" type="encoding-date">2021-12-14</date>
+            <date isodate="2023"/>
+            <availability>
+               <accessRestrict auth.uri="http://creativecommons.org/licenses/by-sa/4.0/"> Creative
+                  Commons Attribution-ShareAlike 4.0 International </accessRestrict>
+            </availability>
          </pubStmt>
+         <seriesStmt>
+            <title>Beethoven in the House Encodings</title>
+            <respStmt>
+               <resp>Project Team</resp>
+               <persName xml:id="bithTeam_ch" role="res" startdate="2021-10" enddate="2021-11"
+                  >Christin Heitmann</persName>
+               <persName xml:id="bithTeam_dl" role="res"
+                  auth.uri="https://orcid.org/0000-0003-4151-0499">David Lewis</persName>
+               <persName xml:id="bithTeam_lr" role="res"
+                  auth.uri="https://orcid.org/0000-0002-4826-4553">Lisa Rosendahl</persName>
+               <persName xml:id="bithTeam_ms" role="res"
+                  auth.uri="https://orcid.org/0000-0002-4635-7684">Mark Saccomano</persName>
+               <persName xml:id="bithTeam_es" role="res"
+                  auth.uri="https://orcid.org/0009-0004-0272-8377">Elisabete
+                  Shibata</persName>
+               <persName xml:id="bithTeam_ah" role="led"
+                  auth.uri="https://orcid.org/0000-0003-2663-0003">Andrew Hankinson</persName>
+               <persName xml:id="bithTeam_jk" role="led"
+                  auth.uri="https://orcid.org/0000-0003-4891-260X">Johannes Kepper</persName>
+               <persName xml:id="bithTeam_kp" role="led"
+                  auth.uri="https://orcid.org/0000-0002-1668-6540">Kevin Page</persName>
+               <persName xml:id="bithTeam_cs" role="led">Christine Siegert</persName>
+               <persName xml:id="bithTeam_fs" role="ctb" startdate="2020-10" enddate="2020-12"
+                  >Fabian Schmidt</persName>
+            </respStmt>
+            <funder>
+               <identifier type="projectNumber">429039809</identifier>
+               <corpName auth.uri="viaf-of-dfg">Deutsche Forschungsgemeinschaft
+                  (DFG)</corpName>
+            </funder>
+            <funder>
+               <identifier type="projectNumber">AH/T01279X/1</identifier>
+               <corpName auth.uri="viaf-of-ahrc">Arts and Humanities Research Council (AHRC)</corpName>
+            </funder>
+         </seriesStmt>
+         <sourceDesc>
+            <source sameas="#c03d8db1-7108-4b9c-87eb-8f59d4fb2428"/>
+         </sourceDesc>
       </fileDesc>
       <encodingDesc>
-         <appInfo xml:id="m82213907-7cda-4e57-afcf-020b1d491b54">
-            <application xml:id="m2f0f5f88-3822-4c3f-80b4-66ad9cac6726">
-               <name xml:id="m532d3537-092c-417c-8068-caa5eeae82b9">MuseScore</name>
+         <appInfo>
+            <application version="3.6.2.548020600">
+               <name>MuseScore</name>
             </application>
-            <application xml:id="med5f7a16-0fcc-4478-b32f-985b9768b167"
-                         isodate="2021-12-14T16:22:23"
-                         version="3.8.0-dev-f5aa0fe">
-               <name xml:id="m4cfe795d-9cf8-43b0-884a-65e46f5ecf91">Verovio</name>
-               <p xml:id="mf90f3ffd-71fa-460d-b29d-5acb83d9a57f">Transcoded from MusicXML</p>
+            <application version="3.8.1-1af3b41">
+               <name>Verovio</name>
             </application>
          </appInfo>
-         <samplingDecl xml:id="c93e25b5-824c-4d6b-82e5-3664260c963c">
-            <p>contains only the second movement</p>
+         <editorialDecl>
+            <interpretation>
+               <p>Visual prioritized, not overly concerned with anything that needs
+                  interpretation.</p>
+            </interpretation>
+            <correction>
+               <p>No corrections</p>
+            </correction>
+            <normalization>
+               <p>No normalizations, although not a diplomatic transcription</p>
+            </normalization>
+         </editorialDecl>
+         <projectDesc>
+            <head> Beethoven in the House </head>
+            <p>#text</p>
+         </projectDesc>
+         <samplingDecl>
+            <p>#text</p>
          </samplingDecl>
+         <domainsDecl anl="false" ges="true" vis="true"/>
       </encodingDesc>
       <workList>
          <work auth.uri="http://d-nb.info/gnd/300016417">
@@ -42,7 +99,7 @@
                <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
             </composer>
             <creation>
-               <date enddate="1816"/> <!-- startdate="1811" enddate="1812", changed temporarily for the BitH-Annotator-->
+               <date isodate="1816"/> <!-- startdate="1811" enddate="1812", changed temporarily for the BitH-Annotator-->
             </creation>
             <expressionList>
                <expression xml:id="b9ee574a-7859-11ec-90d6-0242ac120003">
@@ -52,9 +109,6 @@
                   <composer>
                      <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
                   </composer>
-                  <arranger>
-                     <persName>There is no arranger.</persName> <!-- temporarily needed for the BitH-Annotator -->
-                  </arranger>
                   <perfMedium>
                      <perfResList>
                         <perfRes auth.uri="http://id.loc.gov/authorities/performanceMediums/mp2013015516"/>
@@ -65,7 +119,7 @@
          </work>
       </workList>
       <manifestationList>
-         <manifestation>
+         <manifestation xml:id="c03d8db1-7108-4b9c-87eb-8f59d4fb2428">
             <titleStmt>
                <title type="main">Siebente Grosse Sinfonie in A dur von LUDWIG VAN BEETHOVEN 92-tes Werk. Vollständige Partitur.</title>
             </titleStmt>
@@ -91,30 +145,10 @@
             </relationList>
          </manifestation>
       </manifestationList>
-      <revisionDesc>
-         <change n="1" isodate="2022-01-18" resp="#bithTeam_lr">
-            <changeDesc>
-               <p/>
-            </changeDesc>
-         </change>
-         <change resp="#bithTeam_lr" n="2" isodate="2022-02-22">
-            <changeDesc>
-               <p>Applied "cleanMscz.xsl"</p>
-               <p>Remove unwanted attributes and mistakes from MuseScore export; add schema</p>
-            </changeDesc>
-         </change>
-         <change resp="#bithTeam_lr" n="3" isodate="2022-02-22">
-            <changeDesc>
-               <p>Applied "IDs4Mscz.xsl"</p>
-               <p>Delete IDs from Musescore; insert UUID(s) for the document, encoding description and music elements</p>
-            </changeDesc>
-         </change>
-      </revisionDesc>
    </meiHead>
    <music meiversion="5.0.0-dev">
       <body xml:id="m1a22b672-a517-4dd3-a19f-3439f967b9d0">
          <mdiv xml:id="m0df6d703-0bd7-49a3-a62b-119ab9736693"
-               decls="#c93e25b5-824c-4d6b-82e5-3664260c963c"
                label="Allegretto">
             <score xml:id="mfbb30aeb-d7ad-46cf-a9a2-3d830aee75a4">
                <scoreDef xml:id="mb0a700e6-438e-42b3-973a-5666e572c503">
@@ -314,7 +348,7 @@
                             place="above"
                             staff="1"
                             tstamp="1"
-                            xml:lang="it">Allegretto<lb xml:id="m77454139-b9e5-4060-8072-f5818f2feadb"/>.</tempo>
+                            xml:lang="it">Allegretto.</tempo>
                      <dynam xml:id="m227535af-fbba-4f72-82c3-4c42ecde19d9"
                             place="below"
                             staff="2"

@@ -1,29 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="https://music-encoding.org/schema/dev/mei-all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="https://music-encoding.org/schema/dev/mei-all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="../bith.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../custom-bith.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../custom-bith.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <mei xmlns="http://www.music-encoding.org/ns/mei" xml:id="t0da96e98-2e50-4d64-9ab7-8a195bdd7d16">
     <meiHead>
         <fileDesc>
             <titleStmt>
-                <title type="desc">Gesang der Peri's</title>
-                <title type="alternative">Silcher vocal arrangement</title>
-                <respStmt>
-                    <persName xml:id="bithTeam_lr" role="mrk crr">Lisa Rosendahl</persName>
-                </respStmt>
+               <title type="desc">Op 92 / 2nd mov - Vocal (Zumsteeg)</title>
+               <title type="alternative">Gesang der Peri's</title>
+               <composer>Ludwig van Beethoven</composer>
+               <arranger>Friedrich Silcher</arranger>
+               <respStmt>
+                  <resp>Transcribed and encoded by</resp>
+                  <persName sameas="#bithTeam_lr" role="mrk trc"/>
+               </respStmt>
             </titleStmt>
-            <pubStmt>
-                <date isodate="2022-09-26" type="encoding-date">2022-09-26</date>
-            </pubStmt>
+           <pubStmt>
+              <date isodate="2023"/>
+              <availability>
+                 <accessRestrict auth.uri="http://creativecommons.org/licenses/by-sa/4.0/"> Creative
+                    Commons Attribution-ShareAlike 4.0 International </accessRestrict>
+              </availability>
+           </pubStmt>
+           <seriesStmt>
+              <title>Beethoven in the House Encodings</title>
+              <respStmt>
+                 <resp>Project Team</resp>
+                 <persName xml:id="bithTeam_ch" role="res" startdate="2021-10" enddate="2021-11"
+                    >Christin Heitmann</persName>
+                 <persName xml:id="bithTeam_dl" role="res"
+                    auth.uri="https://orcid.org/0000-0003-4151-0499">David Lewis</persName>
+                 <persName xml:id="bithTeam_lr" role="res"
+                    auth.uri="https://orcid.org/0000-0002-4826-4553">Lisa Rosendahl</persName>
+                 <persName xml:id="bithTeam_ms" role="res"
+                    auth.uri="https://orcid.org/0000-0002-4635-7684">Mark Saccomano</persName>
+                 <persName xml:id="bithTeam_es" role="res"
+                    auth.uri="https://orcid.org/0009-0004-0272-8377">Elisabete
+                    Shibata</persName>
+                 <persName xml:id="bithTeam_ah" role="led"
+                    auth.uri="https://orcid.org/0000-0003-2663-0003">Andrew Hankinson</persName>
+                 <persName xml:id="bithTeam_jk" role="led"
+                    auth.uri="https://orcid.org/0000-0003-4891-260X">Johannes Kepper</persName>
+                 <persName xml:id="bithTeam_kp" role="led"
+                    auth.uri="https://orcid.org/0000-0002-1668-6540">Kevin Page</persName>
+                 <persName xml:id="bithTeam_cs" role="led">Christine Siegert</persName>
+                 <persName xml:id="bithTeam_fs" role="ctb" startdate="2020-10" enddate="2020-12"
+                    >Fabian Schmidt</persName>
+              </respStmt>
+              <funder>
+                 <identifier type="projectNumber">429039809</identifier>
+                 <corpName auth.uri="viaf-of-dfg">Deutsche Forschungsgemeinschaft
+                    (DFG)</corpName>
+              </funder>
+              <funder>
+                 <identifier type="projectNumber">AH/T01279X/1</identifier>
+                 <corpName auth.uri="viaf-of-ahrc">Arts and Humanities Research Council
+                    (AHRC)</corpName>
+              </funder>
+           </seriesStmt>
+           <sourceDesc>
+              <source sameas="#d2d76430-b064-4407-a617-c72e61898a0e"/>
+           </sourceDesc>
         </fileDesc>
-        <encodingDesc>
-            <appInfo>
-                <application xml:id="application_4d1bf602-5f38-4e04-bbb3-69333df25faa" isodate="2022-04-07">
-                    <name>Vertaktoid v2.0.2</name>
-                    <ptr target="https://github.com/cemfi/vertaktoid/releases/tag/v2.0.2"/>
-                </application>
-            </appInfo>
-        </encodingDesc>
+       <encodingDesc>
+          <appInfo>
+             <application version="3.6.2.548020600">
+                <name>MuseScore</name>
+             </application>
+             <application version="3.8.1-1af3b41">
+                <name>Verovio</name>
+             </application>
+             <application version="2.0.2">
+                <name>Vertaktoid</name>
+             </application>
+          </appInfo>
+          <editorialDecl>
+             <interpretation>
+                <p>Visual prioritized, not overly concerned with anything that needs
+                   interpretation.</p>
+             </interpretation>
+             <correction>
+                <p>No corrections</p>
+             </correction>
+             <normalization>
+                <p>No normalizations, although not a diplomatic transcription</p>
+             </normalization>
+          </editorialDecl>
+          <projectDesc>
+             <head> Beethoven in the House </head>
+             <p>#text</p>
+          </projectDesc>
+          <domainsDecl anl="false" ges="true" vis="true"/>
+       </encodingDesc>
         <workList>
             <work auth.uri="http://d-nb.info/gnd/300016417">
                 <identifier type="opusNumber">92</identifier>
@@ -33,13 +100,13 @@
                     <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
                 </composer>
                 <creation>
-                    <date enddate="1816"/>
+                   <date isodate="1816"/><!-- startdate="1811" enddate="1812", changed temporarily for the BitH-Annotator-->
                 </creation>
                 <expressionList>
                     <expression xml:id="td59ceeaf-f763-4066-9e78-1d80d3e7f63f">
                         <identifier type="genre"
                             auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q7190079"/>
-                        <title type="desc">Silcher vocal arrangement</title>
+                       <title type="desc">Op 92 / 2nd mov - Vocal (Zumsteeg)</title>
                         <arranger>
                             <persName auth.uri="http://d-nb.info/gnd/118614339">Friedrich Silcher</persName>
                         </arranger>
@@ -54,7 +121,7 @@
             </work>
         </workList>
         <manifestationList>
-            <manifestation>
+           <manifestation xml:id="d2d76430-b064-4407-a617-c72e61898a0e">
                 <titleStmt>
                     <title type="main">Gesang der Peri's</title>
                 </titleStmt>
@@ -64,7 +131,7 @@
                     </pubPlace>
                     <date notbefore="1871"/>
                     <publisher>
-                        <persName auth.uri="http://d-nb.info/gnd/1064327222">G. A. Zumsteeg</persName>
+                        <corpName auth.uri="http://d-nb.info/gnd/1064327222">G. A. Zumsteeg</corpName>
                     </publisher>
                 </pubStmt>
                 <itemList>
@@ -80,20 +147,8 @@
                 </relationList>
             </manifestation>
         </manifestationList>
-        <revisionDesc>
-            <change resp="#bithTeam_ms #bithTeam_jk" n="1" isodate="2022-09-26">
-                <changeDesc>
-                    <p>added metadata</p>
-                </changeDesc>
-            </change>
-            <change resp="#bithTeam_ms" n="2" isodate="2022-09-27">
-                <changeDesc>
-                    <p>replace music element with older version containing measure content</p>
-                </changeDesc>
-            </change>
-        </revisionDesc>
     </meiHead>
-    <music meiversion="4.0.0">
+   <music meiversion="5.0.0-dev">
       <body xml:id="m27c2fb62-f71c-4f81-ad46-f74fcc72e2af">
          <mdiv xml:id="m9c46c409-c344-4997-ac64-3e5e8af5ad4d">
             <score xml:id="m749849ed-5fd2-4823-9ab9-4d329257c3e1">
