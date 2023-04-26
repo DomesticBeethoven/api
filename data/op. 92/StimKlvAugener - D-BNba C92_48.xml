@@ -150,7 +150,7 @@
     </meiHead>
    <music meiversion="5.0.0-dev">
       <body xml:id="mf36494fa-df64-4706-9a6c-1bc01b898db4">
-         <mdiv xml:id="m3a67ac80-70f9-4202-b28e-ffe9c8f1a429">
+         <mdiv xml:id="m3a67ac80-70f9-4202-b28e-ffe9c8f1a429" label="Star Brightly Shining">
             <score xml:id="mb1347e6c-93fb-4cca-8720-eb3a02ec95f5">
                <scoreDef xml:id="m93876039-0860-4339-955e-6bc778ed3a90">
                   <staffGrp xml:id="m9f71f3eb-4bf0-41f5-9f9c-9d27371cbc2f">

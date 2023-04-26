@@ -150,7 +150,7 @@
     </meiHead>
    <music meiversion="5.0.0-dev">
       <body xml:id="m27c2fb62-f71c-4f81-ad46-f74fcc72e2af">
-         <mdiv xml:id="m9c46c409-c344-4997-ac64-3e5e8af5ad4d">
+         <mdiv xml:id="m9c46c409-c344-4997-ac64-3e5e8af5ad4d" label="Gesang der Peri's">
             <score xml:id="m749849ed-5fd2-4823-9ab9-4d329257c3e1">
                <scoreDef xml:id="mc3b8427b-4d4b-4c45-9256-4930eb48e3fa">
                   <staffGrp xml:id="m29ad1e61-d392-4021-ab8a-9e0ab449b431">

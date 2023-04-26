@@ -149,7 +149,7 @@
     </meiHead>
    <music meiversion="5.0.0-dev">
       <body xml:id="m5d4fbe35-76ce-447b-ac2d-5a1becfb7cfc">
-         <mdiv xml:id="m6871452e-6cdd-42a6-bb81-268e686b85a3">
+         <mdiv xml:id="m6871452e-6cdd-42a6-bb81-268e686b85a3" label="Persischer Nachtgesang">
             <score xml:id="m828bcb32-400a-40ad-be83-0d077a3c81f5">
                <scoreDef xml:id="m0b36c9a3-f11c-47a5-856a-0513ba17c393">
                   <staffGrp xml:id="m8ec62b18-cc9d-4ac8-a30e-e391c5a59e94">
