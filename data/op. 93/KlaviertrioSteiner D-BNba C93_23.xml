@@ -147,7 +147,7 @@
    </meiHead>
     <music meiversion="5.0.0-dev">
       <body xml:id="m92da180f-cd58-4c20-8957-d945d0f6fe14">
-         <mdiv xml:id="m951b93bf-bef1-4ffa-8ebf-d9a094adce51">
+         <mdiv xml:id="m951b93bf-bef1-4ffa-8ebf-d9a094adce51" label="Allegro vivace e con brio">
             <score xml:id="m4f92e357-c34d-477e-b455-713abbf2c8ef">
                <scoreDef xml:id="m70849bf5-b05a-4b56-871f-9fe03c6b2c48">
                   <staffGrp xml:id="md520901b-8215-4f8a-8764-89e319d593ce">
