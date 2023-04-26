@@ -87,7 +87,33 @@
             </editorialDecl>
             <projectDesc>
                 <head> Beethoven in the House </head>
-                <p>#text</p>
+                <p>The project "Beethoven in the House: Digital Studies of Domestic Music Arrangements"
+                    investigated domestic music arrangements of the 19th Century through two
+                    complementary studies, a digital research environment developed
+                    alongside the studies, and the innovative application of digital musicology
+                    methods within this environment. Beethoven-Haus Bonn, Oxford e-Research Center, RISM Digital,
+                    and Paderborn University partnered for this project.</p>
+                <p>Performance of music in the home was the means by which most works were received
+                    before the advent of audio recordings and broadcasts, yet the notation sources
+                    that form our primary record of this culture had not been the subject of
+                    comprehensive or methodical study. Choices made by arrangers adapting music for
+                    domestic consumption-of instrumentation, abbreviation, or simplification-reflect
+                    the musical life of the 19th-century, and can inform our understanding alongside
+                    contemporary accounts such as newspapers, adverts, and diaries.</p>
+                <p>By analysing the choices made by arrangers adapting music for domestic consumption,
+                    such as instrumentation, abbreviation, or simplification, this project shed light on
+                    the musical life of the 19th century and can inform our understanding alongside contemporary
+                    accounts such as newspapers, adverts, and diaries. The project's studies surveyed
+                    Steiner editions of Beethoven's 7th and 8th Symphonies and Wellingtons Sieg, as well
+                    as a larger sample of lesser-known scores, collating emergent
+                    indicators of arrangers' motivations within a narrative of the domestic market – the music
+                    industry of its day.</p>
+                <p>The project developed new methods for including selective approaches to encodings, utilising Optical Music Recognition and Linked Data to find and structure
+                    new knowledge. The project's findings provide new insights into the domestic music culture of the
+                    19th Century. For more information and to view our publications, please visit the project website at
+                    https://domestic-beethoven.eu.</p>
+                <p>The project ran from 2020 to 2023 and was jointly funded by DFG and
+                    AHRC.</p>
             </projectDesc>
             <domainsDecl anl="false" ges="true" vis="true"/>
         </encodingDesc>
