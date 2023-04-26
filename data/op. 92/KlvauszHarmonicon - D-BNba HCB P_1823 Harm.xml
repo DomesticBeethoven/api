@@ -145,7 +145,6 @@
          <mdiv xml:id="m1d1c56df-949c-44fa-a1d1-53bb5a65ed71">
             <score xml:id="m616acd0d-3611-4d97-a232-7cb3ffb9c090">
                <scoreDef xml:id="m45e53f93-e2fc-4b39-ba7f-c6fae40a062d">
-                  <pgFoot xml:id="m93b2264c-7dd6-4e08-bbe8-0082a1ff9589">Of the SEVENTH SYMPHONY of L. VON BEETHOVEN;</pgFoot>
                   <staffGrp xml:id="m5dd6134b-5dcc-472a-a2e5-d83490120035">
                      <staffGrp xml:id="m6203d0ec-756b-493f-8bd7-fb9800eaffda" bar.thru="true">
                         <label xml:id="mae0850bb-8b02-499a-8a71-13e796ef9d81">Piano</label>
@@ -6929,13 +6928,11 @@
                                        dur="8"
                                        oct="4"
                                        pname="c"
-                                       vel="79"
                                        stem.dir="up"/>
                                  <note xml:id="me6428b0b-ba83-4a6f-95c8-507f130afd26"
                                        dur="8"
                                        oct="4"
                                        pname="e"
-                                       vel="79"
                                        stem.dir="up"/>
                               </tuplet>
                            </beam>
@@ -6948,19 +6945,16 @@
                                        dur="8"
                                        oct="4"
                                        pname="c"
-                                       vel="78"
                                        stem.dir="down"/>
                                  <note xml:id="mdc89102e-2075-493a-a782-5896c8ae2e10"
                                        dur="8"
                                        oct="3"
                                        pname="c"
-                                       vel="77"
                                        stem.dir="down"/>
                                  <note xml:id="m53fd9351-509e-4cad-a89a-399a7a6cadf5"
                                        dur="8"
                                        oct="4"
                                        pname="c"
-                                       vel="76"
                                        stem.dir="down"/>
                               </tuplet>
                            </beam>
