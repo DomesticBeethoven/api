@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="https://music-encoding.org/schema/dev/mei-all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="https://music-encoding.org/schema/dev/mei-all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="../bith.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../custom-bith.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../custom-bith.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <mei xmlns="http://www.music-encoding.org/ns/mei"
      xml:id="t7a8ad946-cb40-4393-8c68-b5eb268e5ef8"
      meiversion="5.0.0-dev">
@@ -9,25 +8,95 @@
       <fileDesc>
          <titleStmt>
             <title type="desc">Op 91 - Panharmonicon (NGA)</title>
-            <title type="alternative">Panharmonicon.mei</title>
+            <composer>Ludwig van Beethoven</composer>
             <respStmt>
-               <persName xml:id="CJ" role="trc">Carla Jürgens</persName>
-               <persName xml:id="bithTeam_lr" role="mrk crr">Lisa Rosendahl</persName>
+               <resp>Transcribed by</resp>
+               <persName role="trc" xml:id="CJ">Carla Jürgens</persName>
+            </respStmt>
+            <respStmt>
+               <resp>Encoded by</resp>
+               <persName sameas="#bithTeam_lr" role="mrk"/>
             </respStmt>
          </titleStmt>
          <pubStmt>
-            <date isodate="2022-09-13" type="encoding-date">2022-09-13</date>
+            <date isodate="2023"/>
+            <availability>
+               <accessRestrict auth.uri="http://creativecommons.org/licenses/by-sa/4.0/"> Creative
+                  Commons Attribution-ShareAlike 4.0 International </accessRestrict>
+            </availability>
          </pubStmt>
+         <seriesStmt>
+            <title>Beethoven in the House Encodings</title>
+            <respStmt>
+               <resp>Project Team</resp>
+               <persName xml:id="bithTeam_ch" role="res" startdate="2021-10" enddate="2021-11"
+                  >Christin Heitmann</persName>
+               <persName xml:id="bithTeam_dl" role="res"
+                  auth.uri="https://orcid.org/0000-0003-4151-0499">David Lewis</persName>
+               <persName xml:id="bithTeam_lr" role="res"
+                  auth.uri="https://orcid.org/0000-0002-4826-4553">Lisa Rosendahl</persName>
+               <persName xml:id="bithTeam_ms" role="res"
+                  auth.uri="https://orcid.org/0000-0002-4635-7684">Mark Saccomano</persName>
+               <persName xml:id="bithTeam_es" role="res"
+                  auth.uri="https://orcid.org/0009-0004-0272-8377">Elisabete
+                  Shibata</persName>
+               <persName xml:id="bithTeam_ah" role="led"
+                  auth.uri="https://orcid.org/0000-0003-2663-0003">Andrew Hankinson</persName>
+               <persName xml:id="bithTeam_jk" role="led"
+                  auth.uri="https://orcid.org/0000-0003-4891-260X">Johannes Kepper</persName>
+               <persName xml:id="bithTeam_kp" role="led"
+                  auth.uri="https://orcid.org/0000-0002-1668-6540">Kevin Page</persName>
+               <persName xml:id="bithTeam_cs" role="led">Christine Siegert</persName>
+               <persName xml:id="bithTeam_fs" role="ctb" startdate="2020-10" enddate="2020-12"
+                  >Fabian Schmidt</persName>
+            </respStmt>
+            <funder>
+               <identifier type="projectNumber">429039809</identifier>
+               <corpName auth.uri="viaf-of-dfg">Deutsche Forschungsgemeinschaft
+                  (DFG)</corpName>
+            </funder>
+            <funder>
+               <identifier type="projectNumber">AH/T01279X/1</identifier>
+               <corpName auth.uri="viaf-of-ahrc">Arts and Humanities Research Council
+                  (AHRC)</corpName>
+            </funder>
+         </seriesStmt>
+         <sourceDesc>
+            <source sameas="#a03c8f72-31dc-4d7b-8c8a-8eb6658105eb"/>
+         </sourceDesc>
       </fileDesc>
       <encodingDesc>
-         <appInfo xml:id="ma3c174f6-a1f9-4091-83ee-38774e21e963">
-            <application xml:id="med7ee1c9-f4bf-4240-81a0-68119635823c"
-                         isodate="2022-09-13T16:44:43"
-                         version="3.8.1-1af3b41">
-               <name xml:id="md905dbe6-d884-44f6-b3d3-cdeab842558e">Verovio</name>
-               <p xml:id="m0b636a36-f15d-4b89-847e-a7001f6e67ed">Transcoded from MusicXML</p>
+         <appInfo>
+            <application version="3.6.2.548020600">
+               <name>MuseScore</name>
+            </application>
+            <application version="3.8.1-1af3b41">
+               <name>Verovio</name>
+            </application>
+            <application>
+               <name>Cartographer App</name>
             </application>
          </appInfo>
+         <editorialDecl>
+            <interpretation>
+               <p>Visual prioritized, not overly concerned with anything that needs
+                  interpretation.</p>
+            </interpretation>
+            <correction>
+               <p>No corrections</p>
+            </correction>
+            <normalization>
+               <p>No normalizations, although not a diplomatic transcription</p>
+            </normalization>
+         </editorialDecl>
+         <projectDesc>
+            <head> Beethoven in the House </head>
+            <p>#text</p>
+         </projectDesc>
+         <samplingDecl>
+            <p>#text</p>
+         </samplingDecl>
+         <domainsDecl anl="false" ges="true" vis="true"/>
       </encodingDesc>
       <workList>
          <work auth.uri="http://d-nb.info/gnd/300017723">
@@ -39,7 +108,7 @@
                <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
             </composer>
             <creation>
-               <date enddate="1813"/>
+               <date isodate="1813"/>
             </creation>
             <expressionList>
                <expression xml:id="meade9b80-3415-11ed-a261-0242ac120002">
@@ -62,10 +131,9 @@
          </work>
       </workList>
       <manifestationList>
-         <manifestation auth.uri="https://d-nb.info/1148984984">
+         <manifestation xml:id="a03c8f72-31dc-4d7b-8c8a-8eb6658105eb" auth.uri="https://d-nb.info/1148984984">
             <titleStmt>
                <title type="main">AUF WELLINGTON’S SIEG BEY VITTORIA. 1813 für Panharmonikon</title>
-               <title type="desc">Hess 108</title>
                <editor>
                   <persName role="edc">Anja Mühlenweg</persName>
                   <persName role="res">Bernhard R. Appel</persName>
@@ -107,25 +175,6 @@
             </relationList>
          </manifestation>
       </manifestationList>
-      <revisionDesc>
-         <change resp="#bithTeam_lr" n="1" isodate="2022-09-14">
-            <changeDesc>
-               <p>Applied "cleanMscz.xsl"</p>
-               <p>Remove unwanted attributes and mistakes from MuseScore export; add schema</p>
-            </changeDesc>
-         </change>
-         <change resp="#bithTeam_lr" n="2" isodate="2022-09-14">
-            <changeDesc>
-               <p>Applied "IDs4Mscz.xsl"</p>
-               <p>Delete IDs from Musescore; insert UUID(s) for the document, encoding description and music elements</p>
-            </changeDesc>
-         </change>
-         <change resp="#bithTeam_lr" n="3" isodate="2022-09-19">
-            <changeDesc>
-               <p>Add facsimile and empty measures</p>
-            </changeDesc>
-         </change>
-      </revisionDesc>
    </meiHead>
    <music meiversion="5.0.0-dev">
       <facsimile xml:id="t7e2e0b47-d5e8-4147-8837-1e8e013233be">

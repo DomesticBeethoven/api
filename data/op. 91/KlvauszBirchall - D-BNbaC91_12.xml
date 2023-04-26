@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="https://music-encoding.org/schema/dev/mei-all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="https://music-encoding.org/schema/dev/mei-all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="../bith.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../custom-bith.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../custom-bith.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <mei xmlns="http://www.music-encoding.org/ns/mei"
      xml:id="tb3f3ff06-d1cd-4889-af26-6d064337e3ed"
      meiversion="5.0.0-dev">
@@ -9,27 +8,98 @@
       <fileDesc>
          <titleStmt>
             <title type="desc">Op 91 - Piano (Birchall)</title>
-            <title type="alternative">D-BNbaC91_12.mei</title>
+            <composer>Ludwig van Beethoven</composer>
+            <arranger>Ludwig van Beethoven</arranger>
             <respStmt>
-               <persName xml:id="MK" role="trc">Marú Kim</persName>
-               <persName xml:id="VS" role="trc">Vincent Schneider</persName>
-               <persName xml:id="bithTeam_ms" role="mrk trc">Mark Saccomano</persName>
-               <persName xml:id="bithTeam_lr" role="mrk crr">Lisa Rosendahl</persName>
+               <resp>Transcribed by</resp>
+               <persName role="trc" xml:id="MK">Marú Kim</persName>
+               <persName role="trc" xml:id="VS">Vincent Schneider</persName>
+               <persName sameas="#bithTeam_ms" role="trc"/>
+            </respStmt>
+            <respStmt>
+               <resp>Encoded by</resp>
+               <persName sameas="#bithTeam_lr" role="mrk"/>
             </respStmt>
          </titleStmt>
          <pubStmt>
-            <date isodate="2022-06-17" type="encoding-date">2022-06-17</date>
+            <date isodate="2023"/>
+            <availability>
+               <accessRestrict auth.uri="http://creativecommons.org/licenses/by-sa/4.0/"> Creative
+                  Commons Attribution-ShareAlike 4.0 International </accessRestrict>
+            </availability>
          </pubStmt>
+         <seriesStmt>
+            <title>Beethoven in the House Encodings</title>
+            <respStmt>
+               <resp>Project Team</resp>
+               <persName xml:id="bithTeam_ch" role="res" startdate="2021-10" enddate="2021-11"
+                  >Christin Heitmann</persName>
+               <persName xml:id="bithTeam_dl" role="res"
+                  auth.uri="https://orcid.org/0000-0003-4151-0499">David Lewis</persName>
+               <persName xml:id="bithTeam_lr" role="res"
+                  auth.uri="https://orcid.org/0000-0002-4826-4553">Lisa Rosendahl</persName>
+               <persName xml:id="bithTeam_ms" role="res"
+                  auth.uri="https://orcid.org/0000-0002-4635-7684">Mark Saccomano</persName>
+               <persName xml:id="bithTeam_es" role="res"
+                  auth.uri="https://orcid.org/0009-0004-0272-8377">Elisabete
+                  Shibata</persName>
+               <persName xml:id="bithTeam_ah" role="led"
+                  auth.uri="https://orcid.org/0000-0003-2663-0003">Andrew Hankinson</persName>
+               <persName xml:id="bithTeam_jk" role="led"
+                  auth.uri="https://orcid.org/0000-0003-4891-260X">Johannes Kepper</persName>
+               <persName xml:id="bithTeam_kp" role="led"
+                  auth.uri="https://orcid.org/0000-0002-1668-6540">Kevin Page</persName>
+               <persName xml:id="bithTeam_cs" role="led">Christine Siegert</persName>
+               <persName xml:id="bithTeam_fs" role="ctb" startdate="2020-10" enddate="2020-12"
+                  >Fabian Schmidt</persName>
+            </respStmt>
+            <funder>
+               <identifier type="projectNumber">429039809</identifier>
+               <corpName auth.uri="viaf-of-dfg">Deutsche Forschungsgemeinschaft
+                  (DFG)</corpName>
+            </funder>
+            <funder>
+               <identifier type="projectNumber">AH/T01279X/1</identifier>
+               <corpName auth.uri="viaf-of-ahrc">Arts and Humanities Research Council
+                  (AHRC)</corpName>
+            </funder>
+         </seriesStmt>
+         <sourceDesc>
+            <source sameas="#d3b362fd-46ff-424d-99d0-b978645a91bd"/>
+         </sourceDesc>
       </fileDesc>
       <encodingDesc>
-         <appInfo xml:id="ma0531055-ef65-4828-a39e-29f6033ee0a4">
-            <application xml:id="m5fac739c-e9d9-4ed7-a149-1e584f9b9a72"
-                         isodate="2022-09-13T16:43:53"
-                         version="3.8.1-1af3b41">
-               <name xml:id="m76e39546-371c-46cb-835a-8b98b3ef7f2e">Verovio</name>
-               <p xml:id="mb1a89ba0-3022-4d47-a357-ed1e03d6b727">Transcoded from MusicXML</p>
+         <appInfo>
+            <application version="3.6.2.548020600">
+               <name>MuseScore</name>
+            </application>
+            <application version="3.8.1-1af3b41">
+               <name>Verovio</name>
+            </application>
+            <application>
+               <name>Cartographer App</name>
             </application>
          </appInfo>
+         <editorialDecl>
+            <interpretation>
+               <p>Visual prioritized, not overly concerned with anything that needs
+                  interpretation.</p>
+            </interpretation>
+            <correction>
+               <p>No corrections</p>
+            </correction>
+            <normalization>
+               <p>No normalizations, although not a diplomatic transcription</p>
+            </normalization>
+         </editorialDecl>
+         <projectDesc>
+            <head> Beethoven in the House </head>
+            <p>#text</p>
+         </projectDesc>
+         <samplingDecl>
+            <p>#text</p>
+         </samplingDecl>
+         <domainsDecl anl="false" ges="true" vis="true"/>
       </encodingDesc>
       <workList>
          <work auth.uri="http://d-nb.info/gnd/300017723">
@@ -40,14 +110,14 @@
                <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
             </composer>
             <creation>
-               <date enddate="1813"/>
+               <date isodate="1813"/>
             </creation>
             <expressionList>
                <expression xml:id="e4babeba-1ae0-11ec-9621-0242ac1309992">
                   <identifier type="genre"
                               auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q10349334"/>
                   <title type="desc">Op 91 - Piano (Birchall)</title>
-                  <arranger><!-- Catalog notes state that according to Tyson the arrangement is by Beethoven himself -->
+                  <arranger>
                      <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
                   </arranger>
                   <perfMedium>
@@ -60,18 +130,17 @@
          </work>
       </workList>
       <manifestationList>
-         <manifestation>
+         <manifestation xml:id="d3b362fd-46ff-424d-99d0-b978645a91bd">
             <titleStmt>
-               <title type="main">Beethoven's GRAND Battle SINFONIA Performed last Season with the greatest Applause at the ORATORIOS, DRURY LANE, Descriptive of theBATTLE &amp; Victory at VITTORIA, Gained by the Armies under the Command of His Grace The Duke of Wellington</title>
-               <title type="subordinate">Adapted for the PIANOFORTE, AND Dedicated to His Royal Highness THE PRINCE REGENT, BY THE Author.</title>
+               <title type="main">Beethoven's GRAND Battle SINFONIA Performed last Season with the greatest Applause at the ORATORIOS, DRURY LANE, Descriptive of theBATTLE &amp; Victory at VITTORIA, Gained by the Armies under the Command of His Grace The Duke of Wellington. Adapted for the PIANOFORTE, AND Dedicated to His Royal Highness THE PRINCE REGENT, BY THE Author.</title>
             </titleStmt>
             <pubStmt>
                <pubPlace>
                   <geogName auth.uri="https://www.wikidata.org/wiki/Special:EntityData/Q84"/>
                </pubPlace>
                <date isodate="1816"/>
-               <publisher><!-- Why is this # not found in GND? This is # in VIAF and Wikipedia --><!-- <persName auth.uri="http://d-nb.info/gnd/103756085X">Robert Birchall</persName> -->
-                  <persName auth.uri="https://www.wikidata.org/wiki/Q7342110">Robert Birchall</persName>
+               <publisher>
+                  <corpName auth.uri="https://d-nb.info/gnd/1090685300">Birchall</corpName>
                </publisher>
             </pubStmt>
             <itemList>
@@ -87,30 +156,6 @@
             </relationList>
          </manifestation>
       </manifestationList>
-      <revisionDesc>
-         <change resp="#bithTeam_lr" n="1" isodate="2022-09-13">
-            <changeDesc>
-               <p>Merged with new file including two more sections</p>
-            </changeDesc>
-         </change>
-         <change resp="#bithTeam_lr" n="2" isodate="2022-09-13">
-            <changeDesc>
-               <p>Applied "cleanMscz.xsl"</p>
-               <p>Remove unwanted attributes and mistakes from MuseScore export; add schema</p>
-            </changeDesc>
-         </change>
-         <change resp="#bithTeam_lr" n="3" isodate="2022-09-13">
-            <changeDesc>
-               <p>Applied "IDs4Mscz.xsl"</p>
-               <p>Delete IDs from Musescore; insert UUID(s) for the document, encoding description and music elements</p>
-            </changeDesc>
-         </change>
-         <change resp="#bithTeam_lr" n="4" isodate="2022-09-16">
-            <changeDesc>
-               <p>Add zones and empty measures</p>
-            </changeDesc>
-         </change>
-      </revisionDesc>
    </meiHead>
    <music meiversion="5.0.0-dev">
       <facsimile xml:id="t67d78622-28b2-49e7-9d99-f4fdffb5c228">
@@ -911,13 +956,6 @@
                   lrx="2774"
                   lry="2173"
                   rotate="0"/>
-            <zone xml:id="dfa760fe0-5d78-4874-b7d1-ad5d3558c4a8"
-                  type="measure"
-                  ulx="398"
-                  uly="2186"
-                  lrx="2818"
-                  lry="2661"
-                  rotate="0"/>
             <zone xml:id="de0a47cd4-99d6-43ea-b65f-b89d282b2df6"
                   type="measure"
                   ulx="480"
@@ -931,13 +969,6 @@
                   uly="2666"
                   lrx="1422"
                   lry="3189"
-                  rotate="0"/>
-            <zone xml:id="z08e4097f-a45b-4190-94cc-d56c26bc1498"
-                  type="measure"
-                  ulx="514"
-                  uly="3241"
-                  lrx="1678"
-                  lry="3711"
                   rotate="0"/>
             <zone xml:id="z29b71039-f684-4532-a3d7-554c05e5ec0a"
                   type="measure"
@@ -7669,7 +7700,7 @@
                      </staff>
                   </measure>
                   <measure xml:id="b6e18d8b4-92b1-4393-8f0c-4c49ac1c08b0"
-                           facs="#db682662c-06ce-4bec-9df4-9aefa7628d2d #dfa760fe0-5d78-4874-b7d1-ad5d3558c4a8"
+                           facs="#db682662c-06ce-4bec-9df4-9aefa7628d2d"
                            n="106">
                      <staff n="1">
                         <layer/>

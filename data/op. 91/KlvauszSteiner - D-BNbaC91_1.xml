@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="https://music-encoding.org/schema/dev/mei-all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="https://music-encoding.org/schema/dev/mei-all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="../bith.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../custom-bith.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../custom-bith.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <mei xmlns="http://www.music-encoding.org/ns/mei"
      xml:id="t31eb6b86-a57b-40ca-8a17-dbd72fac768e"
      meiversion="5.0.0-dev">
@@ -9,25 +8,96 @@
       <fileDesc>
          <titleStmt>
             <title type="desc">Op 91 - Piano (Steiner)</title>
-            <title type="alternative">D-BNbaC91_1.mei</title>
+            <composer>Ludwig van Beethoven</composer>
+            <arranger>Ludwig van Beethoven</arranger>
             <respStmt>
-               <persName xml:id="DM" role="trc">David Moser</persName>
-               <persName xml:id="bithTeam_lr" role="mrk crr">Lisa Rosendahl</persName>
+               <resp>Transcribed by</resp>
+               <persName role="trc" xml:id="DM">David Moser</persName>
+            </respStmt>
+            <respStmt>
+               <resp>Encoded by</resp>
+               <persName sameas="#bithTeam_lr" role="mrk"/>
             </respStmt>
          </titleStmt>
          <pubStmt>
-            <date isodate="2022-09-13" type="encoding-date">2022-09-13</date>
+            <date isodate="2023"/>
+            <availability>
+               <accessRestrict auth.uri="http://creativecommons.org/licenses/by-sa/4.0/"> Creative
+                  Commons Attribution-ShareAlike 4.0 International </accessRestrict>
+            </availability>
          </pubStmt>
+         <seriesStmt>
+            <title>Beethoven in the House Encodings</title>
+            <respStmt>
+               <resp>Project Team</resp>
+               <persName xml:id="bithTeam_ch" role="res" startdate="2021-10" enddate="2021-11"
+                  >Christin Heitmann</persName>
+               <persName xml:id="bithTeam_dl" role="res"
+                  auth.uri="https://orcid.org/0000-0003-4151-0499">David Lewis</persName>
+               <persName xml:id="bithTeam_lr" role="res"
+                  auth.uri="https://orcid.org/0000-0002-4826-4553">Lisa Rosendahl</persName>
+               <persName xml:id="bithTeam_ms" role="res"
+                  auth.uri="https://orcid.org/0000-0002-4635-7684">Mark Saccomano</persName>
+               <persName xml:id="bithTeam_es" role="res"
+                  auth.uri="https://orcid.org/0009-0004-0272-8377">Elisabete
+                  Shibata</persName>
+               <persName xml:id="bithTeam_ah" role="led"
+                  auth.uri="https://orcid.org/0000-0003-2663-0003">Andrew Hankinson</persName>
+               <persName xml:id="bithTeam_jk" role="led"
+                  auth.uri="https://orcid.org/0000-0003-4891-260X">Johannes Kepper</persName>
+               <persName xml:id="bithTeam_kp" role="led"
+                  auth.uri="https://orcid.org/0000-0002-1668-6540">Kevin Page</persName>
+               <persName xml:id="bithTeam_cs" role="led">Christine Siegert</persName>
+               <persName xml:id="bithTeam_fs" role="ctb" startdate="2020-10" enddate="2020-12"
+                  >Fabian Schmidt</persName>
+            </respStmt>
+            <funder>
+               <identifier type="projectNumber">429039809</identifier>
+               <corpName auth.uri="viaf-of-dfg">Deutsche Forschungsgemeinschaft
+                  (DFG)</corpName>
+            </funder>
+            <funder>
+               <identifier type="projectNumber">AH/T01279X/1</identifier>
+               <corpName auth.uri="viaf-of-ahrc">Arts and Humanities Research Council
+                  (AHRC)</corpName>
+            </funder>
+         </seriesStmt>
+         <sourceDesc>
+            <source sameas="#e55d8e5a-dbcb-4f06-b9f7-cc7bec4509cb"/>
+         </sourceDesc>
       </fileDesc>
       <encodingDesc>
-         <appInfo xml:id="m2b7156eb-7a5c-4a22-bd7c-35c89092b59d">
-            <application xml:id="m0ea2b94a-8c62-46e6-af04-dc968b8c5359"
-                         isodate="2022-09-13T16:35:42"
-                         version="3.8.1-1af3b41">
-               <name xml:id="me972d152-d8c9-4e18-9857-6785051016ab">Verovio</name>
-               <p xml:id="m3891e3fa-fb1f-4443-8502-ecf6baaaee95">Transcoded from MusicXML</p>
+         <appInfo>
+            <application version="3.6.2.548020600">
+               <name>MuseScore</name>
+            </application>
+            <application version="3.8.1-1af3b41">
+               <name>Verovio</name>
+            </application>
+            <application>
+               <name>Cartographer App</name>
             </application>
          </appInfo>
+         <editorialDecl>
+            <interpretation>
+               <p>Visual prioritized, not overly concerned with anything that needs
+                  interpretation.</p>
+            </interpretation>
+            <correction>
+               <p>No corrections</p>
+            </correction>
+            <normalization>
+               <p>No normalizations, although not a diplomatic transcription</p>
+            </normalization>
+         </editorialDecl>
+         <projectDesc>
+            <head> Beethoven in the House </head>
+            <p>#text</p>
+         </projectDesc>
+         <samplingDecl>
+            <p>#text</p>
+         </samplingDecl>
+         <domainsDecl anl="false" ges="true" vis="true"/>
       </encodingDesc>
       <workList>
          <work auth.uri="http://d-nb.info/gnd/300017723">
@@ -38,7 +108,7 @@
                <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
             </composer>
             <creation>
-               <date enddate="1813"/>
+               <date isodate="1813"/>
             </creation>
             <expressionList>
                <expression xml:id="m82428840-337d-11ed-a261-0242ac120002">
@@ -58,7 +128,7 @@
          </work>
       </workList>
       <manifestationList>
-         <manifestation>
+         <manifestation xml:id="e55d8e5a-dbcb-4f06-b9f7-cc7bec4509cb">
             <titleStmt>
                <title type="main">WELLINGTONS SIEG oder die Schlacht bey Vittoria Für das Piano=Forte von Ludwig van Beethoven 91=tes Werk.</title>
             </titleStmt>
@@ -84,25 +154,6 @@
             </relationList>
          </manifestation>
       </manifestationList>
-      <revisionDesc>
-         <change resp="#bithTeam_lr" n="1" isodate="2022-09-13">
-            <changeDesc>
-               <p>Applied "cleanMscz.xsl"</p>
-               <p>Remove unwanted attributes and mistakes from MuseScore export; add schema</p>
-            </changeDesc>
-         </change>
-         <change resp="#bithTeam_lr" n="2" isodate="2022-09-13">
-            <changeDesc>
-               <p>Applied "IDs4Mscz.xsl"</p>
-               <p>Delete IDs from Musescore; insert UUID(s) for the document, encoding description and music elements</p>
-            </changeDesc>
-         </change>
-         <change resp="#bithTeam_lr" n="3" isodate="2022-09-19">
-            <changeDesc>
-               <p>Add facsimile and empty measures</p>
-            </changeDesc>
-         </change>
-      </revisionDesc>
    </meiHead>
    <music meiversion="5.0.0-dev">
       <facsimile xml:id="t2c6c34a2-c4a9-4879-8baa-96433ea3498c">
@@ -931,13 +982,6 @@
                   lrx="4480"
                   lry="1880"
                   rotate="0"/>
-            <zone xml:id="d4176c476-8ac6-4c28-a660-4422254480fd"
-                  type="measure"
-                  ulx="608"
-                  uly="1912"
-                  lrx="1529"
-                  lry="2526"
-                  rotate="0"/>
             <zone xml:id="d9409fe5b-b37e-4c72-bb24-dce437c34979"
                   type="measure"
                   ulx="1469"
@@ -953,19 +997,12 @@
                   lry="2518"
                   rotate="0"/>
             <zone xml:id="db690b2dc-2d44-4bc7-9cff-fac65d1d7b42"
-                  type="measure"
-                  ulx="2259"
-                  uly="1875"
-                  lrx="4328"
-                  lry="2552"
-                  rotate="0"/>
-            <zone xml:id="da484ce18-4736-478a-a1a2-165ff40605b2"
-                  type="measure"
-                  ulx="620"
-                  uly="2486"
-                  lrx="2516"
-                  lry="3121"
-                  rotate="0"/>
+               type="measure"
+               ulx="2259"
+               uly="1875"
+               lrx="4328"
+               lry="2552"
+               rotate="0"/>
             <zone xml:id="d5986003a-9be9-4203-853e-913a5f5aa68c"
                   type="measure"
                   ulx="2394"
@@ -6163,7 +6200,7 @@
                         <layer/>
                      </staff>
                   </measure>
-                  <measure xml:id="b8155cfa1-e157-4215-b716-9ec4ffaaa0be"
+                  <measure xml:id="b8155cfa1-e157-4215-b717-9ec4ffaaa0be"
                            facs="#db887d435-e6c8-4457-9af6-48ed35ca9779"
                            n="46">
                      <staff n="1">
@@ -6339,7 +6376,7 @@
                         <layer/>
                      </staff>
                   </measure>
-                  <measure xml:id="bfe54968d-1827-4000-a7e1-ef4716fcd6c1"
+                  <measure xml:id="bfe54968d-1828-4000-a7e1-ef4716fcd6c1"
                            facs="#d06f5ddc7-fe1a-41e0-b996-1068b4f697b9"
                            n="62">
                      <staff n="1">
@@ -6769,7 +6806,7 @@
                   </measure>
                   <sb/>
                   <measure xml:id="b69a3ab5f-2a90-4e2e-996c-c92c49f91d1a"
-                           facs="#d9645dccd-a827-4c8c-ae7a-aef448ed60d8 #d4176c476-8ac6-4c28-a660-4422254480fd"
+                           facs="#d9645dccd-a827-4c8c-ae7a-aef448ed60d8"
                            n="104">
                      <staff n="1">
                         <layer/>
@@ -6800,7 +6837,7 @@
                      </staff>
                   </measure>
                   <measure xml:id="be16146ed-9023-413f-9c61-41ff9ab5ac4d"
-                           facs="#db690b2dc-2d44-4bc7-9cff-fac65d1d7b42 #da484ce18-4736-478a-a1a2-165ff40605b2"
+                           facs="#db690b2dc-2d44-4bc7-9cff-fac65d1d7b42"
                            n="107">
                      <staff n="1">
                         <layer/>
