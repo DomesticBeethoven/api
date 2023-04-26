@@ -1081,7 +1081,7 @@
          </surface>
       </facsimile>
       <body xml:id="me3d8fae0-f6d2-4cba-9548-a6a185b41b9b">
-         <mdiv xml:id="m22337f06-5f18-4f05-85f0-5726255e1440">
+         <mdiv xml:id="m22337f06-5f18-4f05-85f0-5726255e1440" label="Erste Abtheilung">
             <score xml:id="m937f9236-565d-4c5d-ae22-d51a4f38d8eb">
                <scoreDef xml:id="m8fba0963-9b2b-4d5f-8c5f-60ce2d6b6674">
                   <staffGrp xml:id="m38b9cabf-e2cd-48a5-a28c-57024c3f35a2">
@@ -1522,7 +1522,6 @@
                         <layer/>
                      </staff>
                   </measure>
-                  <!-- Luisa Moreno -->
                   <section xml:id="m6b360530-3f0a-460a-87d3-245bc1388fda" resp="#LM">
                      <measure xml:id="m2aa92c87-2623-4da3-8fe8-839dd1e0e698" n="30">
                         <staff n="1">
