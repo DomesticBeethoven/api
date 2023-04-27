@@ -122,7 +122,7 @@
             <moduleRef key="MEI.fingering"/>
             <moduleRef key="MEI.frbr"/>
             <moduleRef key="MEI.gestural"/>
-            <moduleRef key="MEI.harmony" except="chordDef chordMember chordTable f fb"/>
+            <moduleRef key="MEI.harmony" except="chordDef chordMember chordTable"/>
             <moduleRef key="MEI.header"
                except="componentList acquisition altId attUsage audience bifolium byline captureMode carrierForm category catRel classDecls classification condition contentItem contents context cutout editionStmt exhibHist extMeta fileChar fingerprint foliaDesc folium hand handList history incipCode incipText inscription key mensuration meter namespace notesStmt otherChar patch perfDuration physDesc physMedium playingSpeed price provenance segmentation soundChan specRepro stdVals sysReq tagsDecl tagUsage taxonomy termList trackConfig treatHist treatSched useRestrict watermark"/>
             <moduleRef key="MEI.lyrics"/>
