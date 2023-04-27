@@ -81,16 +81,13 @@ let $pubPlace.line :=
 let $pubDate := '"' || lod:resolveDateToString($file//mei:manifestation/mei:pubStmt/mei:date) || '"'
 let $pubDate.line := $file.subject || $lod:gndo.dateOfPublication || $pubDate || $lod:nq.eol 
 
-let $arranger := 
-    if ($file//mei:expression/mei:arranger/mei:persName/@auth.uri)
-    then ('<' || $file//mei:expression/mei:arranger/mei:persName/@auth.uri || '>')
-    else if ($file//mei:expression/mei:arranger/mei:persName/text() and string-length($file//mei:expression/mei:arranger/mei:persName/normalize-space(text())) gt 0)
-    then ('"' || $file//mei:expression/mei:arranger/mei:persName/normalize-space(text()) || '"')
-    else ()
-let $arranger.line := 
-    if ($arranger)
-    then ($file.subject || $lod:gndo.arranger || $arranger || $lod:nq.eol)
-    else ()
+let $arranger.lines := 
+    for $arranger in $file//mei:expression/mei:arranger/mei:persName[@auth.uri or (./text() and string-length(normalize-space(./text())) gt 0)]
+    let $arranger.line := 
+        if ($arranger/@auth.uri)
+        then ($file.subject || $lod:gndo.arranger || '<' || $arranger/@auth.uri || '>' || $lod:nq.eol)
+        else ($file.subject || $lod:gndo.arranger || '"' || $arranger/normalize-space(text()) || '"' || $lod:nq.eol)
+    return $arranger.line
 
 let $publisher := 
     if ($file//mei:manifestation/mei:pubStmt/mei:publisher/mei:corpName/@auth.uri)
@@ -182,7 +179,7 @@ return
    $perfMedium ||
    $pubPlace.line ||
    $pubDate.line ||
-   $arranger.line ||
+   string-join($arranger.lines, '') ||
    $publisher.line ||
    $publisherName.line ||
    $workComposer.line ||
