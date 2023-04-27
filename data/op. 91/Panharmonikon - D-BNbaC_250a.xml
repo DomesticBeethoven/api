@@ -119,9 +119,20 @@
             <p>The project ran from 2020 to 2023 and was jointly funded by DFG and
                AHRC.</p>
          </projectDesc>
-         <samplingDecl>
-            <p>#text</p>
-         </samplingDecl>
+          <samplingDecl>
+              <p>The project "Beethoven in the House" aimed to provide a digital study of Beethoven's
+                  symphonic works arranged for home performance. As time and resources were limited,
+                  encoding entire symphonic scores was neither feasible nor necessary. Instead, the
+                  project focused on comparing certain passages of the large-scale works and their
+                  realisation in various arrangements. This led to the development of a procedure for
+                  "selective encodings," which involves encoding only the portions of a score relevant
+                  to a particular study.</p>
+              <p>This is a Selective Encoding that includes measures with empty layers.
+                  By contrast, a measure that is empty in the source would be encoded using mei:mSpace.
+                  Encoded measures are separated from empty measures with section elements with an @xml:id.
+                  For the encoded sections the attribute @resp is used to indicate the transcriber.</p>
+              <p>For more information, read the documentation at https://doi.org/10.5281/zenodo.7870625.</p>
+          </samplingDecl>
          <domainsDecl anl="false" ges="true" vis="true"/>
       </encodingDesc>
       <workList>
