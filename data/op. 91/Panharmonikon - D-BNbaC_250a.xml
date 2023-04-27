@@ -52,12 +52,12 @@
             </respStmt>
             <funder>
                <identifier type="projectNumber">429039809</identifier>
-               <corpName auth.uri="viaf-of-dfg">Deutsche Forschungsgemeinschaft
+               <corpName auth.uri="http://viaf.org/viaf/122652571">Deutsche Forschungsgemeinschaft
                   (DFG)</corpName>
             </funder>
             <funder>
                <identifier type="projectNumber">AH/T01279X/1</identifier>
-               <corpName auth.uri="viaf-of-ahrc">Arts and Humanities Research Council
+               <corpName auth.uri="http://viaf.org/viaf/133029233">Arts and Humanities Research Council
                   (AHRC)</corpName>
             </funder>
          </seriesStmt>

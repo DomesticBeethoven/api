@@ -45,16 +45,16 @@
                     <persName xml:id="bithTeam_fs" role="ctb" startdate="2020-10" enddate="2020-12"
                         >Fabian Schmidt</persName>
                 </respStmt>
-                <funder>
-                    <identifier type="projectNumber">429039809</identifier>
-                    <corpName auth.uri="viaf-of-dfg">Deutsche Forschungsgemeinschaft
-                        (DFG)</corpName>
-                </funder>
-                <funder>
-                    <identifier type="projectNumber">AH/T01279X/1</identifier>
-                    <corpName auth.uri="viaf-of-ahrc">Arts and Humanities Research Council
-                        (AHRC)</corpName>
-                </funder>
+               <funder>
+                  <identifier type="projectNumber">429039809</identifier>
+                  <corpName auth.uri="http://viaf.org/viaf/122652571">Deutsche Forschungsgemeinschaft
+                     (DFG)</corpName>
+               </funder>
+               <funder>
+                  <identifier type="projectNumber">AH/T01279X/1</identifier>
+                  <corpName auth.uri="http://viaf.org/viaf/133029233">Arts and Humanities Research Council
+                     (AHRC)</corpName>
+               </funder>
             </seriesStmt>
             <sourceDesc>
                 <source sameas="#e17de30c-fbdc-4f72-83a1-ed4de3c642c3"/>
