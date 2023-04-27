@@ -139,7 +139,7 @@
                     <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
                 </composer>
                 <creation>
-                    <date isodate="1813"/><!-- startdate="1812" enddate="1813" -->
+                    <date startdate="1812" enddate="1813"/>
                 </creation>
                 <expressionList>
                     <expression xml:id="m3117cd8-7865-11ec-90d6-0242ac120003">

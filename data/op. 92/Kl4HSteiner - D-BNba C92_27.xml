@@ -136,9 +136,9 @@
             <composer>
                <persName auth.uri="http://d-nb.info/gnd/118508288">Ludwig van Beethoven</persName>
             </composer>
-             <creation>
-                 <date isodate="1816"/><!-- startdate="1811" enddate="1812", changed temporarily for the BitH-Annotator-->
-             </creation>
+            <creation>
+               <date startdate="1811" enddate="1812"/>
+            </creation>
             <expressionList>
                <expression xml:id="a9446116-1add-11ec-9621-0242ac130002">
                   <identifier type="genre"
