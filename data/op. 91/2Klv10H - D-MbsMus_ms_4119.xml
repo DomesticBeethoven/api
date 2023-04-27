@@ -1894,7 +1894,7 @@
                <scoreDef xml:id="mfc9c139a-6e57-41b9-b04e-5f34eba5f726">
                   <staffGrp xml:id="m01065625-d3e8-4ea0-a682-e54d59a7a415">
                      <staffGrp xml:id="m341ffe71-fd8a-43f8-8619-4969191614a4" bar.thru="true">
-                        <label xml:id="md209918b-5af8-415c-b89b-665400499fef">Klavier</label>
+                        <label xml:id="md209918b-5af8-415c-b89b-665400499fef">Piano Imo. Primo.</label>
                         <staffDef xml:id="ma7bbfde4-9e82-40a6-a770-9bfc3f902e24" n="1" lines="5">
                            <clef xml:id="m648d60e9-1e31-4287-8ca9-ee50ed5d633f" shape="G" line="2"/>
                            <keySig xml:id="mf73cb1d5-a1fc-423d-b836-69fa4cdf4de6" sig="2s"/>
@@ -1908,7 +1908,7 @@
                         <grpSym xml:id="m44a177e6-1cfe-494a-8b2e-e0075afe4cbe" symbol="brace"/>
                      </staffGrp>
                      <staffGrp xml:id="m6745c4a0-ea20-437d-a9c7-e7644faf0e14" bar.thru="true">
-                        <label xml:id="mdba97525-4e6e-4e10-8d4d-e90106f7e9d2">Klavier</label>
+                        <label xml:id="mdba97525-4e6e-4e10-8d4d-e90106f7e9d2">Piano Imo. Secundo.</label>
                         <staffDef xml:id="mb1375109-17eb-433e-bc2a-6455eae65fe1" n="3" lines="5">
                            <clef xml:id="m601d3c56-a83a-4b22-9244-7a44776bf78d" shape="G" line="2"/>
                            <keySig xml:id="m658d8a40-ac5f-47ea-a603-73651f7e6ca9" sig="2s"/>
@@ -1922,7 +1922,7 @@
                         <grpSym xml:id="m3758ddc3-3899-4bb2-b1fc-88f8eb549085" symbol="brace"/>
                      </staffGrp>
                      <staffGrp xml:id="mf0a458ab-75d3-4bf5-a1f5-c829de4e4b00" bar.thru="true">
-                        <label xml:id="md1fa0fd9-14fa-468d-a3ec-d7f316713bf2">Klavier</label>
+                        <label xml:id="md1fa0fd9-14fa-468d-a3ec-d7f316713bf2">Piano IIdo. Primo.</label>
                         <staffDef xml:id="maaa6ec91-fdaf-4db1-9005-faaa3107c33d" n="5" lines="5">
                            <clef xml:id="m326a3634-b37f-4312-9a58-e5f1064042cb" shape="G" line="2"/>
                            <keySig xml:id="m8605d8ef-0cc3-464c-9e09-5a8e49da2b56" sig="2s"/>
@@ -1936,7 +1936,7 @@
                         <grpSym xml:id="m7e605171-65f9-4ab4-8c5f-5d2e83e55618" symbol="brace"/>
                      </staffGrp>
                      <staffGrp xml:id="ma6a6ac95-7d3b-4c7b-b6fa-bae5d7b2c45a" bar.thru="true">
-                        <label xml:id="m7a247937-653f-40a0-8706-a7e5a300333b">Klavier</label>
+                        <label xml:id="m7a247937-653f-40a0-8706-a7e5a300333b">Piano IIdo. Secundo.</label>
                         <staffDef xml:id="m48a8f360-9951-483b-ac6e-47774d4ac1ca" n="7" lines="5">
                            <clef xml:id="m7bc4d6e7-029b-49a4-89ee-1c6ae923c365" shape="G" line="2"/>
                            <keySig xml:id="mb370109b-121a-4c40-94d7-2c079b7c1055" sig="2s"/>
@@ -1950,7 +1950,7 @@
                         <grpSym xml:id="m8fc9681a-a383-47c2-ab51-bc8e9da0037f" symbol="brace"/>
                      </staffGrp>
                      <staffGrp xml:id="mbf68f5c7-fbad-47fe-9c16-d28f66ff3f48" bar.thru="true">
-                        <label xml:id="m9b73ebd6-3d6b-43b4-a44f-a69c2ba27612">Klavier</label>
+                        <label xml:id="m9b73ebd6-3d6b-43b4-a44f-a69c2ba27612">Piano IIdo. Terzo.</label>
                         <staffDef xml:id="m03fd8e50-08c6-40f3-a5c2-54ec8474a148" n="9" lines="5">
                            <clef xml:id="m9b70bd6c-e004-43c6-bc35-06be094395cf" shape="G" line="2"/>
                            <keySig xml:id="m2d958b4e-f9f6-438d-87bc-394e89b4328f" sig="2s"/>
@@ -2321,7 +2321,6 @@
                </section>
                <section xml:id="m2588bf9a-fc85-480c-8ce8-d07e83d1dfaf" resp="#GC">
                   <measure xml:id="m804ddd31-3250-483e-a73d-fc1295c198a0" n="12">
-                     <mNum xml:id="m006fe500-49a0-4544-949c-03da99a58fe6"/>
                      <staff xml:id="m753d6c4d-0a13-4f05-81dc-45fac805d501" n="1">
                         <layer xml:id="m92fbb765-ab94-4f03-bf57-43c5e76fd6dd" n="1">
                            <note xml:id="m4161f1bc-1863-45c6-a827-ff14bc5f2817"
@@ -2957,8 +2956,8 @@
                             staff="7"
                             tstamp="1">f</dynam>
                      <tie xml:id="m39dc684b-c620-4da0-9fc9-e21580437ebc"
-                          startid="#m4c205137-79d7-4a5d-ac55-99e6322b176a"
-                          endid="#m792d42d2-103a-476e-9960-135efaa7218f"/>
+                        startid="#m48e6a2dd-cbda-4702-8cf4-9769233ac78a"
+                        endid="#m8d516fd3-422e-4a98-8301-f17faf2833a8"/>
                   </measure>
                   <measure xml:id="m553ef2f2-0ce3-4349-b230-5a39e7992eb7" n="15">
                      <staff xml:id="mb3c05bbd-92ff-48fb-92ba-2a3e9b5ba259" n="1">
@@ -3229,8 +3228,11 @@
                            endid="#m0787f8bc-07b9-4e56-a94c-d7ab1c01c0fc"
                            curvedir="above"/>
                      <tie xml:id="m86f6052e-a2e7-42f3-8df0-ad4908d78fd3"
-                          startid="#m6815e1b8-38bb-4b3f-b13a-e971d749beb5"
-                          endid="#m5bdaa5a5-6d72-4b8e-bb5d-6329732a00ba"/>
+                        startid="#mfbd08947-9490-4bc5-8e60-8120924a68b1"
+                        endid="#maadbcd3b-9a4b-406a-a582-e92cb6bfb3c8"/>
+                     <tie xml:id="maadbcd3b-9a4b-406a-b582-e92cb6bfb3c8"
+                        startid="#m3d373822-3b29-4a0a-80cb-5b520636c509"
+                        endid="#m0787f8bc-07b9-4e56-a94c-d7ab1c01c0fc"/>
                   </measure>
                   <measure xml:id="me2ca7f6b-edf0-4d90-8d5a-bb8b2ffabf77" n="16">
                      <staff xml:id="m143a7d78-301f-4a8d-8a02-83422cf5a209" n="1">
@@ -3427,8 +3429,8 @@
                         </layer>
                      </staff>
                      <tie xml:id="m6491379b-0578-4391-b79c-d560167f90bd"
-                          startid="#m1b6d81ce-776a-41a0-81a3-0e8a93be300f"
-                          endid="#m6ebd2981-e8a9-47ab-852e-5ff743648c33"/>
+                        startid="#m00b525ba-6fa7-4dae-acbc-88277d92f37a"
+                        endid="#m70cd4a39-3914-4f97-985a-2df6bd519f85"/>
                   </measure>
                </section>
                <section>
