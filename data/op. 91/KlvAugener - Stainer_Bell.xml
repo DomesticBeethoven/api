@@ -157,7 +157,7 @@
                </pubPlace>
                <date notafter="1889"/>
                <publisher>
-                  <persName auth.uri="http://d-nb.info/gnd/1072942461">Augener and Co.</persName>
+                  <corpName auth.uri="http://d-nb.info/gnd/1072942461">Augener and Co.</corpName>
                </publisher>
             </pubStmt>
             <itemList>
@@ -3412,7 +3412,6 @@
                </scoreDef>
                <section xml:id="m162a837e-c88d-4e26-b7ae-14dba6951078">
                   <measure xml:id="mbeefbe08-3616-4bc7-a50a-82512e99f4f4" n="0">
-                     <mNum xml:id="m47b6bedd-ffad-4f20-83b7-23f6f4308b65"/>
                      <staff xml:id="ma2b4cb5e-4522-418b-b40f-192d5d62e833" n="1">
                         <layer xml:id="m012fc994-8456-4ae0-81d8-12da1f9ddd53" n="1">
                            <beam xml:id="m88d4a6e8-dad8-4570-bbff-89185860881f">
