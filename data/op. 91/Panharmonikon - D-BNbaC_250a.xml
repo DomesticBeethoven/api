@@ -138,7 +138,7 @@
       <workList>
          <work auth.uri="http://d-nb.info/gnd/300017723">
             <identifier type="catalogNumber">Hess 108</identifier>
-            <identifier type="opusNumber">Op.91</identifier>
+            <identifier type="opusNumber">91</identifier>
             <title type="uniform" xml:lang="de">Wellingtons Sieg</title>
             <title type="abbreviated" xml:lang="de">Wellingtons Sieg</title>
             <composer>
