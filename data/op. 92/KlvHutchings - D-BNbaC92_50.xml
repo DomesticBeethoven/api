@@ -157,7 +157,7 @@
                     </pubPlace>
                     <date notbefore="1877" notafter="1884"/>
                     <publisher>
-                        <corpName>Hutchings and Romer</corpName>
+                        <corpName auth.uri="https://d-nb.info/gnd/1124784772">Hutchings and Romer</corpName>
                     </publisher>
                 </pubStmt>
                 <itemList>
