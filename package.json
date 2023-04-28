@@ -1,6 +1,6 @@
 {
   "name": "api",
-  "version": "0.2.0",
+  "version": "0.9.0",
   "description": "This repo holds the code for running the api.domestic-beethoven.eu service.",
   "keywords": [
     "MEI"
@@ -10,7 +10,7 @@
     "url": "https://github.com/DomesticBeethoven/api/issues"
   },
   "license": "AGPL-3.0",
-  "author": "MSS",
+  "author": ["Johannes Kepper", "Mark Saccomano"],
   "main": "index.js",
   "repository": {
     "type": "git",

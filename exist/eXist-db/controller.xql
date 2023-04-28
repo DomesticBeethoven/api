@@ -30,6 +30,19 @@ declare variable $exist:prefix external;
 declare variable $exist:root external;
 
 
+(: deliver BithCollection.jsonld :)
+if(matches($exist:path,'/ld/[\da-zA-Z_\.-]+\.jsonld')) then (
+    response:set-header("Access-Control-Allow-Origin", "*"),
+
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <forward url="{$exist:controller}/resources/xql/lod/get-jsonld-file.xql">
+          (: pass in the UUID of the document passed in the URI :)
+          <add-parameter name="document.name" value="{tokenize($exist:path,'/')[last()]}"/>
+        </forward>
+    </dispatch>
+
+) else
+
 (: LIST all documents in the database - documents.json = get-documents.xql :)
 if(ends-with($exist:path,'/iiif/documents.json')) then (
     response:set-header("Access-Control-Allow-Origin", "*"),

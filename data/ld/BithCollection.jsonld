@@ -1,0 +1,50 @@
+{
+	"@context": {
+		"workset": "https://meld.linkedmusic.org/worksets/",
+		"annotation": "https://meld.linkedmusic.org/annotations/",
+		"meldterm": "https://meld.linkedmusic.org/terms/",
+		"compVocab": "https://meld.linkedmusic.org/companion/vocab/",
+		"mei": "https://meld.linkedmusic.org/mei/",
+		"oa": "http://www.w3.org/ns/oa#",
+		"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+		"ldp": "http://www.w3.org/ns/ldp#"
+	},
+	"@graph": {
+		"@id": "workset:StarShiningBrightly",
+		"@type": [
+			"meldterm:workset",
+			"ldp:Container"
+		],
+		"ldp:contains": [
+			{"@id": "https://api.domestic-beethoven.eu/lod/tb3f3ff06-d1cd-4889-af26-6d064337e3ed.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/t631b5f6a-4ad7-4d86-a16d-b7d2fb58ccc7.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/t31eb6b86-a57b-40ca-8a17-dbd72fac768e.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/tbfcb377a-67b5-4096-9b27-36a43eb49a1e.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/tc8577096-53c4-44ff-b9a6-5268a745bd93.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/m571b10c-0ea5-48df-86cd-820af03fee48.nq"},
+
+			{"@id": "https://api.domestic-beethoven.eu/lod/tc5bc743c-bf05-48e9-8666-b38e8d52a25f.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/t0da96e98-2e50-4d64-9ab7-8a195bdd7d16.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/t54e4f616-df2b-4d65-adfb-56340bfcae16.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/me18b9e86-b7b6-47fe-9b66-0ad6f179b6a4.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/bf6941e0-4fa8-11ed-bdc3-0242ac120002.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/mf0c46e4e-c812-49ed-9452-7b9f4659b14c.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/ecdd1cdd-5bd2-4349-a3ad-cd25461cfe2d.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/dbe44e4f-efed-4bcd-a3b5-a1cd841f91a4.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/tdee81d52-8107-4a11-a95a-9c84f17bb759.nq"},
+
+			{"@id": "https://api.domestic-beethoven.eu/lod/cc7d48d2-bc4b-424b-8389-de6a13bf8d64.nq"},
+
+			{"@id": "https://api.domestic-beethoven.eu/lod/mb4caff1f-1926-4206-b5d2-5df342b7753e.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/a532195b-0e46-4e36-8469-65555652efaa.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/b4de1450-a66e-4c00-8455-cdfd52c2f60c.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/f4074846-7e59-483d-8e12-0c64a5c6d733.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/c4e12227-9200-4781-9849-ffc5760aba80.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/t7379da05-03e9-4f08-8b22-48b40fd3a209.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/e1bd5c9d-20da-4565-95d7-7020644f25b8.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/e82610d7-976d-465c-af5d-2544e66913e3.nq"},
+			{"@id": "https://api.domestic-beethoven.eu/lod/t7a8ad946-cb40-4393-8c68-b5eb268e5ef8.nq"}
+
+		]
+	}
+}
