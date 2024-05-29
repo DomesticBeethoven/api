@@ -81,12 +81,23 @@ let $pubPlace.line :=
 let $pubDate := '"' || lod:resolveDateToString($file//mei:manifestation/mei:pubStmt/mei:date) || '"'
 let $pubDate.line := $file.subject || $lod:gndo.dateOfPublication || $pubDate || $lod:nq.eol 
 
+(: Originally, app pulled data from authority file if available. Current version of app 
+does not support this, so $arranger.line was changed to return plain text content of 
+<arranger> element (only) :)
+
+(:
 let $arranger.lines := 
     for $arranger in $file//mei:expression/mei:arranger/mei:persName[@auth.uri or (./text() and string-length(normalize-space(./text())) gt 0)]
     let $arranger.line := 
         if ($arranger/@auth.uri)
         then ($file.subject || $lod:gndo.arranger || '<' || $arranger/@auth.uri || '>' || $lod:nq.eol)
         else ($file.subject || $lod:gndo.arranger || '"' || $arranger/normalize-space(text()) || '"' || $lod:nq.eol)
+    return $arranger.line
+:)
+
+let $arranger.lines := 
+    for $arranger in $file//mei:expression/mei:arranger/mei:persName[@auth.uri or (./text() and string-length(normalize-space(./text())) gt 0)]
+    let $arranger.line := ($file.subject || $lod:gndo.arranger || '"' || $arranger/normalize-space(text()) || '"' || $lod:nq.eol)
     return $arranger.line
 
 let $publisher := 
